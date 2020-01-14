@@ -1,34 +1,49 @@
 import React, { Component } from 'react';
+
+import { Icon } from 'antd';
 import './Header.css';
+
+// const tokenKey = '522dc7a2725e66e850507d3feff85af8d62a8e14';
+// const tokenId = '';
 
 class Header extends Component {
   state = {};
-  componentDidMount() {
-    fetch('https://todoist3.herokuapp.com/hello', { method: 'GET' })
-      .then(res => res.json())
-      .then(out => {
-        console.log(out);
-      })
-      .catch(err => console.error(err));
-  }
+  handleModal = () => {};
 
   render() {
     return (
-      <div id="top_bar">
-        <div id="top_bar_inner">
-          <div id="logo"></div>
-          <div id="editor">
-            <div>
-              <input
-                className="quick-find"
-                type="text"
-                placeholder="Quick Find"
-              ></input>
-            </div>
-            <div id="top_icons"></div>
+      <header className="header">
+        <nav>
+          <div>
+            <img
+              src={require('../../logo.svg')}
+              className="logo"
+              alt="Todoist"
+            />
           </div>
-        </div>
-      </div>
+          <div className="quick-find search">
+            <Icon type="search" />
+            <input
+              type="text"
+              placeholder="Quick Find"
+              className="quick-find-input"
+            />
+          </div>
+          <div className="header-icons">
+            <ul>
+              <li>
+                <Icon type="plus" />
+              </li>
+              <li>
+                <Icon type="bell" />
+              </li>
+              <li>
+                <Icon type="setting" />
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
     );
   }
 }
