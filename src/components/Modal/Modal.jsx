@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Modal } from 'antd';
 import './Modal.css';
+import { Icon } from 'antd';
 import { connect } from 'react-redux';
 
 class Modals extends React.Component {
+
+  
+
   render() {
     return (
       <div>
@@ -24,6 +28,15 @@ class Modals extends React.Component {
                 placeholder="Schedule"
                 className="quick-add-schedule"
               />
+            </div>
+            <div className="task-buttons">
+              <button className="add-task-button">Add Task</button>
+              <div className="task-icons">
+                <Icon type="bars" />
+                <Icon type="tag" />
+                <Icon type="flag" />
+                <Icon type="clock-circle" />
+              </div>
             </div>
           </section>
         </Modal>

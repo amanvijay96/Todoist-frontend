@@ -2,21 +2,23 @@
   top: -3.5vw;
 }
 .ant-modal {
-  height: 25vh;
+  height: 28vh;
 }
 .ant-modal-content {
-  height: 25vh;
+  height: 27vh;
 }
 .ant-modal-footer {
   display: none;
 }
-.input-field {
+
+.input-fields {
   display: flex;
+  margin-bottom: 1vw;
 }
 
 .quick-add-title {
   width: 65%;
-  border: solid 1px;
+  border: solid lightgray 1px;
   height: 6vh;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -25,9 +27,30 @@
 }
 .quick-add-schedule {
   width: 35%;
-  border: solid 1px;
+  border: solid lightgray 1px;
   height: 6vh;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 0 8px;
+}
+.task-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.add-task-button {
+  width: 7vw;
+  height: 5vh;
+  border: none;
+  font-weight: bold;
+  background-color: #db4c3f;
+  color: white;
+  border-radius: 5px;
+}
+.task-icons {
+  display: flex;
+  width: 12vw;
+  font-size: 1.5vw;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(161, 156, 156);
 }

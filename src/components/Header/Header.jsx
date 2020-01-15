@@ -33,7 +33,6 @@ class Header extends Component {
                 className="input"
                 id="input"
               >
-                {/* <Icon type="search" className="search-icon" /> */}
               </input>
             </div>
             <div className="icons">
