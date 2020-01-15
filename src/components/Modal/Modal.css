@@ -1,0 +1,33 @@
+.ant-modal-wrap {
+  top: -3.5vw;
+}
+.ant-modal {
+  height: 25vh;
+}
+.ant-modal-content {
+  height: 25vh;
+}
+.ant-modal-footer {
+  display: none;
+}
+.input-field {
+  display: flex;
+}
+
+.quick-add-title {
+  width: 65%;
+  border: solid 1px;
+  height: 6vh;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  padding: 4px 8px;
+}
+.quick-add-schedule {
+  width: 35%;
+  border: solid 1px;
+  height: 6vh;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 8px;
+}
