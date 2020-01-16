@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Modals from '../Modal/Modal';
-
 import { Icon } from 'antd';
 import './Header.css';
-
 import { modalOpen, modalClose } from '../../actions/modalAction';
 import { connect } from 'react-redux';
-
-// const tokenKey = '522dc7a2725e66e850507d3feff85af8d62a8e14';
-// const tokenId = '';
 
 class Header extends Component {
   state = {};
@@ -32,8 +27,7 @@ class Header extends Component {
                 placeholder="Quick Find"
                 className="input"
                 id="input"
-              >
-              </input>
+              ></input>
             </div>
             <div className="icons">
               <ul>
@@ -50,13 +44,13 @@ class Header extends Component {
             </div>
           </nav>
         </header>
-        <Modals handleCancel={this.props.modalClose}/>
+        <Modals handleCancel={this.props.modalClose} />
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  return { visible: state.openmodalReducer };
+  return { visible: state.modalReducer };
 };
 const mapDispatchToProps = dispatch => {
   return {

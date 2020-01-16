@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { Modal } from 'antd';
 import './Modal.css';
-import { Icon } from 'antd';
+import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
+// import Priority from './Priority';
+import { menu } from './Priority';
 
 class Modals extends React.Component {
+  state = {
+    addtaskInput: ''
+  };
+  handleAddNewTask = () => {
+    this.props.addATask(this.state.addtaskInput);
+  };
+  handleOnChange = event => {
+    this.setState({
+      addtaskInput: event.target.value
+    });
+  };
+  onChange = (value, dateString) => {
+    console.log('Selected Time: ', value);
+    console.log('Formatted Selected Time: ', dateString);
+  };
 
-  
+  onOk = value => {
+    console.log('onOk: ', value);
+  };
 
   render() {
     return (
@@ -22,19 +41,27 @@ class Modals extends React.Component {
                 type="text"
                 placeholder="e.g. Conference Wednesday at 15 #Meeting"
                 className="quick-add-title"
+                onChange={this.handleOnChange}
+                onAddNewTask={this.handleAddNewTask}
               />
-              <input
-                type="text"
-                placeholder="Schedule"
-                className="quick-add-schedule"
-              />
+              <div>
+                <DatePicker
+                  showTime
+                  placeholder="Schedule"
+                  className="quick-add-schedule"
+                  onChange={this.onChange}
+                  onOk={this.onOk}
+                />
+              </div>
             </div>
             <div className="task-buttons">
               <button className="add-task-button">Add Task</button>
               <div className="task-icons">
                 <Icon type="bars" />
                 <Icon type="tag" />
-                <Icon type="flag" />
+                <Dropdown overlay={menu} trigger={['click']}>
+                  <Icon type="flag" />
+                </Dropdown>
                 <Icon type="clock-circle" />
               </div>
             </div>
@@ -45,6 +72,7 @@ class Modals extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { visible: state.openmodalReducer };
+  return { visible: state.modalReducer };
 };
 export default connect(mapStateToProps)(Modals);
+
