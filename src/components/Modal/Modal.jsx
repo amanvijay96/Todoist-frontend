@@ -3,7 +3,6 @@ import { Modal } from 'antd';
 import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
-// import Priority from './Priority';
 import { menu } from './Priority';
 
 class Modals extends React.Component {

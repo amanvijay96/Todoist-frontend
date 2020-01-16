@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Modals from '../Modal/Modal';
-import { Icon } from 'antd';
+import { Icon, Dropdown } from 'antd';
 import './Header.css';
 import { modalOpen, modalClose } from '../../actions/modalAction';
 import { connect } from 'react-redux';
+import { settingsMenu } from './SettingsMenu';
 
 class Header extends Component {
   state = {};
@@ -38,7 +39,9 @@ class Header extends Component {
                   <Icon type="bell" />
                 </li>
                 <li className="btn3">
-                  <Icon type="setting" />
+                  <Dropdown overlay={settingsMenu} trigger={['click']}>
+                    <Icon type="setting" />
+                  </Dropdown>
                 </li>
               </ul>
             </div>
@@ -50,7 +53,7 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => {
-  return { visible: state.modalReducer };
+  return { visible: state.modalReducer.visible };
 };
 const mapDispatchToProps = dispatch => {
   return {
