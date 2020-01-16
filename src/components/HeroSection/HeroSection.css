@@ -1,0 +1,68 @@
+.content {
+  background-color: rgb(255, 255, 255);
+  /* padding: 2vw; */
+  width: 45vw;
+  min-height: calc(100vh);
+}
+.content h3 {
+  margin-left: 2vw;
+}
+.filterContainer,
+.heroSection {
+  margin-top: 5vw;
+  padding: 2vw;
+}
+.filterContainer {
+  width: 20vw;
+  /* background-color: aqua; */
+  margin-left: 10vw;
+  padding-right: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+.filterContainer a {
+  color: black;
+  text-decoration: none;
+}
+.filter {
+  display: flex;
+  padding: 0.5vw;
+  /* background-color: azure; */
+  /* margin: 0.001vw; */
+  /* border-radius: 0.5vw; */
+}
+.App {
+  display: flex;
+}
+.project,
+.filters,
+.label {
+  border-bottom: 0.1vw solid rgb(212, 203, 203);
+  display: flex;
+  justify-content: space-between;
+}
+.add {
+  background: none;
+  border: none;
+  font-size: 2.5vw;
+  color: rgb(172, 163, 163);
+}
+.icon {
+  font-size: 2.5vw;
+  color: rgb(74, 74, 223);
+  margin-right: 0.7vw;
+  /* padding-top: 1vw; */
+}
+.cIcon {
+  color: rgb(100, 190, 100);
+}
+.heroSection {
+  display: flex;
+}
+.ant-collapse-item {
+  background-color: #e9e8e8;
+  border: none;
+}
+.ant-collapse-header {
+  border: none;
+}

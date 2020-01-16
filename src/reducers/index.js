@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import modalReducer from './modalReducer';
+import openmodalReducer from './openmodalReducer';
+import heroSectionReducer from './heroSectionReducer';
 
 export default combineReducers({
-  modalReducer
+  heroSectionReducer,
+  openmodalReducer
 });
