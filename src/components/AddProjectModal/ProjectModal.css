@@ -1,0 +1,26 @@
+.ant-modal-content {
+  height: 40vh;
+  width: 55vw;
+}
+.favoriteDiv {
+  margin-top: 3vw;
+  display: flex;
+}
+.favoriteDiv p {
+  margin-left: 1vw;
+}
+.projectNameInput {
+  width: 50vw;
+  padding: 0.3vw;
+  border: 1px solid rgb(161, 145, 145);
+  border-radius: 0.5vw;
+}
+.addProjectButton1 {
+  background-color: rgb(228, 95, 95);
+  border: none;
+  width: 10vw;
+  border-radius: 0.5vw;
+  position: relative;
+  top: 7vh;
+  left: 10vw;
+}

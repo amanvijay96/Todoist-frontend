@@ -4,8 +4,8 @@
   width: 45vw;
   min-height: calc(100vh);
 }
-.content h3 {
-  margin-left: 2vw;
+.content h2 {
+  margin: 1vw;
 }
 .filterContainer,
 .heroSection {
@@ -13,7 +13,7 @@
   padding: 2vw;
 }
 .filterContainer {
-  width: 20vw;
+  width: 30vw;
   /* background-color: aqua; */
   margin-left: 10vw;
   padding-right: 0;
@@ -65,4 +65,38 @@
 }
 .ant-collapse-header {
   border: none;
+}
+.collapse {
+  display: flex;
+}
+.addProjectButton {
+  background: none;
+  border: none;
+  font-size: 3vw;
+}
+.panelDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.addButton {
+  background: none;
+  border: none;
+  font-size: 2.5vw;
+}
+.ant-collapse-content-box {
+  background-color: #e9e8e8;
+}
+.addProjectDiv {
+  margin-top: 1vw;
+  background-color: #e9e8e8;
+  display: flex;
+  align-items: center;
+}
+.addSymbol {
+  color: red;
+  font-size: 4vw;
+  margin: 0;
+  position: relative;
+  bottom: 1vw;
+  margin-right: 2vw;
 }

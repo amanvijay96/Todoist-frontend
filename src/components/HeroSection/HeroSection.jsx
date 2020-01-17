@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon, Collapse } from 'antd';
+import ProjectModal from '../AddProjectModal/ProjectModal';
 import { changeName } from '../../actions/heroSectionAction';
+// import {
+//   projectModalOpen,
+//   projectModalClose
+// } from '../../actions/projectModalAction';
 // import { Collapse } from 'antd';
 // import 'antd/dist/antd.css';
 import './HeroSection.css';
@@ -10,7 +15,20 @@ import './HeroSection.css';
 const { Panel } = Collapse;
 
 class HeroSection extends Component {
-  state = {};
+  state = { visible: false };
+  showModal = event => {
+    event.stopPropagation();
+    this.setState({
+      visible: true
+    });
+  };
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
   render() {
     console.log(this.props, 'nnnnnnnnn');
     return (
@@ -53,32 +71,65 @@ class HeroSection extends Component {
             </div>
           </Link>
           <Collapse accordion>
-            <Panel header='Projects' key='1'>
-              <p>{'a'}</p>
+            <Panel
+              header={
+                <div className='panelDiv'>
+                  <b>Projects</b>
+                  <button
+                    onClick={event => {
+                      this.showModal(event);
+                    }}
+                    className='addButton'>
+                    +
+                  </button>
+                </div>
+              }
+              key='1'>
+              <div className='projectStore'></div>
+              <div
+                onClick={event => {
+                  this.showModal(event);
+                }}
+                className='addProjectDiv'>
+                <p className='addSymbol'>+</p>
+                <p>Add project</p>
+              </div>
             </Panel>
-            {/* <div>+</div> */}
-            <Panel header='Labels' key='2'>
+            <Panel
+              header={
+                <div className='panelDiv'>
+                  <b>label</b>
+                  <button className='addButton'>+</button>
+                </div>
+              }
+              button='+'
+              key='2'>
               <p>{'b'}</p>
             </Panel>
-            <Panel header='Filters' key='3'>
+            <Panel
+              header={
+                <div className='panelDiv'>
+                  <b>Filters</b>
+                  <button className='addButton'>+</button>
+                </div>
+              }
+              key='3'>
               <p>{'c'}</p>
             </Panel>
           </Collapse>
         </div>
         <div className='content'>
           <h2>{this.props.name}</h2>
+          <img className='img' src={require('../../section.svg')} alt='' />
         </div>
+        <ProjectModal
+          visible={this.state.visible}
+          // onCancel={this.state.visible}
+          handleCancel={this.handleCancel}
+          // visible={this.props.projectVisible}
+          handleAddProject={this.handleAddProject}
+        />
       </div>
-      //   <div>
-      //     <h3>hello everyOne</h3>
-      //     <h2>{this.props.name}</h2>
-      //     <button
-      //       onClick={() => {
-      //         this.props.changeName('Inbox');
-      //       }}>
-      //       Inbox
-      //     </button>
-      //   </div>
     );
   }
 }
@@ -86,6 +137,7 @@ const mapStateToProps = state => {
   // console.log(state, 'naveen');
   return {
     name: state.heroSectionReducer.name
+    // projectVisible: state.projectModalReducer.projectVisible
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -93,6 +145,8 @@ const mapDispatchToProps = dispatch => {
     changeName: name => {
       dispatch(changeName(name));
     }
+    // projectModalOpen: () => dispatch(projectModalOpen()),
+    // projectModalClose: () => dispatch(projectModalClose())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(HeroSection);
