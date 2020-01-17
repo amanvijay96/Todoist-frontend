@@ -4,13 +4,14 @@ import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import { menu } from './Priority';
+import { addTask } from '../../actions/modalAction';
 
 class Modals extends React.Component {
   state = {
     addtaskInput: ''
   };
   handleAddNewTask = () => {
-    this.props.addATask(this.state.addtaskInput);
+    this.props.addTask(this.state.addtaskInput);
   };
   handleOnChange = event => {
     this.setState({
@@ -41,7 +42,6 @@ class Modals extends React.Component {
                 placeholder="e.g. Conference Wednesday at 15 #Meeting"
                 className="quick-add-title"
                 onChange={this.handleOnChange}
-                onAddNewTask={this.handleAddNewTask}
               />
               <div>
                 <DatePicker
@@ -54,7 +54,12 @@ class Modals extends React.Component {
               </div>
             </div>
             <div className="task-buttons">
-              <button className="add-task-button">Add Task</button>
+              <button
+                className="add-task-button"
+                onClick={this.handleAddNewTask}
+              >
+                Add Task
+              </button>
               <div className="task-icons">
                 <Icon type="bars" />
                 <Icon type="tag" />
@@ -70,8 +75,8 @@ class Modals extends React.Component {
     );
   }
 }
+// taskData: state.tasks.taskData
 const mapStateToProps = state => {
   return { visible: state.modalReducer };
 };
-export default connect(mapStateToProps)(Modals);
-
+export default connect(mapStateToProps, { addTask })(Modals);

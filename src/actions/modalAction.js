@@ -1,7 +1,8 @@
 import { OPEN_MODAL, CLOSE_MODAL, ADD_TASK } from './types';
 import axios from 'axios';
+const uuid = require('uuid/v4');
 
-const tokenKey = '522dc7a2725e66e850507d3feff85af8d62a8e14';
+const tokenKey = 'dd9b1d3102d993f55e6daedea19eb38aee623ae2';
 
 export const modalOpen = () => {
   return {
@@ -17,27 +18,41 @@ export const modalClose = () => {
   };
 };
 
-export const addTask = (addTaskInput, schedule) => {
-  axios
-    .post(`https://api.todoist.com/rest/v1/tasks`, {
+export const addTask = taskName => {
+  return async function(dispatch) {
+    console.log(taskName);
+    axios({
+      method: 'post',
+      url: '',
       headers: {
-        Authorization: `Bearer ${tokenKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Request-Id': `${uuid()}`,
+        Authorization: `Bearer ${tokenKey}`
       },
       data: {
-        content: addTaskInput,
-        due_string: schedule,
-        due_lang: 'en',
-        priority: 4
+        name: taskName
       }
     })
-    .then(res => res.json())
-    .then(data => {
-      return {
-        type: ADD_TASK,
-        payload: data,
-        input: addTaskInput
-      };
-    });
+      .then(data => {
+        console.log(data);
+        // return {
+        //   type: ADD_TASK,
+        //   payload: data,
+        //   input: addTaskInput
+        // };
+      })
+      .catch(err => console.log(err.message));
+    function dispatchPost() {
+      dispatch({
+        type: 'ADD_TASK'
+      });
+    }
+    return dispatchPost();
+  };
 };
 
+// export const addTask = taskName => {
+//   return async dispatch => {
+//     dispatch(addTaskAsync(taskName));
+//   };
+// };

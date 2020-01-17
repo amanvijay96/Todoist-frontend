@@ -2,7 +2,7 @@ import { OPEN_MODAL, CLOSE_MODAL, ADD_TASK } from '../actions/types';
 
 const initialState = {
   visible: false,
-  todayTasks: []
+  taskData: []
 };
 
 export default function modalReducer(state = initialState, action) {
@@ -17,12 +17,12 @@ export default function modalReducer(state = initialState, action) {
         visible: !state.visible
       };
     }
-    case ADD_TASK: {
-      return {
-        ...state,
-        todaytasks: state.todayTasks.concat(action.payload)
-      };
-    }
+    // case ADD_TASK: {
+    //   return {
+    //     ...state,
+    //     taskData: state.taskData.concat(action.payload)
+    //   };
+    // }
     default:
       return state;
   }
