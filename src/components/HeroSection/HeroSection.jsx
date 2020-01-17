@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { Icon, Collapse } from 'antd';
 import ProjectModal from '../AddProjectModal/ProjectModal';
 import { changeName } from '../../actions/heroSectionAction';
+// import { getAllProject } from '../../actions/projectModalAction';
+import { getAllProject } from '../../actions/projectModalAction';
+import Project from './project';
+
 // import {
 //   projectModalOpen,
 //   projectModalClose
@@ -16,6 +20,12 @@ const { Panel } = Collapse;
 
 class HeroSection extends Component {
   state = { visible: false };
+
+  componentDidMount() {
+    // console.log(this.props, 'mmmmmm');
+    this.props.getAll();
+  }
+
   showModal = event => {
     event.stopPropagation();
     this.setState({
@@ -30,7 +40,10 @@ class HeroSection extends Component {
   };
 
   render() {
-    console.log(this.props, 'nnnnnnnnn');
+    console.log(this.props.projects, 'nnnnnnnnn');
+    var allProjects = this.props.projects.map(project => {
+      return <Project key={project.id} Projects={project} />;
+    });
     return (
       <div className='heroSection'>
         <div className='filterContainer'>
@@ -85,14 +98,15 @@ class HeroSection extends Component {
                 </div>
               }
               key='1'>
-              <div className='projectStore'></div>
+              {allProjects}
+              {/* <div className='projectStore'></div> */}
               <div
                 onClick={event => {
                   this.showModal(event);
                 }}
                 className='addProjectDiv'>
                 <p className='addSymbol'>+</p>
-                <p>Add project</p>
+                <p className='addProjectDivPara'>Add project</p>
               </div>
             </Panel>
             <Panel
@@ -136,17 +150,24 @@ class HeroSection extends Component {
 const mapStateToProps = state => {
   // console.log(state, 'naveen');
   return {
+    projects: state.projectModalReducer.projects,
     name: state.heroSectionReducer.name
-    // projectVisible: state.projectModalReducer.projectVisible
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     changeName: name => {
       dispatch(changeName(name));
+    },
+    getAll: () => {
+      dispatch(getAllProject());
     }
     // projectModalOpen: () => dispatch(projectModalOpen()),
     // projectModalClose: () => dispatch(projectModalClose())
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(HeroSection);
+export default connect(
+  mapStateToProps,
+  // { getAllProject },
+  mapDispatchToProps
+)(HeroSection);

@@ -1,26 +1,33 @@
-.ant-modal-content {
+/* .ant-modal-content {
   height: 40vh;
   width: 55vw;
-}
+} */
 .favoriteDiv {
   margin-top: 3vw;
   display: flex;
 }
 .favoriteDiv p {
   margin-left: 1vw;
+  margin-bottom: 4vw;
 }
 .projectNameInput {
-  width: 50vw;
+  width: 100%;
   padding: 0.3vw;
   border: 1px solid rgb(161, 145, 145);
   border-radius: 0.5vw;
 }
 .addProjectButton1 {
-  background-color: rgb(228, 95, 95);
+  background-color: #db4c3f;
+  color: white;
+  padding: 0.5vw 1vw;
   border: none;
-  width: 10vw;
-  border-radius: 0.5vw;
-  position: relative;
+  /* width: 10vw; */
+  border-radius: 0.3vw;
+  /* position: relative;
   top: 7vh;
-  left: 10vw;
+  left: 10vw; */
+}
+.addProjectButton1Div {
+  display: flex;
+  justify-content: flex-end;
 }

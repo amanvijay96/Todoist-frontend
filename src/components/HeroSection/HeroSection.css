@@ -31,6 +31,9 @@
   /* margin: 0.001vw; */
   /* border-radius: 0.5vw; */
 }
+.filter:hover {
+  background-color: white;
+}
 .App {
   display: flex;
 }
@@ -86,11 +89,18 @@
 .ant-collapse-content-box {
   background-color: #e9e8e8;
 }
+.ant-collapse-content > .ant-collapse-content-box {
+  padding: 0;
+}
 .addProjectDiv {
   margin-top: 1vw;
   background-color: #e9e8e8;
   display: flex;
   align-items: center;
+}
+.addProjectDivPara:hover {
+  color: #db4c3f;
+  font-weight: bold;
 }
 .addSymbol {
   color: red;

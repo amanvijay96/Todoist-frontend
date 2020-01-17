@@ -1,0 +1,32 @@
+.oneProject {
+  background: none;
+  border: none;
+  margin: 1vw;
+}
+.projectDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.projectDiv:hover {
+  background-color: white;
+}
+.projectEditButton {
+  color: #e7dede;
+  background: none;
+  border: none;
+  font-size: 3.5vw;
+  margin-right: 1vw;
+  font-weight: bold;
+}
+.projectOption {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+.projectOption i {
+  margin-right: 1vw;
+}
+.ant-dropdown-menu {
+  width: 18vw;
+}

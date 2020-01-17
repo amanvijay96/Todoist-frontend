@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { GET_PROJECT, ADD_PROJECT } from './types';
 
 // import { OPEN_PROJECT_MODAL, CLOSE_PROJECT_MODAL } from './types';
 
@@ -15,19 +16,46 @@ import axios from 'axios';
 //     payload: false
 //   };
 // };
+export const getAllProject = () => {
+  return async function(dispatch) {
+    console.log('hi');
+    let data = await axios({
+      method: 'get',
+      url: 'https://todoistrest.herokuapp.com/rest/v1/projects',
+      responseType: 'stream'
+    });
+    console.log(data, 'hello');
+    dispatch({
+      type: GET_PROJECT,
+      payload: data.data
+    });
+    // .then(data => {
+    //   console.log(data, 'aaaaaaaaaaaaaaa');
+    //   dispatch({
+    //     type: GET_PROJECT,
+    //     payload: data
+    //   });
+    // })
+    // .catch(err => console.log(err));
+  };
+};
+
 export const addProject = projectName => {
   return async function(dispatch) {
     console.log(projectName);
-    console.log(typeof projectName);
+    // console.log(typeof projectName);
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects`,
       data: {
         name: projectName
       }
-    })
-      .then(data => data.json())
-      .then(data => console.log(data));
+    }).then(data => {
+      dispatch({
+        type: ADD_PROJECT,
+        payload: data.data
+      });
+    });
   };
 };
 

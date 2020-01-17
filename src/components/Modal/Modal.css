@@ -1,16 +1,3 @@
-.ant-modal-wrap {
-  top: -3.5vw;
-}
-.ant-modal {
-  height: 28vh;
-}
-.ant-modal-content {
-  height: 27vh;
-}
-.ant-modal-footer {
-  display: none;
-}
-
 .input-fields {
   display: flex;
   margin-bottom: 1vw;

@@ -7,6 +7,10 @@ import { addProject } from '../../actions/projectModalAction';
 class ProjectModal extends React.Component {
   state = { visible: false, addProjectInput: '' };
 
+  // componentDidMount() {
+  //   this.props.getAllProject();
+  // }
+
   handleOk = e => {
     console.log(e);
     this.setState({
@@ -39,7 +43,11 @@ class ProjectModal extends React.Component {
           title='Add project'
           visible={this.props.visible}
           onOk={this.handleOk}
-          onCancel={this.props.handleCancel}>
+          onCancel={this.props.handleCancel}
+          bodyStyle={{ height: '250px' }}
+          width='500px'
+          // height='600px'
+          footer={null}>
           <section className='addProjectSection'>
             <h3 className='projectName'>Project name</h3>
             <input
@@ -48,6 +56,8 @@ class ProjectModal extends React.Component {
             <div className='favoriteDiv'>
               <Switch defaultChecked onChange={this.onChange} />
               <p>Add to favorites</p>
+            </div>
+            <div className='addProjectButton1Div'>
               <button
                 onClick={this.handleAddProject}
                 className='addProjectButton1'>
@@ -60,4 +70,9 @@ class ProjectModal extends React.Component {
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//   projects: state.projects
+//   // newPost: state.posts.item
+// });
 export default connect(null, { addProject })(ProjectModal);
