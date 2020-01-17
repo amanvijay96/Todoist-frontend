@@ -61,7 +61,7 @@ class HeroSection extends Component {
           <Link to='/all7days'>
             <div
               onClick={() => {
-                this.props.changeName('Next 7 Days');
+                this.props.changeName('Next 7 week Days');
               }}
               className='filter next'>
               <Icon type='calendar' className='icon nIcon' />
