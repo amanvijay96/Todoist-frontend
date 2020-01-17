@@ -4,14 +4,9 @@ import { Link } from 'react-router-dom';
 import { Icon, Collapse } from 'antd';
 import ProjectModal from '../AddProjectModal/ProjectModal';
 import { changeName } from '../../actions/heroSectionAction';
-// import {
-//   projectModalOpen,
-//   projectModalClose
-// } from '../../actions/projectModalAction';
-// import { Collapse } from 'antd';
-// import 'antd/dist/antd.css';
 import './HeroSection.css';
-
+// import NewTask from '../AddTask/AddTask.jsx';
+import SubTaskModal from '../SubTaskModal/SubTaskModal'
 const { Panel } = Collapse;
 
 class HeroSection extends Component {
@@ -32,40 +27,43 @@ class HeroSection extends Component {
   render() {
     console.log(this.props, 'nnnnnnnnn');
     return (
-      <div className='heroSection'>
-        <div className='filterContainer'>
-          <Link to='/inbox'>
+      <div className="heroSection">
+        <div className="filterContainer">
+          <Link to="/inbox">
             <div
               onClick={() => this.props.changeName('Inbox')}
-              className='filter inbox'>
+              className="filter inbox"
+            >
               <div>
-                <Icon type='inbox' className='icon iIncon' />
+                <Icon type="inbox" className="icon iIncon" />
               </div>
-              <span className='span' name='inbox'>
+              <span className="span" name="inbox">
                 inbox
               </span>
             </div>
           </Link>
-          <Link to='/'>
+          <Link to="/">
             <div
               onClick={() => {
                 this.props.changeName('Today');
               }}
-              className='filter today'>
-              <Icon type='calendar' className='icon cIcon' />
-              <span className='span' name='Today'>
+              className="filter today"
+            >
+              <Icon type="calendar" className="icon cIcon" />
+              <span className="span" name="Today">
                 Today
               </span>
             </div>
           </Link>
-          <Link to='/all7days'>
+          <Link to="/all7days">
             <div
               onClick={() => {
                 this.props.changeName('Next 7 week Days');
               }}
-              className='filter next'>
-              <Icon type='calendar' className='icon nIcon' />
-              <span className='span' name='Next 7 days'>
+              className="filter next"
+            >
+              <Icon type="calendar" className="icon nIcon" />
+              <span className="span" name="Next 7 days">
                 Next 7 days
               </span>
             </div>
@@ -73,54 +71,61 @@ class HeroSection extends Component {
           <Collapse accordion>
             <Panel
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>Projects</b>
                   <button
                     onClick={event => {
                       this.showModal(event);
                     }}
-                    className='addButton'>
+                    className="addButton"
+                  >
                     +
                   </button>
                 </div>
               }
-              key='1'>
-              <div className='projectStore'></div>
+              key="1"
+            >
+              <div className="projectStore"></div>
               <div
                 onClick={event => {
                   this.showModal(event);
                 }}
-                className='addProjectDiv'>
-                <p className='addSymbol'>+</p>
+                className="addProjectDiv"
+              >
+                <p className="addSymbol">+</p>
                 <p>Add project</p>
               </div>
             </Panel>
             <Panel
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>label</b>
-                  <button className='addButton'>+</button>
+                  <button className="addButton">+</button>
                 </div>
               }
-              button='+'
-              key='2'>
+              button="+"
+              key="2"
+            >
               <p>{'b'}</p>
             </Panel>
             <Panel
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>Filters</b>
-                  <button className='addButton'>+</button>
+                  <button className="addButton">+</button>
                 </div>
               }
-              key='3'>
+              key="3"
+            >
               <p>{'c'}</p>
             </Panel>
           </Collapse>
         </div>
-        <div className='content'>
+        <div className="content">
           <h2>{this.props.name}</h2>
-          <img className='img' src={require('../../section.svg')} alt='' />
+          {/* <NewTask /> */}
+          <SubTaskModal />
+          <img className="img" src={require('../../section.svg')} alt="" />
         </div>
         <ProjectModal
           visible={this.state.visible}
