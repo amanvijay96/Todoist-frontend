@@ -1,0 +1,22 @@
+/* .sub-task-modal{
+  display: flex; 
+  justify-content: flex-end; 
+} */
+.task-icons1 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.sub-task-icons {
+  width: 30%;
+  display: flex;
+  font-size: 1.5vw;
+  justify-content: space-between;
+}
+.bars:hover,
+.tag:hover,
+.flag:hover,
+.clock:hover {
+  color: black;
+  cursor: pointer;
+}
