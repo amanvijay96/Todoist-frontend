@@ -2,7 +2,7 @@ import React from 'react';
 import '../Modal/Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 // import { connect } from 'react-redux';
-import { menu } from '../Modal/Priority';
+import { PriorityMenu } from '../Modal/Priority';
 import './AddTask.css';
 
 class NewTask extends React.Component {
@@ -53,7 +53,7 @@ class NewTask extends React.Component {
           <div className="task-icons">
             <Icon type="bars" />
             <Icon type="tag" />
-            <Dropdown overlay={menu} trigger={['click']}>
+            <Dropdown overlay={PriorityMenu} trigger={['click']}>
               <Icon type="flag" />
             </Dropdown>
             <Icon type="clock-circle" />

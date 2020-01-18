@@ -3,7 +3,8 @@ import { Modal } from 'antd';
 import './SubTaskModal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
-import { priorityMenu } from '../Modal/Priority';
+import { PriorityMenu } from '../Modal/Priority';
+import NewTask from '../AddTask/AddTask.jsx';
 // import { addTask } from '../../actions/modalAction';
 import { Tabs } from 'antd';
 const { TabPane } = Tabs;
@@ -68,7 +69,7 @@ class SubTaskModal extends React.Component {
               <div className="sub-task-icons">
                 <Icon type="bars" className="bars" />
                 <Icon type="tag" className="tag" />
-                <Dropdown overlay={priorityMenu} trigger={['click']}>
+                <Dropdown overlay={PriorityMenu} trigger={['click']}>
                   <Icon type="flag" className="flag" />
                 </Dropdown>
                 <Icon type="clock-circle" className="clock" />
@@ -81,16 +82,44 @@ class SubTaskModal extends React.Component {
               onChange={this.callback}
             >
               <TabPane tab="Sub-tasks" key="1">
-                <div className='add-sub-task-button'>
-                  <button className='plus-button'>+</button>
+                <div className="add-sub-task-button" onClick>
+                  <Icon type="plus" className="plus-button" />
                   <button className="add-sub-task">Add sub-task</button>
                 </div>
+                <NewTask />
               </TabPane>
               <TabPane tab="Comments" key="2">
-                Content of Tab Pane 2
+                <div className="comments-logo">
+                  <img
+                    src={require('../../comments.svg')}
+                    // className="comment"
+                    alt="Write a Comment"
+                  />
+                </div>
+                <div classname="comments-section">
+                  <textarea
+                    placeholder="Write a comment"
+                    className="comment-text-area"
+                  />
+                  <hr />
+                  <div className="comments-icon-and-button">
+                    <div className="comments-icon">
+                      <Icon type="paper-clip" />
+                      <Icon type="audio" />
+                      <Icon type="smile" />
+                    </div>
+                    <button className="add-comment-button">Add Comment</button>
+                  </div>
+                </div>
               </TabPane>
               <TabPane tab="Activity" key="3">
-                Content of Tab Pane 3
+                <div className='comments-logo'>
+                  <img
+                    src={require('../../activity.svg')}
+                    // className="comment"
+                    alt="Activities"
+                  />
+                </div>
               </TabPane>
             </Tabs>
           </section>
@@ -99,7 +128,7 @@ class SubTaskModal extends React.Component {
     );
   }
 }
-// taskData: state.tasks.taskData
+
 const mapStateToProps = state => {
   return { visible: state.modalReducer };
 };

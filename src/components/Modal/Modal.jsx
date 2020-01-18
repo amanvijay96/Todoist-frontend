@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
-import { priorityMenu } from './Priority';
+import { PriorityMenu } from './Priority';
 import { addTask } from '../../actions/modalAction';
 
 class Modals extends React.Component {
@@ -65,7 +65,7 @@ class Modals extends React.Component {
               <div className="task-icons">
                 <Icon type="bars" className="bars" />
                 <Icon type="tag" className="tag" />
-                <Dropdown overlay={priorityMenu} trigger={['click']}>
+                <Dropdown overlay={PriorityMenu} trigger={['click']}>
                   <Icon type="flag" className="flag" />
                 </Dropdown>
                 <Icon type="clock-circle" className="clock" />

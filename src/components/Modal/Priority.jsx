@@ -1,8 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import '@fortawesome/fontawesome-free';
 
-export const priorityMenu = (
+export const PriorityMenu = (
   <Menu>
     <Menu.Item key="0">
       {
