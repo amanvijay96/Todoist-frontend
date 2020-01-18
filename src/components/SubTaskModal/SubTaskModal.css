@@ -1,0 +1,83 @@
+/* .sub-task-modal{
+  display: flex; 
+  justify-content: flex-end; 
+} */
+.task-icons1 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.sub-task-icons {
+  width: 30%;
+  display: flex;
+  font-size: 1.5vw;
+  justify-content: space-between;
+}
+.bars:hover,
+.tag:hover,
+.flag:hover,
+.clock:hover {
+  color: black;
+  cursor: pointer;
+}
+.add-sub-task-button {
+  display: flex;
+}
+
+.plus-button {
+  border: none;
+  height: 100%;
+  color: #db4c3f;
+  font-size: 17px;
+  margin-right: 5px;
+  border-radius: 100%;
+}
+.add-sub-task {
+  border: none;
+  background-color: white;
+  color: rgb(182, 178, 178);
+  outline: none;
+}
+.add-sub-task-button:hover .plus-button {
+  color: #fff;
+  background-color: #db4c3f;
+}
+.add-sub-task-button:hover .add-sub-task {
+  color: #db4c3f;
+  outline: none;
+}
+.comments-logo {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.comments-section {
+  border: solid 2px gray;
+}
+.comment-text-area {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.comments-icon-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+.comments-icon {
+  width: 100px;
+  font-size: 1.3vw;
+  display: flex;
+  color: rgb(158, 153, 153);
+  justify-content: space-between;
+}
+.add-comment-button {
+  height: 5vh;
+  border-radius: 5px;
+  padding: 0 1vw;
+  background-color: #db4c3f;
+  font-weight: bold;
+  color: white;
+  border: none;
+  outline: none;
+}

@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
-import { menu } from './Priority';
+import { PriorityMenu } from './Priority';
 import { addTask } from '../../actions/modalAction';
 
 class Modals extends React.Component {
@@ -34,6 +34,8 @@ class Modals extends React.Component {
           title="Quick Add Task"
           visible={this.props.visible.visible}
           onCancel={this.props.handleCancel}
+          footer={null}
+          width="560px"
         >
           <section>
             <div className="input-fields">
@@ -61,12 +63,12 @@ class Modals extends React.Component {
                 Add Task
               </button>
               <div className="task-icons">
-                <Icon type="bars" />
-                <Icon type="tag" />
-                <Dropdown overlay={menu} trigger={['click']}>
-                  <Icon type="flag" />
+                <Icon type="bars" className="bars" />
+                <Icon type="tag" className="tag" />
+                <Dropdown overlay={PriorityMenu} trigger={['click']}>
+                  <Icon type="flag" className="flag" />
                 </Dropdown>
-                <Icon type="clock-circle" />
+                <Icon type="clock-circle" className="clock" />
               </div>
             </div>
           </section>

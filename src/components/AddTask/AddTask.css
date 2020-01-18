@@ -1,0 +1,11 @@
+.cancel-button-task {
+  position: absolute;
+  left: 50vw;
+  border: none;
+  background-color: white;
+  color: rgb(173, 169, 169);
+  height: 5vh;
+}
+.cancel-button-task:hover {
+  text-decoration: underline;
+}

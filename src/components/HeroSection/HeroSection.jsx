@@ -16,7 +16,8 @@ import Project from './project';
 // import { Collapse } from 'antd';
 // import 'antd/dist/antd.css';
 import './HeroSection.css';
-
+// import NewTask from '../AddTask/AddTask.jsx';
+import SubTaskModal from '../SubTaskModal/SubTaskModal';
 const { Panel } = Collapse;
 
 class HeroSection extends Component {
@@ -112,6 +113,7 @@ class HeroSection extends Component {
               key='1'>
               {allProjects}
               {/* <div className='projectStore'></div> */}
+              <div className='projectStore'></div>
               <div
                 onClick={event => {
                   this.showModal(event);

@@ -35,7 +35,7 @@ class Project extends Component {
               onDeleteProject={() =>
                 this.props.deleteProject(this.props.Projects.id)
               }
-              onShowModal={this.props.showModal}></ProjectMenu>
+              onShowModal={() => this.props.showModal(true)}></ProjectMenu>
           )}
           trigger={['click']}>
           <Icon type='ellipsis' className='projectEditButton' />
