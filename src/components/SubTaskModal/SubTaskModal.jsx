@@ -11,14 +11,18 @@ const { TabPane } = Tabs;
 
 class SubTaskModal extends React.Component {
   state = {
-    addtaskInput: ''
+    addSubtaskInput: '',
+    toggle: 'false'
   };
   handleAddNewTask = () => {
-    this.props.addTask(this.state.addtaskInput);
+    this.props.addTask(this.state.addSubtaskInput);
+    this.setState({
+      addSubtaskInput:''
+    })
   };
   handleOnChange = event => {
     this.setState({
-      addtaskInput: event.target.value
+      addSubtaskInput: event.target.value
     });
   };
   onChange = (value, dateString) => {
@@ -33,6 +37,10 @@ class SubTaskModal extends React.Component {
     console.log(key);
   };
 
+  handletoggele = e => {
+    // console.log(e.target.value)
+    this.setState({ toggle: e.target.value });
+  };
   render() {
     return (
       <div>
@@ -50,20 +58,20 @@ class SubTaskModal extends React.Component {
         >
           <section>
             <div>Title</div>
-            <Dropdown
-              overlay={() => (
-                <DatePicker
-                  showTime
-                  placeholder="Schedule"
-                  className="quick-add-schedule"
-                  onChange={this.onChange}
-                  onOk={this.onOk}
-                ></DatePicker>
-              )}
-              trigger={['click']}
-            >
-              <button>date</button>
-            </Dropdown>
+            {/* <Dropdown
+              overlay={() => ( */}
+            <DatePicker
+              showTime
+              placeholder="Schedule"
+              className="quick-add-schedule"
+              onChange={this.onChange}
+              onOk={this.onOk}
+            ></DatePicker>
+            {/* )}
+            //   trigger={['click']}
+            // >
+            //   <button>date</button>
+            // </Dropdown> */}
 
             <div className="task-icons1">
               <div className="sub-task-icons">
@@ -77,22 +85,28 @@ class SubTaskModal extends React.Component {
             </div>
 
             <Tabs
-              tabBarGutter="138px"
+              // tabBarGutter="138px"
               defaultActiveKey="1"
               onChange={this.callback}
             >
               <TabPane tab="Sub-tasks" key="1">
-                <div className="add-sub-task-button" onClick>
-                  <Icon type="plus" className="plus-button" />
-                  <button className="add-sub-task">Add sub-task</button>
-                </div>
-                <NewTask />
+                {this.state.toggle === 'false' ? (
+                  <button
+                    className="add-sub-task-button"
+                    onClick={this.handletoggele}
+                    value="true"
+                  >
+                    <Icon type="plus" className="plus-button" />
+                    <p className="add-sub-task">Add sub-task</p>
+                  </button>
+                ) : (
+                  <NewTask cancel={this.handletoggele} />
+                )}
               </TabPane>
               <TabPane tab="Comments" key="2">
                 <div className="comments-logo">
                   <img
                     src={require('../../comments.svg')}
-                    // className="comment"
                     alt="Write a Comment"
                   />
                 </div>
@@ -113,7 +127,7 @@ class SubTaskModal extends React.Component {
                 </div>
               </TabPane>
               <TabPane tab="Activity" key="3">
-                <div className='comments-logo'>
+                <div className="comments-logo">
                   <img
                     src={require('../../activity.svg')}
                     // className="comment"

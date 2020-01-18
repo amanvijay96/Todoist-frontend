@@ -10,6 +10,7 @@
   border-bottom-left-radius: 5px;
   border-right: none;
   padding: 4px 8px;
+  outline: none;
 }
 .quick-add-title::placeholder {
   color: rgba(182, 176, 176, 0.9);
@@ -20,6 +21,7 @@
   height: 6vh;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  outline: none;
 }
 .ant-calendar-picker-input.ant-input {
   padding: 0;

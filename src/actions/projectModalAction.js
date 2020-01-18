@@ -1,21 +1,6 @@
 import axios from 'axios';
 import { GET_PROJECT, ADD_PROJECT, DELETE_PROJECT } from './types';
 
-// import { OPEN_PROJECT_MODAL, CLOSE_PROJECT_MODAL } from './types';
-
-// export const projectModalOpen = () => {
-//   return {
-//     type: OPEN_PROJECT_MODAL,
-//     payload: true
-//   };
-// };
-
-// export const projectModalClose = () => {
-//   return {
-//     type: CLOSE_PROJECT_MODAL,
-//     payload: false
-//   };
-// };
 export const getAllProject = () => {
   return async function(dispatch) {
     console.log('hi');
@@ -24,19 +9,10 @@ export const getAllProject = () => {
       url: 'https://todoistrest.herokuapp.com/rest/v1/projects',
       responseType: 'stream'
     });
-    console.log(data, 'hello');
     dispatch({
       type: GET_PROJECT,
       payload: data.data
     });
-    // .then(data => {
-    //   console.log(data, 'aaaaaaaaaaaaaaa');
-    //   dispatch({
-    //     type: GET_PROJECT,
-    //     payload: data
-    //   });
-    // })
-    // .catch(err => console.log(err));
   };
 };
 

@@ -2,6 +2,7 @@
   background: none;
   border: none;
   margin: 1vw;
+  outline: none;
 }
 .projectDiv {
   display: flex;

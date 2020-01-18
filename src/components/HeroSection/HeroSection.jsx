@@ -9,14 +9,7 @@ import { getAllProject, deleteProject } from '../../actions/projectModalAction';
 import ContentContainer from './ContentContainer';
 import Project from './project';
 
-// import {
-//   projectModalOpen,
-//   projectModalClose
-// } from '../../actions/projectModalAction';
-// import { Collapse } from 'antd';
-// import 'antd/dist/antd.css';
 import './HeroSection.css';
-// import NewTask from '../AddTask/AddTask.jsx';
 import SubTaskModal from '../SubTaskModal/SubTaskModal';
 const { Panel } = Collapse;
 
@@ -46,7 +39,6 @@ class HeroSection extends Component {
   };
 
   render() {
-    console.log(this.props.projects, 'nnnnnnnnn');
     var allProjects = this.props.projects.map(project => {
       return (
         <Project
@@ -54,6 +46,7 @@ class HeroSection extends Component {
           Projects={project}
           deleteProject={this.handleDeleteProject}
           showModal={this.showModal}
+          changeName={() => this.props.changeName(project.name)}
         />
       );
     });
@@ -112,15 +105,12 @@ class HeroSection extends Component {
               }
               key='1'>
               {allProjects}
-              {/* <div className='projectStore'></div> */}
               <div className='projectStore'></div>
               <div
                 onClick={event => {
                   this.showModal(event);
                 }}
                 className='addProjectDiv'>
-                {/* <p className='addSymbol'>+</p>
-                <p className='addProjectDivPara'>Add project</p> */}
                 <Icon type='plus' className='addSymbol' />
                 <button className='addProjectDivPara'>Add project</button>
               </div>
@@ -148,7 +138,10 @@ class HeroSection extends Component {
             </Panel>
           </Collapse>
         </div>
-        <ContentContainer name={this.props.name} />
+        <ContentContainer
+          name={this.props.name}
+          // project={project}
+        />
         <ProjectModal
           visible={this.state.visible}
           // onCancel={this.state.visible}
@@ -160,8 +153,7 @@ class HeroSection extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  // console.log(state, 'naveen');
+const mapStateToProps = (state, ownProps) => {
   return {
     projects: state.projectModalReducer.projects,
     name: state.heroSectionReducer.name
@@ -178,12 +170,6 @@ const mapDispatchToProps = dispatch => {
     deleteProject: id => {
       dispatch(deleteProject(id));
     }
-    // projectModalOpen: () => dispatch(projectModalOpen()),
-    // projectModalClose: () => dispatch(projectModalClose())
   };
 };
-export default connect(
-  mapStateToProps,
-  // { getAllProject },
-  mapDispatchToProps
-)(HeroSection);
+export default connect(mapStateToProps, mapDispatchToProps)(HeroSection);

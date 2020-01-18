@@ -2,32 +2,16 @@ import React, { Component } from 'react';
 import { Icon, Dropdown } from 'antd';
 import './project.css';
 import ProjectMenu from './projectMenu';
-// import { connect } from 'react-redux';
-// import { deletProject } from '../../actions/projectModalAction';
-
-// const mapStateToProps = state => {
-//   return {
-//     project: state.projects.filter(
-//       project => project.id === this.props.project.id
-//     )[0]
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     deleteProject: id => deleteProject(id)
-//   };
-// };
-
-// projectMenu = connect(mapStateToProps, mapDispatchToProps)(projectMenu);
+import { Link } from 'react-router-dom';
 
 class Project extends Component {
   state = {};
   render() {
-    // console.log(this.props.showModal, 'zzzzzzzzzzz');
     return (
-      <div className='projectDiv'>
-        <button className='oneProject'>{this.props.Projects.name}</button>
+      <div onClick={this.props.changeName} className='projectDiv'>
+        <Link to={`/project/${this.props.Projects.id}`}>
+          <button className='oneProject'>{this.props.Projects.name}</button>
+        </Link>
         <Dropdown
           //   id={this.props.projects.id}
           overlay={() => (
