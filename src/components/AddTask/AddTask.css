@@ -1,9 +1,8 @@
 .cancel-button-task {
-  position: absolute;
-  left: 50vw;
+  margin-right: 220px;
   border: none;
   background-color: white;
-  color: rgb(173, 169, 169);
+  color: rgb(105, 103, 103);
   height: 5vh;
 }
 .cancel-button-task:hover {

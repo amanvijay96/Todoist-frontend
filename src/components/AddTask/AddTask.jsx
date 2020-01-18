@@ -49,7 +49,7 @@ class NewTask extends React.Component {
         </div>
         <div className="task-buttons">
           <button className="add-task-button">Add Task</button>
-          <button className="cancel-button-task">Cancel</button>
+          <button className="cancel-button-task" value='false' onClick={this.props.cancel}>Cancel</button>
           <div className="task-icons">
             <Icon type="bars" />
             <Icon type="tag" />

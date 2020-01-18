@@ -34,8 +34,11 @@
 }
 .add-sub-task {
   border: none;
+}
+.add-sub-task-button {
+  width: 100%;
   background-color: white;
-  color: rgb(182, 178, 178);
+  border: none;
   outline: none;
 }
 .add-sub-task-button:hover .plus-button {
@@ -50,8 +53,19 @@
   height: 250px;
   display: flex;
   justify-content: center;
+  overflow: auto;
 }
-
+.comments-logo::-webkit-scrollbar {
+  display: none;
+}
+.ant-tabs-nav .ant-tabs-tab {
+  width: 162px;
+  color: black;
+  text-align: center;
+}
+.ant-tabs-nav .ant-tabs-tab:hover {
+  color: black;
+}
 .comments-section {
   border: solid 2px gray;
 }
