@@ -20,3 +20,25 @@
   color: black;
   cursor: pointer;
 }
+.add-sub-task-button {
+  display: flex;
+}
+.plus-button {
+  width:2vw;
+  height: 2vh;
+  color: #db4c3f;
+  border: none;
+  font-size: 2vw;
+  display:flex;
+  align-items: center;
+  /* background-color: white; */
+  /* border-radius: 150%; */
+}
+.add-sub-task {
+  border: none;
+  background-color: white;
+}
+.plus-button:hover {
+  color: white;
+  background-color: #db4c3f;
+}

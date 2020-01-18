@@ -37,7 +37,7 @@ class SubTaskModal extends React.Component {
       <div>
         <Modal
           title="file name"
-          // visible={true}
+          visible={true}
           // {this.props.visible.visible}
           onCancel={this.props.handleCancel}
           footer={null}
@@ -81,7 +81,10 @@ class SubTaskModal extends React.Component {
               onChange={this.callback}
             >
               <TabPane tab="Sub-tasks" key="1">
-                Content of Tab Pane 1
+                <div className='add-sub-task-button'>
+                  <button className='plus-button'>+</button>
+                  <button className="add-sub-task">Add sub-task</button>
+                </div>
               </TabPane>
               <TabPane tab="Comments" key="2">
                 Content of Tab Pane 2
