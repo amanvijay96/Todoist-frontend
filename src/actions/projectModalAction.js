@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PROJECT, ADD_PROJECT } from './types';
+import { GET_PROJECT, ADD_PROJECT, DELETE_PROJECT } from './types';
 
 // import { OPEN_PROJECT_MODAL, CLOSE_PROJECT_MODAL } from './types';
 
@@ -64,3 +64,18 @@ export const addProject = projectName => {
 //     --data '{"name": "Movies to watch"}' \
 //     -H "Content-Type: application/json" \
 //     -H "X-Request-Id: $(uuidgen)" \
+export const deleteProject = id => {
+  return async function(dispatch) {
+    // console.log(projectName);
+    // console.log(typeof projectName);
+    axios({
+      method: 'delete',
+      url: `https://todoistrest.herokuapp.com/rest/v1/projects/${id}`
+    }).then(() => {
+      dispatch({
+        type: DELETE_PROJECT,
+        payload: id
+      });
+    });
+  };
+};

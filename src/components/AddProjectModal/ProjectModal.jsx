@@ -11,18 +11,18 @@ class ProjectModal extends React.Component {
   //   this.props.getAllProject();
   // }
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-  //   handleCancel = e => {
-  //     console.log(e);
-  //     this.setState({
-  //       visible: false
-  //     });
-  //   };
+  // handleOk = e => {
+  //   console.log(e);
+  //   this.setState({
+  //     visible: false
+  //   });
+  // };
+  // handleCancel = e => {
+  //   console.log(e);
+  //   this.setState({
+  //     visible: false
+  //   });
+  // };
   handleOnChange = event => {
     this.setState({
       addProjectInput: event.target.value
@@ -33,6 +33,7 @@ class ProjectModal extends React.Component {
   };
   handleAddProject = () => {
     this.props.addProject(this.state.addProjectInput);
+    this.props.handleCancel(false);
   };
 
   render() {
@@ -42,7 +43,7 @@ class ProjectModal extends React.Component {
         <Modal
           title='Add project'
           visible={this.props.visible}
-          onOk={this.handleOk}
+          // onOk={this.handleOk}
           onCancel={this.props.handleCancel}
           bodyStyle={{ height: '250px' }}
           width='500px'
@@ -60,6 +61,8 @@ class ProjectModal extends React.Component {
             <div className='addProjectButton1Div'>
               <button
                 onClick={this.handleAddProject}
+                // onClick={this.props.handleCancel}
+                // onCancel={this.props.handleCancel}
                 className='addProjectButton1'>
                 Add
               </button>

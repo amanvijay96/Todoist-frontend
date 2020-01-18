@@ -1,0 +1,17 @@
+.imgDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  padding: 2vw;
+  margin-top: 5vw;
+  /* height: 500px; */
+}
+.img {
+  width: 20vw;
+  height: 20vw;
+}
+.imgDiv b {
+  font-size: 1.2vw;
+}

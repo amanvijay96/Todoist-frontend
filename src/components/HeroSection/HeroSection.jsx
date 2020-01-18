@@ -5,7 +5,8 @@ import { Icon, Collapse } from 'antd';
 import ProjectModal from '../AddProjectModal/ProjectModal';
 import { changeName } from '../../actions/heroSectionAction';
 // import { getAllProject } from '../../actions/projectModalAction';
-import { getAllProject } from '../../actions/projectModalAction';
+import { getAllProject, deleteProject } from '../../actions/projectModalAction';
+import ContentContainer from './ContentContainer';
 import Project from './project';
 
 // import {
@@ -26,6 +27,10 @@ class HeroSection extends Component {
     this.props.getAll();
   }
 
+  handleDeleteProject = id => {
+    this.props.deleteProject(id);
+  };
+
   showModal = event => {
     event.stopPropagation();
     this.setState({
@@ -42,7 +47,14 @@ class HeroSection extends Component {
   render() {
     console.log(this.props.projects, 'nnnnnnnnn');
     var allProjects = this.props.projects.map(project => {
-      return <Project key={project.id} Projects={project} />;
+      return (
+        <Project
+          key={project.id}
+          Projects={project}
+          deleteProject={this.handleDeleteProject}
+          showModal={this.showModal}
+        />
+      );
     });
     return (
       <div className='heroSection'>
@@ -105,8 +117,10 @@ class HeroSection extends Component {
                   this.showModal(event);
                 }}
                 className='addProjectDiv'>
-                <p className='addSymbol'>+</p>
-                <p className='addProjectDivPara'>Add project</p>
+                {/* <p className='addSymbol'>+</p>
+                <p className='addProjectDivPara'>Add project</p> */}
+                <Icon type='plus' className='addSymbol' />
+                <button className='addProjectDivPara'>Add project</button>
               </div>
             </Panel>
             <Panel
@@ -132,10 +146,7 @@ class HeroSection extends Component {
             </Panel>
           </Collapse>
         </div>
-        <div className='content'>
-          <h2>{this.props.name}</h2>
-          <img className='img' src={require('../../section.svg')} alt='' />
-        </div>
+        <ContentContainer name={this.props.name} />
         <ProjectModal
           visible={this.state.visible}
           // onCancel={this.state.visible}
@@ -161,6 +172,9 @@ const mapDispatchToProps = dispatch => {
     },
     getAll: () => {
       dispatch(getAllProject());
+    },
+    deleteProject: id => {
+      dispatch(deleteProject(id));
     }
     // projectModalOpen: () => dispatch(projectModalOpen()),
     // projectModalClose: () => dispatch(projectModalClose())

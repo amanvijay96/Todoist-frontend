@@ -1,21 +1,18 @@
 .content {
   background-color: rgb(255, 255, 255);
   /* padding: 2vw; */
-  width: 45vw;
+  width: 50vw;
   min-height: calc(100vh);
+  padding-top: 10vh;
 }
 .content h2 {
   margin: 1vw;
 }
-.filterContainer,
-.heroSection {
-  margin-top: 5vw;
-  padding: 2vw;
-}
 .filterContainer {
-  width: 30vw;
+  width: 20vw;
   /* background-color: aqua; */
-  margin-left: 10vw;
+  padding-top: 11vh;
+  margin-left: 14vw;
   padding-right: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -51,7 +48,7 @@
   color: rgb(172, 163, 163);
 }
 .icon {
-  font-size: 2.5vw;
+  font-size: 16px;
   color: rgb(74, 74, 223);
   margin-right: 0.7vw;
   /* padding-top: 1vw; */
@@ -62,12 +59,22 @@
 .heroSection {
   display: flex;
 }
+.ant-collapse {
+  border: none;
+  font-size: 15px;
+}
 .ant-collapse-item {
   background-color: #e9e8e8;
   border: none;
 }
 .ant-collapse-header {
   border: none;
+}
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* outline: none; */
 }
 .collapse {
   display: flex;
@@ -85,6 +92,11 @@
   background: none;
   border: none;
   font-size: 2.5vw;
+  outline: none;
+  color: #a19999;
+}
+.addButton:hover {
+  color: black;
 }
 .ant-collapse-content-box {
   background-color: #e9e8e8;
@@ -97,16 +109,52 @@
   background-color: #e9e8e8;
   display: flex;
   align-items: center;
+  padding-bottom: 2vw;
 }
-.addProjectDivPara:hover {
+.addProjectDiv:hover .addSymbol {
+  color: #fff;
+  background-color: #db4c3f;
+}
+.addProjectDiv:hover .addProjectDivPara {
   color: #db4c3f;
-  font-weight: bold;
 }
 .addSymbol {
   color: red;
-  font-size: 4vw;
-  margin: 0;
-  position: relative;
+  font-size: 17px;
+  margin-right: 1vw;
+  border-radius: 100%;
+  /* position: relative;
   bottom: 1vw;
-  margin-right: 2vw;
+  margin-right: 2vw; */
 }
+.addProjectDivPara {
+  border: none;
+  outline: none;
+  background: none;
+}
+/* .addProjectDivPara:hover {
+  color: #db4c3f;
+} */
+/* 
+
+.add-sub-task-button:hover .plus-button {
+  color: #fff;
+  background-color: #DB4C3F;
+}
+.add-sub-task-button:hover .add-sub-task {
+  color: #DB4C3F;
+  outline: none;
+}
+.plus-button {
+  border: none;
+  color: #DB4C3F;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 100%;
+}
+.add-sub-task {
+  border: none;
+  background-color: white;
+  color: rgb(182, 178, 178);
+  outline: none;
+} */
