@@ -1,0 +1,87 @@
+.header-homepage {
+  width: 100%;
+  display: flex;
+  background-color: white;
+  height: 8vh;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-and-app {
+  display: flex;
+  width: 15vw;
+  margin-left: 7vw;
+}
+.app-name {
+  color: #db4c3f;
+  font-size: 2.5vw;
+  margin-left: 1vw;
+}
+ul {
+  margin-bottom: 0;
+}
+.home-links {
+  color: rgb(150, 146, 146);
+  font-size: 1.6vw;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.login:hover,
+.signup:hover {
+  color: #db4c3f;
+  cursor: pointer;
+}
+.home-login-links {
+  width: 20vw;
+  margin-right: 5vw;
+}
+.section-content {
+  height: 100vh;
+  display: block;
+  justify-content: center;
+  background-image: url('https://todoist.com/_next/static/images/header@2x_6827f064aa8e7573d00512ca289fa09b.jpg');
+  background-size: cover;
+}
+h1 {
+  font-size: 4.5vw;
+  font-weight: bold;
+  margin: 2vw 0;
+}
+.get-started {
+  height: 8vh;
+  font-size: 1.7vw;
+  padding: 0 2vw;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  outline: none;
+  border: none;
+  background-color: #db4c3f;
+}
+.img-home {
+  width: 100%;
+  margin-top: 0;
+}
+.home-modal-section {
+  display: flex;
+  flex-direction: column;
+}
+.home-modal-section label {
+  font-size: 1vw;
+  font-weight: bold;
+}
+.home-modal-section input {
+  height: 5vh;
+  border-radius: 5px;
+  margin-bottom: 4vh;
+}
+.section-button {
+  height: 7vh;
+  margin-top: 4vh;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  background-color: #db4c3f;
+}

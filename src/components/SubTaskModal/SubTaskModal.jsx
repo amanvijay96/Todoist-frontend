@@ -37,7 +37,7 @@ class SubTaskModal extends React.Component {
     console.log(key);
   };
 
-  handletoggele = e => {
+  handletoggle = e => {
     // console.log(e.target.value)
     this.setState({ toggle: e.target.value });
   };
@@ -93,14 +93,14 @@ class SubTaskModal extends React.Component {
                 {this.state.toggle === 'false' ? (
                   <button
                     className="add-sub-task-button"
-                    onClick={this.handletoggele}
+                    onClick={this.handletoggle}
                     value="true"
                   >
                     <Icon type="plus" className="plus-button" />
                     <p className="add-sub-task">Add sub-task</p>
                   </button>
                 ) : (
-                  <NewTask cancel={this.handletoggele} />
+                  <NewTask cancel={this.handletoggle} />
                 )}
               </TabPane>
               <TabPane tab="Comments" key="2">

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Modal } from 'antd';
 import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
