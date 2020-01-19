@@ -2,13 +2,13 @@ import React from 'react';
 import { Menu, Icon } from 'antd';
 
 export const PriorityMenu = (
-  <Menu>
-    <Menu.Item key="0">
+  <Menu bodyStyle='100px'>
+    <Menu.Item key='0'>
       {
-        <div className="priority-flag">
+        <div className='priority-flag'>
           <Icon
-            type="flag"
-            theme="filled"
+            type='flag'
+            theme='filled'
             style={{ color: 'red', fontWeight: 'bold' }}
           />
 
@@ -16,12 +16,12 @@ export const PriorityMenu = (
         </div>
       }
     </Menu.Item>
-    <Menu.Item key="1">
+    <Menu.Item key='1'>
       {
-        <div className="priority-flag">
+        <div className='priority-flag'>
           <Icon
-            type="flag"
-            theme="filled"
+            type='flag'
+            theme='filled'
             style={{ color: 'yellow', fontWeight: 'bold' }}
           />
 
@@ -29,12 +29,12 @@ export const PriorityMenu = (
         </div>
       }
     </Menu.Item>
-    <Menu.Item key="2">
+    <Menu.Item key='2'>
       {
-        <div className="priority-flag">
+        <div className='priority-flag'>
           <Icon
-            type="flag"
-            theme="filled"
+            type='flag'
+            theme='filled'
             style={{ color: 'blue', fontWeight: 'bold' }}
           />
 
@@ -42,12 +42,12 @@ export const PriorityMenu = (
         </div>
       }
     </Menu.Item>
-    <Menu.Item key="3">
+    <Menu.Item key='3'>
       {
-        <div className="priority-flag">
+        <div className='priority-flag'>
           <Icon
-            type="flag"
-            theme="filled"
+            type='flag'
+            theme='filled'
             style={{ color: 'green', fontWeight: 'bold' }}
           />
 

@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import modalReducer from './modalReducer';
 import heroSectionReducer from './heroSectionReducer';
 import projectModalReducer from './projectModalReducer';
+import taskReducer from './taskReducer';
 
 export default combineReducers({
   heroSectionReducer,
   modalReducer,
-  projectModalReducer
+  projectModalReducer,
+  taskReducer
 });

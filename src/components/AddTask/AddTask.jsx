@@ -9,9 +9,9 @@ class NewTask extends React.Component {
   state = {
     addtaskInput: ''
   };
-  handleAddNewTask = () => {
-    this.props.addATask(this.state.addtaskInput);
-  };
+  // handleAddNewTask = () => {
+  //   this.props.addATask(this.state.addtaskInput);
+  // };
   handleOnChange = event => {
     this.setState({
       addtaskInput: event.target.value
@@ -29,34 +29,39 @@ class NewTask extends React.Component {
   render() {
     return (
       <section>
-        <div className="input-fields">
+        <div className='input-fields'>
           <input
-            type="text"
-            placeholder="e.g. Conference Wednesday at 15 #Meeting"
-            className="quick-add-title"
+            type='text'
+            placeholder='e.g. Conference Wednesday at 15 #Meeting'
+            className='quick-add-title'
             onChange={this.handleOnChange}
             onAddNewTask={this.handleAddNewTask}
           />
           <div>
             <DatePicker
               showTime
-              placeholder="Schedule"
-              className="quick-add-schedule"
+              placeholder='Schedule'
+              className='quick-add-schedule'
               onChange={this.onChange}
               onOk={this.onOk}
             />
           </div>
         </div>
-        <div className="task-buttons">
-          <button className="add-task-button">Add Task</button>
-          <button className="cancel-button-task" value='false' onClick={this.props.cancel}>Cancel</button>
-          <div className="task-icons">
-            <Icon type="bars" />
-            <Icon type="tag" />
+        <div className='task-buttons'>
+          <button className='add-task-button'>Add Task</button>
+          <button
+            className='cancel-button-task'
+            value='false'
+            onClick={this.props.cancel}>
+            Cancel
+          </button>
+          <div className='task-icons'>
+            <Icon type='bars' />
+            <Icon type='tag' />
             <Dropdown overlay={PriorityMenu} trigger={['click']}>
-              <Icon type="flag" />
+              <Icon type='flag' />
             </Dropdown>
-            <Icon type="clock-circle" />
+            <Icon type='clock-circle' />
           </div>
         </div>
       </section>

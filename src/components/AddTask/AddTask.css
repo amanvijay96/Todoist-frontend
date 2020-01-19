@@ -4,6 +4,7 @@
   background-color: white;
   color: rgb(105, 103, 103);
   height: 5vh;
+  outline: none;
 }
 .cancel-button-task:hover {
   text-decoration: underline;

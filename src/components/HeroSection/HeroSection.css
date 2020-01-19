@@ -5,9 +5,6 @@
   min-height: calc(100vh);
   padding-top: 10vh;
 }
-.content h2 {
-  margin: 1vw;
-}
 .filterContainer {
   width: 20vw;
   /* background-color: aqua; */
@@ -24,6 +21,7 @@
 .filter {
   display: flex;
   padding: 0.5vw;
+  padding-left: 1.1vw;
   /* background-color: azure; */
   /* margin: 0.001vw; */
   /* border-radius: 0.5vw; */

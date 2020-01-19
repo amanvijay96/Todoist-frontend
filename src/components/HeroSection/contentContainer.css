@@ -1,9 +1,13 @@
+.content {
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
 .imgDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 100%;
   padding: 2vw;
   margin-top: 5vw;
   /* height: 500px; */
@@ -14,4 +18,33 @@
 }
 .imgDiv b {
   font-size: 1.2vw;
+}
+.projectHeadingDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.iconsDiv {
+  width: 8vw;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: space-between;
+}
+/* .commentIcon {
+  font-size: 2vw;
+} */
+.addTaskDiv {
+  background-color: white !important;
+  background: none;
+  border: none;
+  width: 100%;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+.addTaskDivPara {
+  margin-bottom: 0;
+}
+.taskDiv {
+  margin-top: 2vw;
 }

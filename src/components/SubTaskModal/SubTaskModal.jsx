@@ -17,8 +17,8 @@ class SubTaskModal extends React.Component {
   handleAddNewTask = () => {
     this.props.addTask(this.state.addSubtaskInput);
     this.setState({
-      addSubtaskInput:''
-    })
+      addSubtaskInput: ''
+    });
   };
   handleOnChange = event => {
     this.setState({
@@ -45,93 +45,89 @@ class SubTaskModal extends React.Component {
     return (
       <div>
         <Modal
-          title="file name"
-          visible={true}
+          title='file name'
+          visible={false}
           // {this.props.visible.visible}
           onCancel={this.props.handleCancel}
           footer={null}
-          width="600px"
+          width='600px'
           bodyStyle={{ height: '540px' }}
           centered={true}
-          className="sub-task-modal"
-          style={{ left: '330px', top: '30px' }}
-        >
+          className='sub-task-modal'
+          style={{ left: '330px', top: '30px' }}>
           <section>
             <div>Title</div>
             {/* <Dropdown
               overlay={() => ( */}
             <DatePicker
               showTime
-              placeholder="Schedule"
-              className="quick-add-schedule"
+              placeholder='Schedule'
+              className='quick-add-schedule'
               onChange={this.onChange}
-              onOk={this.onOk}
-            ></DatePicker>
+              onOk={this.onOk}></DatePicker>
             {/* )}
             //   trigger={['click']}
             // >
             //   <button>date</button>
             // </Dropdown> */}
 
-            <div className="task-icons1">
-              <div className="sub-task-icons">
-                <Icon type="bars" className="bars" />
-                <Icon type="tag" className="tag" />
+            <div className='task-icons1'>
+              <div className='sub-task-icons'>
+                <Icon type='bars' className='bars' />
+                <Icon type='tag' className='tag' />
                 <Dropdown overlay={PriorityMenu} trigger={['click']}>
-                  <Icon type="flag" className="flag" />
+                  <Icon type='flag' className='flag' />
                 </Dropdown>
-                <Icon type="clock-circle" className="clock" />
+                <Icon type='clock-circle' className='clock' />
               </div>
             </div>
 
             <Tabs
               // tabBarGutter="138px"
-              defaultActiveKey="1"
-              onChange={this.callback}
-            >
-              <TabPane tab="Sub-tasks" key="1">
+              defaultActiveKey='1'
+              onChange={this.callback}>
+              <TabPane tab='Sub-tasks' key='1'>
                 {this.state.toggle === 'false' ? (
                   <button
-                    className="add-sub-task-button"
+                    className='add-sub-task-button'
                     onClick={this.handletoggele}
-                    value="true"
-                  >
-                    <Icon type="plus" className="plus-button" />
-                    <p className="add-sub-task">Add sub-task</p>
+                    value='true'>
+                    <Icon type='plus' className='plus-button' />
+                    <p className='add-sub-task'>Add sub-task</p>
                   </button>
                 ) : (
                   <NewTask cancel={this.handletoggele} />
                 )}
               </TabPane>
-              <TabPane tab="Comments" key="2">
-                <div className="comments-logo">
+              <TabPane tab='Comments' key='2'>
+                <div className='comments-logo'>
                   <img
                     src={require('../../comments.svg')}
-                    alt="Write a Comment"
+                    alt='Write a Comment'
                   />
                 </div>
-                <div classname="comments-section">
+                <div classname='comments-section'>
                   <textarea
-                    placeholder="Write a comment"
-                    className="comment-text-area"
+                    placeholder='Write a comment'
+                    className='comment-text-area'
                   />
                   <hr />
-                  <div className="comments-icon-and-button">
-                    <div className="comments-icon">
-                      <Icon type="paper-clip" />
-                      <Icon type="audio" />
-                      <Icon type="smile" />
+                  <div className='comments-icon-and-button'>
+                    <div className='comments-icon'>
+                      <Icon type='paper-clip' />
+                      <Icon type='audio' />
+                      <Icon type='smile' />
                     </div>
-                    <button className="add-comment-button">Add Comment</button>
+                    <button className='add-comment-button'>Add Comment</button>
                   </div>
                 </div>
               </TabPane>
-              <TabPane tab="Activity" key="3">
-                <div className="comments-logo">
+              <TabPane tab='Activity' key='3'>
+                <div className='comments-logo'>
                   <img
                     src={require('../../activity.svg')}
                     // className="comment"
-                    alt="Activities"
+                    alt='Activities'
                   />
                 </div>
               </TabPane>

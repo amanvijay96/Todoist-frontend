@@ -6,3 +6,4 @@ export const CLOSE_PROJECT_MODAL = 'CLOSE_PROJECT_MODAL';
 export const GET_PROJECT = 'GET_PROJECT';
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const GET_TASK = 'GET_TASK';
