@@ -12,7 +12,10 @@ class NewTask extends React.Component {
     addtaskInput: ''
   };
   handleAddNewTask = () => {
-    this.props.addTask(this.state.addtaskInput);
+    this.props.addTask(this.state.addtaskInput, this.props.projectId);
+    this.setState({
+      addtaskInput: ''
+    });
   };
   handleOnChange = event => {
     this.setState({

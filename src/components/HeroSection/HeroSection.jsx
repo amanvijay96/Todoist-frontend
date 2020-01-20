@@ -18,7 +18,7 @@ class HeroSection extends Component {
 
   componentDidMount() {
     // console.log(this.props, 'mmmmmm');
-    this.props.getAll();
+    this.props.getAllProject();
   }
 
   handleDeleteProject = id => {
@@ -140,6 +140,8 @@ class HeroSection extends Component {
         </div>
         <ContentContainer
           name={this.props.name}
+          key={this.props.match.params.id}
+          projectId={this.props.match.params.id}
           // project={project}
         />
         <ProjectModal
@@ -164,7 +166,7 @@ const mapDispatchToProps = dispatch => {
     changeName: name => {
       dispatch(changeName(name));
     },
-    getAll: () => {
+    getAllProject: () => {
       dispatch(getAllProject());
     },
     deleteProject: id => {

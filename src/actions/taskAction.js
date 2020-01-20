@@ -1,24 +1,24 @@
 import axios from 'axios';
 import { GET_TASK, ADD_TASK, DELETE_TASK } from './types';
 
-export const getAllTask = () => {
+export const getAllTask = projectId => {
   return function(dispatch) {
     console.log('hi');
     axios({
       method: 'get',
-      url: 'https://todoistrest.herokuapp.com/rest/v1/tasks',
-      responseType: 'stream'
+      url: `https://todoistrest.herokuapp.com/rest/v1/projects/${projectId}`
+      //   responseType: 'stream'
     }).then(data => {
       console.log(data.data, 'aaaaaaaaaa');
       dispatch({
         type: GET_TASK,
-        payload: data.data
+        payload: data.data.task
       });
     });
   };
 };
 
-export const addTask = taskName => {
+export const addTask = (taskName, projectId) => {
   return async function(dispatch) {
     // console.log(taskName, 'mmmmmmaaaaaa');
     // console.log(typeof projectName);
@@ -26,7 +26,8 @@ export const addTask = taskName => {
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
-        content: taskName
+        content: taskName,
+        projectId: projectId
         // projectId: 1
       }
     }).then(data => {

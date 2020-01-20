@@ -21,13 +21,14 @@ class Project extends Component {
             overlay={() => (
               <ProjectMenu
                 // event={event}
-                entity='Project'
+                // entity='Project'
                 onDeleteProject={() =>
                   this.props.deleteProject(this.props.Projects.id)
                 }
                 onShowModal={() => this.props.showModal(true)}></ProjectMenu>
             )}
-            trigger={['click']} placement="topLeft">
+            trigger={['click']}
+            placement='topLeft'>
             <Icon type='ellipsis' className='projectEditButton' />
           </Dropdown>
           {/* <Icon className='projectEditButton' type='ellipsis' /> */}
