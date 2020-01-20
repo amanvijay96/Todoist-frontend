@@ -7,7 +7,7 @@ class ProjectMenu extends Component {
     this.props.onShowModal(true);
   };
   render() {
-    console.log(this.props, 'xxxxxxxxxxxxx');
+    // console.log(this.props, 'xxxxxxxxxxxxx');
     return (
       <Menu>
         {/* {console.log(props, 'lllllll')} */}
@@ -15,7 +15,7 @@ class ProjectMenu extends Component {
           {
             <div className='projectOption'>
               <Icon type='edit' />
-              <p>Edit project</p>
+              <p className="menu-para">Edit project</p>
             </div>
           }
         </Menu.Item>
@@ -23,14 +23,14 @@ class ProjectMenu extends Component {
           {
             <div className='projectOption'>
               <Icon type='user-add' />
-              <p>Share project</p>
+              <p className="menu-para">Share project</p>
             </div>
           }
         </Menu.Item>
         <Menu.Item key='3' onClick={this.props.onDeleteProject}>
           <div className='projectOption'>
             <Icon type='delete' />
-            <p>Delete project</p>
+            <p className="menu-para">Delete project</p>
           </div>
         </Menu.Item>
         {/* <Menu.Item key='4'>Logout</Menu.Item> */}
@@ -41,34 +41,3 @@ class ProjectMenu extends Component {
 
 export default ProjectMenu;
 
-// export const ProjectMenu = props => {
-//   console.log(props, 'zzzzzzzzzzz');
-//   return (
-//     <Menu>
-//       {/* {console.log(props, 'lllllll')} */}
-//       <Menu.Item key='0' onClick={props.OnShowModal}>
-//         {
-//           <div className='projectOption'>
-//             <Icon type='edit' />
-//             <p>Edit project</p>
-//           </div>
-//         }
-//       </Menu.Item>
-//       <Menu.Item key='1'>
-//         {
-//           <div className='projectOption'>
-//             <Icon type='user-add' />
-//             <p>Share project</p>
-//           </div>
-//         }
-//       </Menu.Item>
-//       <Menu.Item key='3' onClick={props.onDeleteProject}>
-//         <div className='projectOption'>
-//           <Icon type='delete' />
-//           <p>Delete project</p>
-//         </div>
-//       </Menu.Item>
-//       {/* <Menu.Item key='4'>Logout</Menu.Item> */}
-//     </Menu>
-//   );
-// };

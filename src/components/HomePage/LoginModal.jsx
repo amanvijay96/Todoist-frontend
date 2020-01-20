@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 
 class LoginModal extends React.Component {
   state = {
-    visible: true,
+    visible: false,
     nameInput: '',
     emailInput: '',
     passwordInput: ''
@@ -31,13 +31,13 @@ class LoginModal extends React.Component {
   // };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <Modal
           title="Sign up in seconds"
           visible={this.props.visible}
-          onCancel={this.props.handleCancel}
+          onCancel={this.props.onCancel}
           footer={null}
           width="400px"
         >
