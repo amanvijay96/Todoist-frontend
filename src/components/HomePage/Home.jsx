@@ -18,8 +18,7 @@ class Home extends Component {
       signupVisible: true
     });
   };
-  onCancel = () => {
-    console.log('xcvbn')
+  handleCancel = () => {
     this.setState({
       loginVisible: false,
       signupVisible: false
@@ -65,7 +64,7 @@ class Home extends Component {
         />
         <SignupModal
           visible={this.state.signupVisible}
-          handleCancel={this.onCancel}
+          onCancel={this.handleCancel}
         />
       </div>
     );

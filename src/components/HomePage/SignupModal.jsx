@@ -9,11 +9,11 @@ class SignupModal extends React.Component {
     emailInput: '',
     passwordInput: ''
   };
-  handleCancel = () => {
-    this.setState({
-      visible: false
-    });
-  };
+  // handleCancel = () => {
+  //   this.setState({
+  //     visible: false
+  //   });
+  // };
   handleOnChangeName = event => {
     this.setState({
       nameInput: event.target.value
@@ -44,7 +44,7 @@ class SignupModal extends React.Component {
         <Modal
           title="Sign up in seconds"
           visible={this.props.visible}
-          onCancel={this.props.handleCancel}
+          onCancel={this.props.onCancel}
           footer={null}
           width="400px"
         >

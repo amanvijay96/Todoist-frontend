@@ -22,9 +22,12 @@
 }
 .projectOption {
   display: flex;
-  justify-content: flex-start;
-  /* align-items: center; */
+  justify-content: space-between;
+  align-items: center;
 }
 .projectOption i {
   margin-right: 1vw;
+}
+.menu-para{
+  margin-bottom: 0;
 }

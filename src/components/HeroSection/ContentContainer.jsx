@@ -8,6 +8,8 @@ import { getAllTask, deleteTask } from '../../actions/taskAction';
 
 class ContentContainer extends Component {
   state = {
+    showImg: true,
+    visible: false,
     taskInput: '',
     toggle: 'false'
   };
@@ -24,12 +26,8 @@ class ContentContainer extends Component {
   //   });
   // };
   handletoggle = e => {
-    // console.log(e.target.value)
     this.setState({ toggle: e.target.value });
   };
-  // getAllTask = () => {
-  //   getAllTask;
-  // };
   render() {
     var allTasks = this.props.tasks.map(task => {
       return (
@@ -55,7 +53,7 @@ class ContentContainer extends Component {
             <Icon theme='outlined' type='ellipsis' />
           </div>
         </div>
-        <div className='taskDiv'>{allTasks}</div>
+        {this.state.showImg && <div className='taskDiv'>{allTasks}</div>}
         {this.state.toggle === 'false' ? (
           <button
             onClick={this.handletoggle}
@@ -67,10 +65,12 @@ class ContentContainer extends Component {
         ) : (
           <NewTask cancel={this.handletoggle} />
         )}
-        <div className='imgDiv'>
-          <img className='img' src={require('../../section.svg')} alt='' />
-          <b>Keep Your tasks organized</b>
-        </div>
+        {!this.state.showImg && (
+          <div className='imgDiv'>
+            <img className='img' src={require('../../section.svg')} alt='' />
+            <b>Keep Your tasks organized</b>
+          </div>
+        )}
       </div>
     );
   }
