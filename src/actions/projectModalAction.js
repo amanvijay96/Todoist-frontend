@@ -18,7 +18,7 @@ export const getAllProject = () => {
 
 export const addProject = projectName => {
   return async function(dispatch) {
-    console.log(projectName);
+    console.log(projectName, 'zzzzzzzzz');
     // console.log(typeof projectName);
     axios({
       method: 'post',

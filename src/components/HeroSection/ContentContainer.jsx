@@ -4,7 +4,7 @@ import { Icon } from 'antd';
 import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
-import { getAllTask } from '../../actions/taskAction';
+import { getAllTask, deleteTask } from '../../actions/taskAction';
 
 class ContentContainer extends Component {
   state = {
@@ -14,6 +14,9 @@ class ContentContainer extends Component {
   componentDidMount() {
     this.props.getAll();
   }
+  handleDeleteTask = id => {
+    this.props.deleteTask(id);
+  };
   // handleAddTask = () => {
   //   // this.props.addTask(this.state.taskInput);
   //   this.setState({
@@ -32,7 +35,8 @@ class ContentContainer extends Component {
       return (
         <Task
           key={task.id}
-          Tasks={task}
+          task={task}
+          deleteTask={this.handleDeleteTask}
           // deleteProject={this.handleDeleteProject}
           // showModal={this.showModal}
           // changeName={() => this.props.changeName(project.name)}
@@ -82,10 +86,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getAll: () => {
       dispatch(getAllTask());
+    },
+    deleteTask: id => {
+      dispatch(deleteTask(id));
     }
-    // deleteProject: id => {
-    //   dispatch(deleteProject(id));
-    // }
   };
 };
 

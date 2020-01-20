@@ -14,8 +14,11 @@ class Project extends Component {
 
           <Dropdown
             //   id={this.props.projects.id}
+            onClick={event => event.stopPropagation()}
             overlay={() => (
               <ProjectMenu
+                // event={event}
+                entity='Project'
                 onDeleteProject={() =>
                   this.props.deleteProject(this.props.Projects.id)
                 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 
-class ProjectMenu extends Component {
+class TaskMenu extends Component {
   state = {};
   handleShowModal = () => {
     this.props.onShowModal(true);
@@ -14,7 +14,7 @@ class ProjectMenu extends Component {
         {/* {console.log(props, 'lllllll')} */}
         <Menu.Item key='0' onClick={this.handleShowModal}>
           {
-            <div className='projectOption'>
+            <div className='taskOption'>
               <Icon type='edit' />
               <p>Edit {this.props.entity}</p>
             </div>
@@ -22,13 +22,13 @@ class ProjectMenu extends Component {
         </Menu.Item>
         <Menu.Item key='1'>
           {
-            <div className='projectOption'>
+            <div className='taskOption'>
               <Icon type='user-add' />
               <p>Share {this.props.entity}</p>
             </div>
           }
         </Menu.Item>
-        <Menu.Item key='3' onClick={this.props.onDeleteProject}>
+        <Menu.Item key='3' onClick={this.props.onDeleteTask}>
           <div className='projectOption'>
             <Icon type='delete' />
             <p>Delete {this.props.entity}</p>
@@ -40,7 +40,7 @@ class ProjectMenu extends Component {
   }
 }
 
-export default ProjectMenu;
+export default TaskMenu;
 
 // export const ProjectMenu = props => {
 //   console.log(props, 'zzzzzzzzzzz');
