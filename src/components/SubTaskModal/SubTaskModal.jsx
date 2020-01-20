@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import './SubTaskModal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 // import { connect } from 'react-redux';
-import { PriorityMenu } from '../Modal/Priority';
+import PriorityMenu from '../Modal/Priority';
 import NewTask from '../AddTask/AddTask.jsx';
 // import { addTask } from '../../actions/modalAction';
 import { Tabs } from 'antd';
@@ -75,7 +75,7 @@ class SubTaskModal extends React.Component {
               <div className="sub-task-icons">
                 <Icon type="bars" className="bars" />
                 <Icon type="tag" className="tag" />
-                <Dropdown overlay={PriorityMenu} trigger={['click']}>
+                <Dropdown overlay={<PriorityMenu />} trigger={['click']}>
                   <Icon type="flag" className="flag" />
                 </Dropdown>
                 <Icon type="clock-circle" className="clock" />

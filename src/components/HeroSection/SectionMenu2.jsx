@@ -10,20 +10,16 @@ class SectionMenu extends Component {
     return (
       <Menu>
         <Menu.Item key="0">
-          {
-            <div className="section-menu">
-              <Icon type="plus" />
-              <p>Add task</p>
-            </div>
-          }
+          <div className="section-menu">
+            <Icon type="plus" />
+            <p>Add task</p>
+          </div>
         </Menu.Item>
         <Menu.Item key="1">
-          {
-            <div className="section-menu">
-              <Icon type="edit" />
-              <p>Edit section</p>
-            </div>
-          }
+          <div className="section-menu">
+            <Icon type="edit" />
+            <p>Edit section</p>
+          </div>
         </Menu.Item>
         <Menu.Item key="3">
           <div className="section-menu">
