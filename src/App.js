@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import HeroSection from './components/HeroSection/HeroSection';
-import ContentContainer from './components/HeroSection/ContentContainer';
+// import ContentContainer from './components/HeroSection/ContentContainer';
 
 function App() {
   return (

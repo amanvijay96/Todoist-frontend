@@ -7,12 +7,11 @@ class TaskMenu extends Component {
     this.props.onShowModal(true);
   };
   render() {
-    // this.props.event.stopPropagation();
-    console.log(this.props, 'xxxxxxxxxxxxx');
+    
     return (
       <Menu>
-        {/* {console.log(props, 'lllllll')} */}
-        <Menu.Item key='0' onClick={this.handleShowModal}>
+      
+        <Menu.Item key='0' className="task-menu" onClick={this.handleShowModal}>
           {
             <div className='taskOption'>
               <Icon type='edit' />
@@ -20,7 +19,7 @@ class TaskMenu extends Component {
             </div>
           }
         </Menu.Item>
-        <Menu.Item key='1'>
+        <Menu.Item className="task-menu" key='1'>
           {
             <div className='taskOption'>
               <Icon type='user-add' />
@@ -28,13 +27,12 @@ class TaskMenu extends Component {
             </div>
           }
         </Menu.Item>
-        <Menu.Item key='3' onClick={this.props.onDeleteTask}>
+        <Menu.Item className="task-menu" key='3' onClick={this.props.onDeleteTask}>
           <div className='projectOption'>
             <Icon type='delete' />
             <p>Delete {this.props.entity}</p>
           </div>
         </Menu.Item>
-        {/* <Menu.Item key='4'>Logout</Menu.Item> */}
       </Menu>
     );
   }

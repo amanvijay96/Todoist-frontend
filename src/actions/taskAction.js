@@ -20,16 +20,17 @@ export const getAllTask = () => {
 
 export const addTask = taskName => {
   return async function(dispatch) {
-    console.log(taskName, 'mmmmmmaaaaaa');
+    // console.log(taskName, 'mmmmmmaaaaaa');
     // console.log(typeof projectName);
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName
+        // projectId: 1
       }
     }).then(data => {
-      console.log(data, 'ppppppppppppp');
+      // console.log(data, 'ppppppppppppp');
       dispatch({
         type: ADD_TASK,
         payload: data.data
