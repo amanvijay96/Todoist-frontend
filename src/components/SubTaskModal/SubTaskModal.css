@@ -87,6 +87,8 @@
 }
 .add-comment-button {
   height: 5vh;
+  margin-bottom: 1vh;
+  margin-right: .6vw;
   border-radius: 5px;
   padding: 0 1vw;
   background-color: #db4c3f;

@@ -65,3 +65,6 @@
 .round input:checked + .label:after {
   opacity: 1;
 }
+.task-menu p{
+  margin-bottom: 0;
+}

@@ -24,7 +24,7 @@ class Project extends Component {
                 }
                 onShowModal={() => this.props.showModal(true)}></ProjectMenu>
             )}
-            trigger={['click']}>
+            trigger={['click']} placement="topLeft">
             <Icon type='ellipsis' className='projectEditButton' />
           </Dropdown>
           {/* <Icon className='projectEditButton' type='ellipsis' /> */}
