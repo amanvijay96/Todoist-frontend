@@ -4,21 +4,23 @@ import { GET_PROJECT, ADD_PROJECT, DELETE_PROJECT } from './types';
 export const getAllProject = () => {
   return async function(dispatch) {
     console.log('hi');
-    let data = await axios({
+    axios({
       method: 'get',
-      url: 'https://todoistrest.herokuapp.com/rest/v1/projects',
+      url: `https://todoistrest.herokuapp.com/rest/v1/projects`,
       responseType: 'stream'
-    });
-    dispatch({
-      type: GET_PROJECT,
-      payload: data.data
+    }).then(data => {
+      console.log(data, '//////////');
+      dispatch({
+        type: GET_PROJECT,
+        payload: data.data
+      });
     });
   };
 };
 
 export const addProject = projectName => {
   return async function(dispatch) {
-    console.log(projectName, 'zzzzzzzzz');
+    // console.log(projectName, 'zzzzzzzzz');
     // console.log(typeof projectName);
     axios({
       method: 'post',

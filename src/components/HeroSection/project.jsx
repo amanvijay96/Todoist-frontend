@@ -3,10 +3,13 @@ import { Icon, Dropdown } from 'antd';
 import './project.css';
 import ProjectMenu from './projectMenu';
 import { Link } from 'react-router-dom';
+import ContentContainer from './ContentContainer';
 
 class Project extends Component {
   state = {};
   render() {
+    console.log(this.props.Projects.id, ';;;;;');
+    // <ContentContainer projectId={this.props.Projects.id} />;
     return (
       <Link to={`/project/${this.props.Projects.id}`}>
         <div onClick={this.props.changeName} className='projectDiv'>

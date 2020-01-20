@@ -4,6 +4,7 @@ import { Icon } from 'antd';
 import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
+// import project from './project';
 import { getAllTask, deleteTask } from '../../actions/taskAction';
 
 class ContentContainer extends Component {
@@ -31,14 +32,7 @@ class ContentContainer extends Component {
   render() {
     var allTasks = this.props.tasks.map(task => {
       return (
-        <Task
-          key={task.id}
-          task={task}
-          deleteTask={this.handleDeleteTask}
-          // deleteProject={this.handleDeleteProject}
-          // showModal={this.showModal}
-          // changeName={() => this.props.changeName(project.name)}
-        />
+        <Task key={task.id} task={task} deleteTask={this.handleDeleteTask} />
       );
     });
     return (
@@ -76,9 +70,11 @@ class ContentContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps, 'ownProps');
   return {
-    tasks: state.taskReducer.tasks
+    tasks: state.taskReducer.tasks,
+    projectId: ownProps.projectId
     // name: state.heroSectionReducer.name
   };
 };
