@@ -75,12 +75,7 @@ class ContentContainer extends Component {
           </div>
         ) : null}
 
-        {/* {this.state.showImg && (
-          <div className="imgDiv">
-            <img className="img" src={require('../../section.svg')} alt="" />
-            <b>Keep Your tasks organized</b>
-          </div>
-        )} */}
+  
       </div>
     );
   }

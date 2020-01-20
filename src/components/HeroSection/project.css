@@ -26,6 +26,9 @@
 .projectOption i {
   margin-right: 1vw;
 }
+.projectOption p {
+  margin-bottom: 0;
+}
 .menu-para {
   margin-bottom: 0;
 }
