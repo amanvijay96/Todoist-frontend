@@ -4,17 +4,19 @@ import { Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
-import project from './project';
 import { getAllTask, deleteTask } from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
 import SectionMenu2 from './SectionMenu2';
+import AddSection from './AddSection';
 
 class ContentContainer extends Component {
   state = {
+    sectionButtonVisible: false,
     showImg: true,
     visible: false,
     taskInput: '',
-    toggle: 'false'
+    toggle: 'false',
+    sectiontoggle: 'false'
   };
   componentDidMount() {
     this.props.getAllTask(this.props.projectId);
@@ -25,6 +27,9 @@ class ContentContainer extends Component {
   handletoggle = e => {
     this.setState({ toggle: e.target.value });
   };
+  handleSectiontoggle = e => {
+    this.setState({ sectiontoggle: e.target.value });
+  };
   render() {
     var allTasks = this.props.tasks.map(task => {
       return (
@@ -33,34 +38,35 @@ class ContentContainer extends Component {
     });
 
     return (
-      <div className='content'>
-        <div className='projectHeadingDiv'>
+      <div className="content">
+        <div className="projectHeadingDiv">
           <h2>
             <b>{this.props.name}</b>
           </h2>
-          <div className='iconsDiv'>
-            <Icon className='commentIcon' type='message' />
-            <Icon className='addIcon' type='user-add' />
+          <div className="iconsDiv">
+            <Icon className="commentIcon" type="message" />
+            <Icon className="addIcon" type="user-add" />
             <Dropdown overlay={<SectionMenu />} trigger={['click']}>
-              <Icon type='ellipsis' />
+              <Icon type="ellipsis" />
             </Dropdown>
           </div>
         </div>
-        <div className='section-menu2'>
+        <div className="section-menu2">
           <Dropdown overlay={<SectionMenu2 />} trigger={['click']}>
-            <Icon type='ellipsis' />
+            <Icon type="ellipsis" />
           </Dropdown>
         </div>
         {allTasks.length !== 0 ? (
-          <div className='taskDiv'>{allTasks}</div>
+          <div className="taskDiv">{allTasks}</div>
         ) : null}
         {this.state.toggle === 'false' ? (
           <button
             onClick={this.handletoggle}
-            value='true'
-            className='addProjectDiv addTaskDiv'>
-            <Icon type='plus' className='addSymbol' />
-            <p className='addProjectDivPara addTaskDivPara'>Add task</p>
+            value="true"
+            className="addProjectDiv addTaskDiv"
+          >
+            <Icon type="plus" className="addSymbol" />
+            <p className="addProjectDivPara addTaskDivPara">Add task</p>
           </button>
         ) : (
           <NewTask
@@ -68,14 +74,24 @@ class ContentContainer extends Component {
             projectId={this.props.projectId}
           />
         )}
+        {this.state.sectiontoggle === 'false' ? (
+          <button
+            onClick={this.handleSectiontoggle}
+            value="true"
+            className="add-section-button"
+          >
+            <hr className="hr-text" data-content="Add Section" />
+          </button>
+        ) : (
+          <AddSection cancel={this.handleSectiontoggle} />
+        )}
+
         {allTasks.length === 0 ? (
-          <div className='imgDiv'>
-            <img className='img' src={require('../../section.svg')} alt='' />
+          <div className="imgDiv">
+            <img className="img" src={require('../../section.svg')} alt="" />
             <b>Keep Your tasks organized</b>
           </div>
         ) : null}
-
-  
       </div>
     );
   }

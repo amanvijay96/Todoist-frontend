@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Modals from '../Modal/Modal';
 import { Icon, Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import { modalOpen, modalClose } from '../../actions/modalAction';
 import { connect } from 'react-redux';
 import { settingsMenu } from './SettingsMenu';
+import { changeName } from '../../actions/heroSectionAction';
 
 class Header extends Component {
   state = {};
@@ -14,13 +16,16 @@ class Header extends Component {
       <div>
         <header className="header">
           <nav>
-            <div>
-              <img
-                src={require('../../logo.svg')}
-                className="logo"
-                alt="Todoist"
-              />
-            </div>
+            <Link to="/">
+              <div onClick={() => this.props.changeName('Today')}>
+                <img
+                  src={require('../../logo.svg')}
+                  className="logo"
+                  alt="Todoist"
+                />
+              </div>
+            </Link>
+
             <div className="search-bar">
               <Icon type="search" className="search-icon" />
               <input
@@ -58,7 +63,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     modalOpen: () => dispatch(modalOpen()),
-    modalClose: () => dispatch(modalClose())
+    modalClose: () => dispatch(modalClose()),
+    changeName: name => dispatch(changeName(name))
   };
 };
 

@@ -9,3 +9,6 @@
 .cancel-button-task:hover {
   text-decoration: underline;
 }
+.task-buttons {
+  margin-bottom: 4vh;
+}

@@ -117,17 +117,13 @@
   color: #db4c3f;
 }
 .addSymbol {
-  color: red;
+  color: #db4c3f;
   font-size: 17px;
   margin-right: 1vw;
   border-radius: 100%;
-  /* position: relative;
-  bottom: 1vw;
-  margin-right: 2vw; */
 }
 .addProjectDivPara {
   border: none;
   outline: none;
   background: none;
 }
-

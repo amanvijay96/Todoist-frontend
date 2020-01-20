@@ -9,7 +9,7 @@ export const getAllProject = () => {
       url: `https://todoistrest.herokuapp.com/rest/v1/projects`,
       responseType: 'stream'
     }).then(data => {
-      console.log(data, '//////////');
+      // console.log(data, '//////////');
       dispatch({
         type: GET_PROJECT,
         payload: data.data

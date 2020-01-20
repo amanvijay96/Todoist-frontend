@@ -3,7 +3,7 @@ import { Icon, Dropdown } from 'antd';
 import './project.css';
 import ProjectMenu from './projectMenu';
 import { Link } from 'react-router-dom';
-import ContentContainer from './ContentContainer';
+
 
 class Project extends Component {
   state = {};
