@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Modal, Switch } from 'antd';
 import './ProjectModal.css';
 import { connect } from 'react-redux';

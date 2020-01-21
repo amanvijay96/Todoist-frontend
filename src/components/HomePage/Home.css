@@ -72,6 +72,8 @@ h1 {
 }
 .home-modal-section input {
   height: 5vh;
+  border: none;
+  border: solid 1px rgb(194, 190, 190);
   border-radius: 5px;
   margin-bottom: 4vh;
 }

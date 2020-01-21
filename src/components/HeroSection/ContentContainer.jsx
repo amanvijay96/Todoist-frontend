@@ -6,7 +6,7 @@ import NewTask from '../AddTask/AddTask';
 import Task from './Task';
 import { getAllTask, deleteTask } from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
-import SectionMenu2 from './SectionMenu2';
+
 import AddSection from './AddSection';
 
 class ContentContainer extends Component {
@@ -51,11 +51,11 @@ class ContentContainer extends Component {
             </Dropdown>
           </div>
         </div>
-        <div className="section-menu2">
+        {/* <div className="section-menu2">
           <Dropdown overlay={<SectionMenu2 />} trigger={['click']}>
             <Icon type="ellipsis" />
           </Dropdown>
-        </div>
+        </div> */}
         {allTasks.length !== 0 ? (
           <div className="taskDiv">{allTasks}</div>
         ) : null}
@@ -86,7 +86,7 @@ class ContentContainer extends Component {
           <AddSection cancel={this.handleSectiontoggle} />
         )}
 
-        {allTasks.length === 0 ? (
+        {allTasks.length === 0 && this.state.sectiontoggle === 'false' ? (
           <div className="imgDiv">
             <img className="img" src={require('../../section.svg')} alt="" />
             <b>Keep Your tasks organized</b>
@@ -98,7 +98,7 @@ class ContentContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps, 'ownProps');
+  // console.log(ownProps, 'ownProps');
   return {
     tasks: state.taskReducer.tasks,
     projectId: ownProps.projectId

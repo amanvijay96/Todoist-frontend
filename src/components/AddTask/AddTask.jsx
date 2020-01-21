@@ -10,27 +10,32 @@ import { connect } from 'react-redux';
 class NewTask extends React.Component {
   state = {
     addtaskInput: '',
-    date: 0,
+    date: '',
     priority: 4
   };
   handleAddNewTask = () => {
-    this.props.addTask(this.state.addtaskInput, this.props.projectId);
+    console.log(this.props.projectId);
+    this.props.addTask(
+      this.state.addtaskInput,
+      this.props.projectId
+      // this.state.date,
+      // this.state.priority
+    );
     this.setState({
       addtaskInput: ''
     });
   };
   handleOnChange = event => {
     this.setState({
-      addtaskInput: event.target.value,
-      date: event.target.showTime
+      addtaskInput: event.target.value
     });
   };
   onChange = (value, dateString) => {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
-    this.setState({
-      date: dateString
-    });
+    // this.setState({
+    //   date: dateString
+    // });
   };
 
   onOk = value => {
@@ -40,41 +45,42 @@ class NewTask extends React.Component {
   render() {
     return (
       <section>
-        <div className='input-fields'>
+        <div className="input-fields">
           <input
-            type='text'
-            placeholder='e.g. Conference Wednesday at 15 #Meeting'
-            className='quick-add-title'
+            type="text"
+            placeholder="e.g. Conference Wednesday at 15 #Meeting"
+            className="quick-add-title"
             onChange={this.handleOnChange}
             // onAddNewTask={this.handleAddNewTask}
           />
           <div>
             <DatePicker
               showTime
-              placeholder='Schedule'
-              className='quick-add-schedule'
+              placeholder="Schedule"
+              className="quick-add-schedule"
               onChange={this.onChange}
               onOk={this.onOk}
             />
           </div>
         </div>
-        <div className='task-buttons'>
-          <button onClick={this.handleAddNewTask} className='add-task-button'>
+        <div className="task-buttons">
+          <button onClick={this.handleAddNewTask} className="add-task-button">
             Add Task
           </button>
           <button
-            className='cancel-button-task'
-            value='false'
-            onClick={this.props.cancel}>
+            className="cancel-button-task"
+            value="false"
+            onClick={this.props.cancel}
+          >
             Cancel
           </button>
-          <div className='task-icons'>
-            <Icon type='bars' />
-            <Icon type='tag' />
+          <div className="task-icons">
+            <Icon type="bars" />
+            <Icon type="tag" />
             <Dropdown overlay={<PriorityMenu />} trigger={['click']}>
-              <Icon type='flag' />
+              <Icon type="flag" />
             </Dropdown>
-            <Icon type='clock-circle' />
+            <Icon type="clock-circle" />
           </div>
         </div>
       </section>

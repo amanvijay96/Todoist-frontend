@@ -4,14 +4,28 @@ import './Modal.css';
 import { DatePicker, Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import PriorityMenu from './Priority';
-import { addTask } from '../../actions/modalAction';
+import { addTask } from '../../actions/taskAction';
 
 class Modals extends React.Component {
   state = {
-    addtaskInput: ''
+    addtaskInput: '',
+    date: '',
+    piority: 4
+
+    // id: 0
   };
   handleAddNewTask = () => {
-    this.props.addTask(this.state.addtaskInput);
+
+    console.log(this.props.projectId, 'cdscsd');
+    this.props.addTask(
+      this.state.addtaskInput,
+      this.match.params.id,
+      // this.state.date,
+      // this.state.priority
+    );
+    // this.setState({
+    //   addtaskInput: ''
+    // });
   };
   handleOnChange = event => {
     this.setState({
@@ -21,6 +35,9 @@ class Modals extends React.Component {
   onChange = (value, dateString) => {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
+    // this.setState({
+    //   date: dateString
+    // });
   };
 
   onOk = value => {

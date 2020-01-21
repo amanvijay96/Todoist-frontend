@@ -3,7 +3,7 @@ import { GET_TASK, ADD_TASK, DELETE_TASK } from './types';
 
 export const getAllTask = projectId => {
   return function(dispatch) {
-    console.log('hi');
+    // console.log('hi');
     axios({
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects/${projectId}`
@@ -18,7 +18,7 @@ export const getAllTask = projectId => {
   };
 };
 
-export const addTask = (taskName, projectId) => {
+export const addTask = (taskName, projectId, date, priority) => {
   return async function(dispatch) {
     // console.log(taskName, 'mmmmmmaaaaaa');
     // console.log(typeof projectName);
@@ -27,7 +27,9 @@ export const addTask = (taskName, projectId) => {
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName,
-        projectId: projectId
+        projectId: projectId,
+        // priority: priority,
+        // due: date
         // projectId: 1
       }
     }).then(data => {

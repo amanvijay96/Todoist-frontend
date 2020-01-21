@@ -17,12 +17,12 @@ class SubTaskModal extends React.Component {
     tabKey: '1'
   };
 
-  handleAddNewTask = () => {
-    this.props.addTask(this.state.addSubtaskInput);
-    this.setState({
-      addSubtaskInput: ''
-    });
-  };
+  // handleAddNewTask = () => {
+  //   this.props.addTask(this.state.addSubtaskInput);
+  //   this.setState({
+  //     addSubtaskInput: ''
+  //   });
+  // };
   handleOnChange = event => {
     this.setState({
       addSubtaskInput: event.target.value
