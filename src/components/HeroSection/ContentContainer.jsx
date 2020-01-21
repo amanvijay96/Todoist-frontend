@@ -4,10 +4,12 @@ import { Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
+// import project from './project';
 import { getAllTask, deleteTask } from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
-
 import AddSection from './AddSection';
+import Section from './Section.jsx';
+import ProjectCommentModal from './ProjectCommentModal';
 
 class ContentContainer extends Component {
   state = {
@@ -16,10 +18,13 @@ class ContentContainer extends Component {
     visible: false,
     taskInput: '',
     toggle: 'false',
-    sectiontoggle: 'false'
+    sectiontoggle: 'false',
+    projectCommentModalVisible: false,
+    tabKey: '1'
   };
   componentDidMount() {
     this.props.getAllTask(this.props.projectId);
+    this.props.getAllSection(this.props.projectId);
   }
   handleDeleteTask = id => {
     this.props.deleteTask(id);
@@ -30,11 +35,31 @@ class ContentContainer extends Component {
   handleSectiontoggle = e => {
     this.setState({ sectiontoggle: e.target.value });
   };
+  handleProjectCommentModalVisible = e => {
+    this.setState({
+      projectCommentModalVisible: true,
+      tabKey: e
+    });
+  };
+  handleCancel = () => {
+    this.setState({
+      projectCommentModalVisible: false
+    });
+  };
+
+  handleAddTask = () => {
+    console.log(this.props.match.params.id)
+
+  }
+  
   render() {
     var allTasks = this.props.tasks.map(task => {
       return (
         <Task key={task.id} task={task} deleteTask={this.handleDeleteTask} />
       );
+    });
+    var allSections = this.props.sections.map(section => {
+      return <Section key={section.id} section={section} />;
     });
 
     return (
@@ -44,18 +69,25 @@ class ContentContainer extends Component {
             <b>{this.props.name}</b>
           </h2>
           <div className="iconsDiv">
-            <Icon className="commentIcon" type="message" />
+            <Icon
+              className="commentIcon"
+              onClick={() => this.handleProjectCommentModalVisible('1')}
+              type="message"
+            />
             <Icon className="addIcon" type="user-add" />
             <Dropdown overlay={<SectionMenu />} trigger={['click']}>
               <Icon type="ellipsis" />
             </Dropdown>
           </div>
         </div>
-        {/* <div className="section-menu2">
-          <Dropdown overlay={<SectionMenu2 />} trigger={['click']}>
-            <Icon type="ellipsis" />
-          </Dropdown>
-        </div> */}
+        <ProjectCommentModal
+          handleProjectCommentModalVisible={
+            this.handleProjectCommentModalVisible
+          }
+          visible={this.state.projectCommentModalVisible}
+          onCancel={this.handleCancel}
+          tabKey={this.state.tabKey}
+        />
         {allTasks.length !== 0 ? (
           <div className="taskDiv">{allTasks}</div>
         ) : null}
@@ -85,7 +117,7 @@ class ContentContainer extends Component {
         ) : (
           <AddSection cancel={this.handleSectiontoggle} />
         )}
-
+        <div className="taskDiv">{allSections}</div>
         {allTasks.length === 0 && this.state.sectiontoggle === 'false' ? (
           <div className="imgDiv">
             <img className="img" src={require('../../section.svg')} alt="" />
@@ -101,7 +133,8 @@ const mapStateToProps = (state, ownProps) => {
   // console.log(ownProps, 'ownProps');
   return {
     tasks: state.taskReducer.tasks,
-    projectId: ownProps.projectId
+    sections: state.taskReducer.sections
+    // projectId: ownProps.projectId
     // name: state.heroSectionReducer.name
   };
 };
@@ -112,6 +145,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteTask: id => {
       dispatch(deleteTask(id));
+    },
+    getAllSection: id => {
+      dispatch(getAllTask(id));
     }
   };
 };

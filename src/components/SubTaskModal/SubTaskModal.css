@@ -67,7 +67,8 @@
   color: black;
 }
 .comments-section {
-  border: solid 2px gray;
+  border: solid 1px rgb(190, 188, 188);
+  padding: 0 1.2vw;
 }
 .comment-text-area {
   width: 100%;
@@ -88,7 +89,6 @@
 .add-comment-button {
   height: 5vh;
   margin-bottom: 1vh;
-  margin-right: .6vw;
   border-radius: 5px;
   padding: 0 1vw;
   background-color: #db4c3f;
@@ -96,4 +96,12 @@
   color: white;
   border: none;
   outline: none;
+}
+.project-comments-section {
+  margin-top: 12vh;
+  border: solid 1px rgb(190, 188, 188);
+  padding: 0 1.2vw;
+}
+.project-comments-tab{
+  width: 500px;
 }

@@ -1,7 +1,9 @@
-import { GET_TASK, ADD_TASK, DELETE_TASK } from '../actions/types';
+import { GET_TASK, ADD_TASK, DELETE_TASK, GET_SECTION } from '../actions/types';
 
 const initialState = {
-  tasks: []
+  tasks: [],
+  sections: []
+  //   sections:[]
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +13,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         tasks: action.payload
+      };
+    case GET_SECTION:
+      return {
+        ...state,
+        sections: action.payload
       };
     case ADD_TASK:
       return {

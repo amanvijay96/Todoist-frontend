@@ -15,11 +15,11 @@ class Modals extends React.Component {
     // id: 0
   };
   handleAddNewTask = () => {
-
     console.log(this.props.projectId, 'cdscsd');
+    console.log(new URL(window.location), 'cdscsd');
     this.props.addTask(
-      this.state.addtaskInput,
-      this.match.params.id,
+      this.state.addtaskInput
+      // this.match.params.id,
       // this.state.date,
       // this.state.priority
     );
