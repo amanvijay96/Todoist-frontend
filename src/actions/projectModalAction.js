@@ -3,11 +3,11 @@ import { GET_PROJECT, ADD_PROJECT, DELETE_PROJECT } from './types';
 
 export const getAllProject = () => {
   return async function(dispatch) {
-    console.log('hi');
+    // console.log('hi')
     axios({
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects`,
-      responseType: 'stream'
+      // responseType: 'stream'
     }).then(data => {
       // console.log(data, '//////////');
       dispatch({

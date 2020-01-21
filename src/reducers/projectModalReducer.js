@@ -1,7 +1,8 @@
 import { GET_PROJECT, ADD_PROJECT, DELETE_PROJECT } from '../actions/types';
 
 const initialState = {
-  projects: []
+  projects: [],
+  inbox: null
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,8 @@ export default function(state = initialState, action) {
     case GET_PROJECT:
       return {
         ...state,
-        projects: action.payload
+        projects: action.payload,
+        inbox: action.payload.find(p => p.name === "inbox")
       };
     case ADD_PROJECT:
       return {

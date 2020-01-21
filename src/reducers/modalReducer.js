@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, ADD_TASK } from '../actions/types';
+import { OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
 
 const initialState = {
   visible: false,
@@ -17,12 +17,6 @@ export default function modalReducer(state = initialState, action) {
         visible: !state.visible
       };
     }
-    // case ADD_TASK: {
-    //   return {
-    //     ...state,
-    //     taskData: state.taskData.concat(action.payload)
-    //   };
-    // }
     default:
       return state;
   }

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 class NewTask extends React.Component {
   state = {
     addtaskInput: '',
-    date: 0,
+    date: '',
     priority: 4
   };
   // handleAddNewTask = () => {
@@ -21,16 +21,15 @@ class NewTask extends React.Component {
   // };
   handleOnChange = event => {
     this.setState({
-      addtaskInput: event.target.value,
-      date: event.target.showTime
+      addtaskInput: event.target.value
     });
   };
   onChange = (value, dateString) => {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
-    this.setState({
-      date: dateString
-    });
+    // this.setState({
+    //   date: dateString
+    // });
   };
 
   onOk = value => {

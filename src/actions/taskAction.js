@@ -9,19 +9,15 @@ import {
 } from './types';
 
 export const getAllTask = projectId => {
+  // console.log(projectId)
   return function(dispatch) {
-    console.log('hi');
     axios({
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects/${projectId}`
-      //   responseType: 'stream'
     }).then(data => {
-      console.log(data.data, 'aaaaaaaaaa');
       dispatch({
         type: GET_TASK,
         payload: data.data.task
-        // type1: GET_SECTION,
-        // payload1: data.data.section
       });
       dispatch({
         type: GET_SECTION,
@@ -31,21 +27,25 @@ export const getAllTask = projectId => {
   };
 };
 
-export const addTask = (taskName, projectId) => {
+export const addTask = (taskName, projectId, date, priority) => {
+  console.log(taskName, projectId)
   return async function(dispatch) {
-    // console.log(taskName, 'mmmmmmaaaaaa');
-    // console.log(typeof projectName);
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName,
+<<<<<<< HEAD
         project_id: projectId
         // section_id: sectionId
+=======
+        projectId: projectId
+        // priority: priority,
+        // due: date
+>>>>>>> 57c4aa9dd01275f566f749c807d4b40adc3106d8
         // projectId: 1
       }
     }).then(data => {
-      // console.log(data, 'ppppppppppppp');
       dispatch({
         type: ADD_TASK,
         payload: data.data
@@ -55,8 +55,6 @@ export const addTask = (taskName, projectId) => {
 };
 export const deleteTask = id => {
   return async function(dispatch) {
-    // console.log(projectName);
-    // console.log(typeof projectName);
     axios({
       method: 'delete',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks/${id}`
