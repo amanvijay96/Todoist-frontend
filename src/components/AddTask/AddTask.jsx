@@ -4,7 +4,7 @@ import { DatePicker, Icon, Dropdown } from 'antd';
 // import { connect } from 'react-redux';
 import PriorityMenu from '../Modal/Priority';
 import './AddTask.css';
-import { addTask } from '../../actions/taskAction';
+// import { addTask } from '../../actions/taskAction';
 import { connect } from 'react-redux';
 
 class NewTask extends React.Component {
@@ -13,12 +13,12 @@ class NewTask extends React.Component {
     date: 0,
     priority: 4
   };
-  handleAddNewTask = () => {
-    this.props.addTask(this.state.addtaskInput, this.props.projectId);
-    this.setState({
-      addtaskInput: ''
-    });
-  };
+  // handleAddNewTask = () => {
+  //   this.props.addTask(this.state.addtaskInput, this.props.projectId,);
+  //   this.setState({
+  //     addtaskInput: ''
+  //   });
+  // };
   handleOnChange = event => {
     this.setState({
       addtaskInput: event.target.value,
@@ -59,7 +59,9 @@ class NewTask extends React.Component {
           </div>
         </div>
         <div className='task-buttons'>
-          <button onClick={this.handleAddNewTask} className='add-task-button'>
+          <button
+            onClick={() => this.props.addTask(this.state.addtaskInput)}
+            className='add-task-button'>
             Add Task
           </button>
           <button
@@ -82,4 +84,4 @@ class NewTask extends React.Component {
   }
 }
 
-export default connect(null, { addTask })(NewTask);
+export default connect(null)(NewTask);

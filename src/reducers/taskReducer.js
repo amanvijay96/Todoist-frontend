@@ -1,4 +1,11 @@
-import { GET_TASK, ADD_TASK, DELETE_TASK, GET_SECTION } from '../actions/types';
+import {
+  GET_TASK,
+  ADD_TASK,
+  DELETE_TASK,
+  GET_SECTION,
+  ADD_SECTION,
+  DELETE_SECTION
+} from '../actions/types';
 
 const initialState = {
   tasks: [],
@@ -28,6 +35,18 @@ export default function(state = initialState, action) {
       return {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload)
+      };
+    case ADD_SECTION:
+      return {
+        ...state,
+        sections: state.sections.concat(action.payload)
+      };
+    case DELETE_SECTION:
+      return {
+        ...state,
+        sections: state.sections.filter(
+          section => section.id !== action.payload
+        )
       };
     //   case ADD_PROJECT:
     //     return {

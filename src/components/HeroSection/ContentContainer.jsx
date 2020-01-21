@@ -5,10 +5,16 @@ import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
 // import project from './project';
-import { getAllTask, deleteTask } from '../../actions/taskAction';
+import {
+  getAllTask,
+  addTask,
+  deleteTask,
+  deleteSection
+} from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
-import SectionMenu2 from './SectionMenu2';
+
 import Section from './Section.jsx';
+import AddSection from './AddSection';
 
 class ContentContainer extends Component {
   state = {
@@ -23,8 +29,14 @@ class ContentContainer extends Component {
     this.props.getAllTask(this.props.projectId);
     this.props.getAllSection(this.props.projectId);
   }
+  handleAddTask = taskName => {
+    this.props.addTask(taskName, this.props.projectId);
+  };
   handleDeleteTask = id => {
     this.props.deleteTask(id);
+  };
+  handleDeleteSection = id => {
+    this.props.deleteSection(id);
   };
   handletoggle = e => {
     this.setState({ toggle: e.target.value });
@@ -39,7 +51,13 @@ class ContentContainer extends Component {
       );
     });
     var allSections = this.props.sections.map(section => {
-      return <Section key={section.id} section={section} />;
+      return (
+        <Section
+          key={section.id}
+          section={section}
+          deleteSection={this.handleDeleteSection}
+        />
+      );
     });
 
     return (
@@ -56,11 +74,7 @@ class ContentContainer extends Component {
             </Dropdown>
           </div>
         </div>
-        <div className='section-menu2'>
-          <Dropdown overlay={<SectionMenu2 />} trigger={['click']}>
-            <Icon type='ellipsis' />
-          </Dropdown>
-        </div>
+
         {allTasks.length !== 0 ? (
           <div className='taskDiv'>{allTasks}</div>
         ) : null}
@@ -75,9 +89,11 @@ class ContentContainer extends Component {
         ) : (
           <NewTask
             cancel={this.handletoggle}
-            projectId={this.props.projectId}
+            addTask={this.handleAddTask}
+            // projectId={this.props.projectId}
           />
         )}
+        <div className='taskDiv'>{allSections}</div>
         {this.state.sectiontoggle === 'false' ? (
           <button
             onClick={this.handleSectiontoggle}
@@ -86,7 +102,10 @@ class ContentContainer extends Component {
             <hr className='hr-text' data-content='Add Section' />
           </button>
         ) : (
-          <AddSection cancel={this.handleSectiontoggle} />
+          <AddSection
+            cancel={this.handleSectiontoggle}
+            projectId={this.props.projectId}
+          />
         )}
 
         {allTasks.length === 0 ? (
@@ -95,7 +114,6 @@ class ContentContainer extends Component {
             <b>Keep Your tasks organized</b>
           </div>
         ) : null}
-        <div className='taskDiv'>{allSections}</div>
       </div>
     );
   }
@@ -115,11 +133,17 @@ const mapDispatchToProps = dispatch => {
     getAllTask: id => {
       dispatch(getAllTask(id));
     },
+    addTask: (taskName, id) => {
+      dispatch(addTask(taskName, id));
+    },
     deleteTask: id => {
       dispatch(deleteTask(id));
     },
     getAllSection: id => {
       dispatch(getAllTask(id));
+    },
+    deleteSection: id => {
+      dispatch(deleteSection(id));
     }
   };
 };

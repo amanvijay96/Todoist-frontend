@@ -1,0 +1,32 @@
+.sectionDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  /* background-color: white; */
+}
+.sectionCollapse {
+  border: none;
+  font-size: 15px;
+}
+.sectionItem {
+  background-color: white;
+  border: none;
+}
+/* .ant-collapse-header  */
+.sectionItem header {
+  border: none;
+  border-bottom: none;
+  background-color: white;
+}
+/* .ant-collapse > .ant-collapse-item > .ant-collapse-header */
+.sectionCollapse > .sectionItem > .sectionItem header {
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* outline: none; */
+}
+/* .sectionItem .ant-collapse-content .ant-collapse-content-box button {
+  border: none;
+} */

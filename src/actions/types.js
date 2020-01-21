@@ -10,3 +10,5 @@ export const GET_TASK = 'GET_TASK';
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const GET_SECTION = 'GET_SECTION';
+export const ADD_SECTION = 'ADD_SECTION';
+export const DELETE_SECTION = 'DELETE_SECTION';

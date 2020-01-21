@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   padding: 0.3vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
 }
 .taskContainer:hover .taskIconDiv {
   display: flex;
@@ -65,10 +67,10 @@
 .round input:checked + .label:after {
   opacity: 1;
 }
-.taskOption{
+.taskOption {
   display: flex;
   align-items: center;
 }
-.task-menu p{
+.task-menu p {
   margin-bottom: 0;
 }
