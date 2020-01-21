@@ -12,10 +12,12 @@ import Section from './Section.jsx';
 
 class ContentContainer extends Component {
   state = {
+    sectionButtonVisible: false,
     showImg: true,
     visible: false,
     taskInput: '',
-    toggle: 'false'
+    toggle: 'false',
+    sectiontoggle: 'false'
   };
   componentDidMount() {
     this.props.getAllTask(this.props.projectId);
@@ -26,6 +28,9 @@ class ContentContainer extends Component {
   };
   handletoggle = e => {
     this.setState({ toggle: e.target.value });
+  };
+  handleSectiontoggle = e => {
+    this.setState({ sectiontoggle: e.target.value });
   };
   render() {
     var allTasks = this.props.tasks.map(task => {
@@ -73,6 +78,17 @@ class ContentContainer extends Component {
             projectId={this.props.projectId}
           />
         )}
+        {this.state.sectiontoggle === 'false' ? (
+          <button
+            onClick={this.handleSectiontoggle}
+            value='true'
+            className='add-section-button'>
+            <hr className='hr-text' data-content='Add Section' />
+          </button>
+        ) : (
+          <AddSection cancel={this.handleSectiontoggle} />
+        )}
+
         {allTasks.length === 0 ? (
           <div className='imgDiv'>
             <img className='img' src={require('../../section.svg')} alt='' />
