@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_TASK, ADD_TASK, DELETE_TASK } from './types';
+import { GET_TASK, ADD_TASK, DELETE_TASK, GET_SECTION } from './types';
 
 export const getAllTask = projectId => {
   return function(dispatch) {
@@ -13,6 +13,12 @@ export const getAllTask = projectId => {
       dispatch({
         type: GET_TASK,
         payload: data.data.task
+        // type1: GET_SECTION,
+        // payload1: data.data.section
+      });
+      dispatch({
+        type: GET_SECTION,
+        payload: data.data.section
       });
     });
   };

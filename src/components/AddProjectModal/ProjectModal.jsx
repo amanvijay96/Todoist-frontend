@@ -55,7 +55,7 @@ class ProjectModal extends React.Component {
               onChange={this.handleOnChange}
               className='projectNameInput'></input>
             <div className='favoriteDiv'>
-              <Switch defaultChecked onChange={this.onChange} />
+              <Switch defaultChecked={false} onChange={this.onChange} />
               <p>Add to favorites</p>
             </div>
             <div className='addProjectButton1Div'>

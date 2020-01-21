@@ -4,10 +4,11 @@ import { Icon, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import NewTask from '../AddTask/AddTask';
 import Task from './Task';
-import project from './project';
+// import project from './project';
 import { getAllTask, deleteTask } from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
 import SectionMenu2 from './SectionMenu2';
+import Section from './Section.jsx';
 
 class ContentContainer extends Component {
   state = {
@@ -18,6 +19,7 @@ class ContentContainer extends Component {
   };
   componentDidMount() {
     this.props.getAllTask(this.props.projectId);
+    this.props.getAllSection(this.props.projectId);
   }
   handleDeleteTask = id => {
     this.props.deleteTask(id);
@@ -30,6 +32,9 @@ class ContentContainer extends Component {
       return (
         <Task key={task.id} task={task} deleteTask={this.handleDeleteTask} />
       );
+    });
+    var allSections = this.props.sections.map(section => {
+      return <Section key={section.id} section={section} />;
     });
 
     return (
@@ -74,8 +79,7 @@ class ContentContainer extends Component {
             <b>Keep Your tasks organized</b>
           </div>
         ) : null}
-
-  
+        <div className='taskDiv'>{allSections}</div>
       </div>
     );
   }
@@ -85,7 +89,8 @@ const mapStateToProps = (state, ownProps) => {
   console.log(ownProps, 'ownProps');
   return {
     tasks: state.taskReducer.tasks,
-    projectId: ownProps.projectId
+    sections: state.taskReducer.sections
+    // projectId: ownProps.projectId
     // name: state.heroSectionReducer.name
   };
 };
@@ -96,6 +101,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteTask: id => {
       dispatch(deleteTask(id));
+    },
+    getAllSection: id => {
+      dispatch(getAllTask(id));
     }
   };
 };
