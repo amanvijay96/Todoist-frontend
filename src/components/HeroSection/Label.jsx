@@ -5,8 +5,8 @@ class Label extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <Tag color="magenta">@morning</Tag>
+      <div style={{display: 'flex', flexDirection:'column'}}>
+        <Tag style color="magenta">@morning</Tag>
         <Tag color="purple">@evening</Tag>
         <Tag color="volcano">@night</Tag>
         <Tag color="gold">@15min</Tag>
