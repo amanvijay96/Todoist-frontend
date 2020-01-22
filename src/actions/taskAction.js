@@ -28,22 +28,23 @@ export const getAllTask = projectId => {
 };
 
 export const addTask = (taskName, projectId, date, priority) => {
-  console.log(taskName, projectId)
+  console.log(taskName, projectId);
   return async function(dispatch) {
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName,
-<<<<<<< HEAD
-        project_id: projectId
+        projectId: projectId,
         // section_id: sectionId
-=======
-        projectId: projectId
-        // priority: priority,
-        // due: date
->>>>>>> 57c4aa9dd01275f566f749c807d4b40adc3106d8
         // projectId: 1
+        due: {
+          date: date,
+          datetime: null,
+          string: null,
+          timezone: 'India'
+        },
+        priority: priority
       }
     }).then(data => {
       dispatch({
@@ -76,7 +77,7 @@ export const addSection = (sectionName, projectId) => {
       url: `https://todoistrest.herokuapp.com/rest/v1/sections`,
       data: {
         name: sectionName,
-        project_id: projectId
+        projectId: projectId
         // projectId: 1
       }
     }).then(data => {

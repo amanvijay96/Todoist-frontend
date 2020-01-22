@@ -1,9 +1,11 @@
 import React from 'react';
-import '../Modal/Modal.css';
+
 import { DatePicker, Icon, Dropdown } from 'antd';
 // import { connect } from 'react-redux';
 import PriorityMenu from '../Modal/Priority';
 import './AddTask.css';
+import '../Modal/Modal.css';
+import SelectProject from '../AddTask/ProjectsDropdown.jsx';
 // import { addTask } from '../../actions/taskAction';
 import { connect } from 'react-redux';
 
@@ -25,62 +27,87 @@ class NewTask extends React.Component {
     });
   };
   onChange = (value, dateString) => {
-    console.log('Selected Time: ', value);
+    // console.log('Selected Time: ', value);
+    dateString = new Date(dateString);
     console.log('Formatted Selected Time: ', dateString);
-    // this.setState({
-    //   date: dateString
-    // });
+    this.setState({
+      date: dateString
+    });
   };
-
-  onOk = value => {
-    console.log('onOk: ', value);
+  handlePriority = priority => {
+    this.setState({
+      priority: priority
+    });
   };
+  // onOk = value => {
+  //   console.log('onOk: ', value);
+  // };
 
   render() {
     return (
       <section>
-        <div className='input-fields'>
+        <div className="input-fields">
           <input
-            type='text'
-            placeholder='e.g. Conference Wednesday at 15 #Meeting'
-            className='quick-add-title'
+            type="text"
+            placeholder="e.g. Conference Wednesday at 15 #Meeting"
+            className="quick-add-title"
             onChange={this.handleOnChange}
-            // onAddNewTask={this.handleAddNewTask}
           />
           <div>
             <DatePicker
               showTime
-              placeholder='Schedule'
-              className='quick-add-schedule'
+              placeholder="Schedule"
+              className="quick-add-schedule"
               onChange={this.onChange}
               onOk={this.onOk}
             />
           </div>
         </div>
-        <div className='task-buttons'>
+        <div className="task-buttons">
           <button
-            onClick={() => this.props.addTask(this.state.addtaskInput)}
-            className='add-task-button'>
+            onClick={() =>
+              this.props.addTask(
+                this.state.addtaskInput,
+                this.state.date,
+                this.state.priority
+              )
+            }
+            className="add-task-button"
+          >
             Add Task
           </button>
-          <button
-            className='cancel-button-task'
-            value='false'
-            onClick={this.props.cancel}>
-            Cancel
-          </button>
-          <div className='task-icons'>
-            <Icon type='bars' />
-            <Icon type='tag' />
-            <Dropdown overlay={<PriorityMenu />} trigger={['click']}>
-              <Icon type='flag' />
+          {this.props.cancelVisible && (
+            <button
+              className="cancel-button-task"
+              value="false"
+              onClick={this.props.cancel}
+            >
+              Cancel
+            </button>
+          )}
+          <div className="task-icons">
+            <Dropdown overlay={<SelectProject projects={this.props.projects} />} trigger={['click']}>
+              <Icon type="bars" className="bars" />
             </Dropdown>
-            <Icon type='clock-circle' />
+            <Icon type="tag" className="tag" />
+            <Dropdown
+              overlay={<PriorityMenu handlePriority={this.handlePriority} />}
+              trigger={['click']}
+            >
+              <Icon type="flag" className="flag" />
+            </Dropdown>
+            <Icon type="clock-circle" className="clock" />
           </div>
         </div>
       </section>
     );
   }
 }
-
-export default connect(null)(NewTask);
+const mapStateToProps = state => {
+  // console.log(state)
+  return {
+    projects: state.projectModalReducer.projects
+  };
+};
+// mapDispatchToProps = dispatch => {}
+export default connect(mapStateToProps)(NewTask);
