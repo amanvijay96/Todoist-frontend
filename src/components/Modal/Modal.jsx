@@ -31,13 +31,13 @@ class Modals extends React.Component {
   //     addtaskInput: event.target.value
   //   });
   // };
-  // onChange = (value, dateString) => {
-  //   // console.log('Selected Time: ', value);
-  //   // console.log('Formatted Selected Time: ', dateString);
-  //   this.setState({
-  //     date: dateString
-  //   });
-  // };
+  onChange = (value, dateString) => {
+    // console.log('Selected Time: ', value);
+    // console.log('Formatted Selected Time: ', dateString);
+    this.setState({
+      date: dateString
+    });
+  };
 
   // onOk = value => {
   //   console.log('onOk: ', value);

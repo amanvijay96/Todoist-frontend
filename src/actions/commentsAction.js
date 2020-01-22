@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_COMMENTS, ADD_COMMENT, DELETE_COMMENT } from './types';
 
-export const getAllSubTask = taskId => {
+export const getAllComments = taskId => {
   // console.log(projectId)
   return function(dispatch) {
     axios({
@@ -16,27 +16,41 @@ export const getAllSubTask = taskId => {
   };
 };
 
-export const addSubTask = (comment, taskId, date, priority) => {
+export const addComment = (comment, taskId) => {
   return async function(dispatch) {
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/comment`,
       data: {
         comment: comment,
-        projectId: taskId
-        // priority: priority,
-        // due: date
-        // projectId: 1
+        taskId: taskId
       }
     }).then(data => {
       dispatch({
         type: ADD_COMMENT,
-        payload: data.comment
+        payload: data.data.comment
       });
     });
   };
 };
-export const deleteSubTask = id => {
+export const addProjectComment = (comment, projectId) => {
+  return async function(dispatch) {
+    axios({
+      method: 'post',
+      url: `https://todoistrest.herokuapp.com/rest/v1/comment`,
+      data: {
+        comment: comment,
+        project_id: projectId
+      }
+    }).then(data => {
+      dispatch({
+        type: ADD_COMMENT,
+        payload: data.data.comment
+      });
+    });
+  };
+};
+export const deleteComment = id => {
   return async function(dispatch) {
     axios({
       method: 'delete',

@@ -17,7 +17,7 @@ class Header extends Component {
       <div>
         <header className="header">
           <nav>
-            <Link to="/">
+            <Link to="/getStarted">
               <div onClick={() => this.props.changeName('Today')}>
                 <img
                   src={require('../../logo.svg')}

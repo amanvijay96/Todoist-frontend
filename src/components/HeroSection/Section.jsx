@@ -88,9 +88,9 @@ class Section extends Component {
                 cancel={this.handletoggle}
                 addTask={this.handleAddSectionTask}
                 // projectId={this.props.projectId}
+                cancelVisible={true}
               />
             )}
-            {/* <p>{'text'}</p> */}
           </Panel>
         </Collapse>
       </div>

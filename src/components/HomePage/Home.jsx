@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   state = {
@@ -30,7 +31,7 @@ class Home extends Component {
       <div>
         <div className="header-homepage">
           <div className="logo-and-app">
-            <img src={require('../../logo.svg')} alt="Todoist" />
+            <img src={require('../../headerlogo.svg')} alt="Todoist" />
             <span className="app-name">
               <b>todoist</b>
             </span>
@@ -56,11 +57,13 @@ class Home extends Component {
               with Todoist
             </h1>
           </div>
-          <button className="get-started">Get Started</button>
+          <Link to='/getStarted'>
+            <button className="get-started">Get Started</button>
+          </Link>
         </section>
         <LoginModal
           visible={this.state.loginVisible}
-          handleCancel={this.onCancel}
+          onCancel={this.handleCancel}
         />
         <SignupModal
           visible={this.state.signupVisible}

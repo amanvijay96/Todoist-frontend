@@ -8,6 +8,8 @@ import { changeName } from '../../actions/heroSectionAction';
 import { getAllProject, deleteProject } from '../../actions/projectModalAction';
 import ContentContainer from './ContentContainer';
 import Project from './project';
+import Priority from '../Modal/Priority';
+import Label from './Label';
 
 import './HeroSection.css';
 const { Panel } = Collapse;
@@ -64,7 +66,7 @@ class HeroSection extends Component {
               </span>
             </div>
           </Link>
-          <Link to='/'>
+          <Link to='/getStarted'>
             <div
               onClick={() => {
                 this.props.changeName('Today');
@@ -125,7 +127,7 @@ class HeroSection extends Component {
               }
               button='+'
               key='2'>
-              <p>{'b'}</p>
+              <Label />
             </Panel>
             <Panel
               className='filterItem'
@@ -136,7 +138,7 @@ class HeroSection extends Component {
                 </div>
               }
               key='3'>
-              <p>{'c'}</p>
+              <Priority />
             </Panel>
           </Collapse>
         </div>

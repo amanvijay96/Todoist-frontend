@@ -6,7 +6,11 @@ class PriorityMenu extends React.Component {
   render() {
     return (
       <Menu bodyStyle="100px">
-        <Menu.Item onClick={()=>this.props.handlePriority('1')} key="0">
+        <Menu.Item
+          style={{ marginBottom: '0px' }}
+          onClick={() => this.props.handlePriority('1')}
+          key="0"
+        >
           <div className="priority-flag">
             <Icon
               type="flag"
@@ -16,7 +20,11 @@ class PriorityMenu extends React.Component {
             <span>Priority1</span>
           </div>
         </Menu.Item>
-        <Menu.Item onClick={()=>this.props.handlePriority('2')}  key="1">
+        <Menu.Item
+          style={{ marginBottom: '0px' }}
+          onClick={() => this.props.handlePriority('2')}
+          key="1"
+        >
           <div className="priority-flag">
             <Icon
               type="flag"
@@ -26,7 +34,11 @@ class PriorityMenu extends React.Component {
             <span>Priority2</span>
           </div>
         </Menu.Item>
-        <Menu.Item onClick={()=>this.props.handlePriority('3')}  key="2">
+        <Menu.Item
+          style={{ marginBottom: '0px' }}
+          onClick={() => this.props.handlePriority('3')}
+          key="2"
+        >
           <div className="priority-flag">
             <Icon
               type="flag"
@@ -36,7 +48,11 @@ class PriorityMenu extends React.Component {
             <span>Priority3</span>
           </div>
         </Menu.Item>
-        <Menu.Item onClick={()=>this.props.handlePriority('4')}  key="3">
+        <Menu.Item
+          style={{ marginBottom: '0px' }}
+          onClick={() => this.props.handlePriority('4')}
+          key="3"
+        >
           <div className="priority-flag">
             <Icon
               type="flag"

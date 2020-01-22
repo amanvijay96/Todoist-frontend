@@ -2,26 +2,27 @@ import React from 'react';
 import { Modal } from 'antd';
 import '../SubTaskModal/SubTaskModal.css';
 import { Icon } from 'antd';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import PriorityMenu from '../Modal/Priority';
+import { addComment } from '../../actions/commentsAction';
+import Comment from './Comment';
 
 import { Tabs } from 'antd';
+
 const { TabPane } = Tabs;
 
 class ProjectCommentModal extends React.Component {
   state = {
+    showImg: true,
     visible: false,
     addProjectCommentInput: '',
     toggle: 'false',
     tabKey: '1'
   };
 
-  // handleAddNewSubTask = () => {
-  //   this.props.addSubTask(this.state.addSubtaskInput);
-  //   this.setState({
-  //     addSubtaskInput: ''
-  //   });
-  // };
+  handleAddNewComment = () => {
+    this.props.addComment(this.state.addProjectCommentInput);
+  };
   handleOnChange = event => {
     this.setState({
       addSubtaskInput: event.target.value
@@ -31,27 +32,16 @@ class ProjectCommentModal extends React.Component {
   handleTab = keyVal => {
     this.setState({ tabKey: keyVal });
   };
-  // onChange = (value, dateString) => {
-  //   console.log('Selected Time: ', value);
-  //   console.log('Formatted Selected Time: ', dateString);
-  // };
 
-  // onOk = value => {
-  //   console.log('onOk: ', value);
-  // };
-  // callback = key => {
-  //   console.log(key);
-  // };
-
-  // handletoggle = e => {
-  //   this.setState({ toggle: e.target.value });
-  // };
   render() {
     // console.log(this.props.role);
+    let allComments = this.props.comments.map(comment => {
+      return <Comment key={comment.id} comment={comment} />;
+    });
     return (
       <div>
         <Modal
-          title="file name"
+          title={this.props.name}
           visible={this.props.visible}
           onCancel={this.props.onCancel}
           footer={null}
@@ -70,12 +60,16 @@ class ProjectCommentModal extends React.Component {
               // onChange={this.callback}
             >
               <TabPane tab="Comments" key="1">
-                <div className="comments-logo">
-                  <img
-                    src={require('../../comments.svg')}
-                    alt="Write a Comment"
-                  />
-                </div>
+                {allComments.length === 0 ? (
+                  <div className="comments-logo">
+                    <img
+                      src={require('../../comments.svg')}
+                      alt="Write a Comment"
+                    />
+                  </div>
+                ) : (
+                  <div className='comment-section'>{allComments}</div>
+                )}
                 <div className="project-comments-section">
                   <textarea
                     placeholder="Write a comment"
@@ -88,7 +82,12 @@ class ProjectCommentModal extends React.Component {
                       <Icon type="audio" />
                       <Icon type="smile" />
                     </div>
-                    <button className="add-comment-button">Add Comment</button>
+                    <button
+                      className="add-comment-button"
+                      onClick={this.handleAddNewComment}
+                    >
+                      Add Comment
+                    </button>
                   </div>
                 </div>
               </TabPane>
@@ -105,4 +104,22 @@ class ProjectCommentModal extends React.Component {
   }
 }
 
-export default ProjectCommentModal;
+const mapStateToProps = state => {
+  return {
+    comments: state.commentReducer.comments
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    addComment: () => {
+      dispatch(addComment());
+    }
+    // deleteComment: id => {
+    //   dispatch(deleteComment(id));
+    // }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectCommentModal);
