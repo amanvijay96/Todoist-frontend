@@ -1,3 +1,73 @@
+.input-fields {
+  display: flex;
+  margin-bottom: 1vw;
+}
+.quick-add-title {
+  width: 70%;
+  border: solid lightgray 1px;
+  height: 6vh;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  padding: 4px 8px;
+  outline: none;
+}
+.quick-add-title::placeholder {
+  color: rgba(182, 176, 176, 0.9);
+}
+.quick-add-schedule {
+  width: 30%;
+  border: solid lightgray 1px;
+  height: 6vh;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline: none;
+}
+.ant-calendar-picker-input.ant-input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  height: 5.7vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+.task-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.add-task-button {
+  width: 7vw;
+  height: 5vh;
+  border: none;
+  font-size: 1vw;
+  font-weight: bold;
+  background-color: #db4c3f;
+  color: white;
+  border-radius: 5px;
+}
+.task-icons {
+  display: flex;
+  width: 12vw;
+  font-size: 1.5vw;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(161, 156, 156);
+}
+.bars:hover,
+.tag:hover,
+.flag:hover,
+.clock:hover {
+  color: black;
+  cursor: pointer;
+}
+.priority-flag {
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .cancel-button-task {
   margin-right: 220px;
   border: none;

@@ -12,6 +12,7 @@ class Header extends Component {
   state = {};
 
   render() {
+    console.log(window.location.pathname);
     return (
       <div>
         <header className="header">
@@ -41,11 +42,11 @@ class Header extends Component {
                   <Icon type="plus" />
                 </li>
                 <li className="btn2">
-                  <Icon type="bell" />
+                  <Icon type="bell" theme="filled" />
                 </li>
                 <li className="btn3">
                   <Dropdown overlay={settingsMenu} trigger={['click']}>
-                    <Icon type="setting" />
+                    <Icon type="setting" theme="filled" />
                   </Dropdown>
                 </li>
               </ul>
