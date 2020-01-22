@@ -26,13 +26,19 @@ class Section extends Component {
     this.props.addSectionTask(taskName, this.props.section.id);
   };
   render() {
-    var sectionTask = this.props.sections.filter(
-      section => section.id === this.props.section.id
-    );
-    //console.log(sectionTask, 'llkklklklkll');
-    console.log(this.props.section.task, 'asdfg');
+    // var sectionTask = this.props.sections.filter(
+    //   section => section.id === this.props.section.id
+    // );
+    // //console.log(sectionTask, 'llkklklklkll');
+    // console.log(this.props.section.task, 'asdfg');
     var allSectionTasks = this.props.section.task.map(eachTask => {
-      return <Task key={eachTask.id} task={eachTask} />;
+      return (
+        <Task
+          key={eachTask.id}
+          task={eachTask}
+          deleteTask={this.props.deleteSectionTask}
+        />
+      );
     });
     return (
       <div>

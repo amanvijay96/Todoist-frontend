@@ -6,6 +6,7 @@ import {
   ADD_SECTION,
   DELETE_SECTION
 } from '../actions/types';
+import { act } from 'react-dom/test-utils';
 
 const initialState = {
   tasks: [],
@@ -34,36 +35,50 @@ export default function(state = initialState, action) {
           tasks: state.tasks.concat(action.payload)
         };
       } else {
-        var targetSectionIndex = state.sections.reduce((index, section) => {
-          if (section.id === action.payload.section_id) {
-            index = state.sections.indexOf(section);
-          }
-          return index;
-        }, 0);
-        // console.log(targetSectionIndex, 'llllllllllmm');
-        var targetSection = state.sections.filter(
-          section => section.id === action.payload.section_id
-        )[0];
-        // console.log(state.sections, 'awe');
-        targetSection.task = [...targetSection.task, action.payload];
-        // console.log(targetSection, '//////');
-        var updateSections = state.sections.splice(
-          targetSectionIndex,
-          1,
-          targetSection
-        );
         // console.log(state.sections, ',,,,,,');
         return {
           ...state,
-          sections: updateSections
+          sections: state.sections.map(section => {
+            let updatedSection = { ...section };
+            if (section.id === action.payload.section_id) {
+              updatedSection.task = updatedSection.task.concat([
+                action.payload
+              ]);
+            }
+            return updatedSection;
+          })
           // ...state,
         };
       }
     case DELETE_TASK:
-      return {
-        ...state,
-        tasks: state.tasks.filter(task => task.id !== action.payload)
-      };
+      var isTask = state.tasks.reduce((isTask, task) => {
+        if (task.id === action.payload) {
+          isTask = true;
+        }
+        return isTask;
+      }, false);
+      console.log(state.tasks, 'mm');
+      if (isTask) {
+        return {
+          ...state,
+          tasks: state.tasks.filter(task => task.id !== action.payload)
+        };
+      } else {
+        return {
+          ...state,
+          sections: state.sections.map(section => {
+            let updatedSection = { ...section };
+            console.log(updatedSection.task, 'lll');
+            updatedSection.task = updatedSection.task.filter(
+              eachTask => eachTask.id !== action.payload
+            );
+            return updatedSection;
+          })
+        };
+
+        // var update = state.sections.slice(0);
+        // update.map(section => console.log(section, 'kk'));
+      }
     case ADD_SECTION:
       return {
         ...state,

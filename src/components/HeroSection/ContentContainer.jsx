@@ -86,6 +86,7 @@ class ContentContainer extends Component {
           section={section}
           deleteSection={this.handleDeleteSection}
           addSectionTask={this.handleAddTask}
+          deleteSectionTask={this.handleDeleteTask}
         />
       );
     });
