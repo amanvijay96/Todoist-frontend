@@ -12,32 +12,32 @@ class AddSection extends Component {
       date: event.target.showTime
     });
   };
-  // handleAddNewSection = () => {
-  //   this.props.addSection(this.state.addSectionInput, this.props.projectId);
-  //   this.setState({
-  //     addSectionInput: ''
-  //   });
-  // };
+  handleAddNewSection = () => {
+    this.props.addSection(this.state.addSectionInput);
+    this.setState({
+      addSectionInput: ''
+    });
+  };
   render() {
     console.log(this.props, 'proooopppsppsps');
     return (
       <section>
         <input
-          type='text'
-          placeholder='Name this Section'
-          className='quick-add-section'
+          value={this.state.addSectionInput}
+          type="text"
+          placeholder="Name this Section"
+          className="quick-add-section"
           onChange={this.handleOnChange}
         />
-        <div className='section-add-button'>
-          <button
-            onClick={() => this.props.addSection(this.state.addSectionInput)}
-            className='add-section'>
+        <div className="section-add-button">
+          <button onClick={this.handleAddNewSection} className="add-section">
             Add Section
           </button>
           <button
-            className='cancel-button'
+            className="cancel-button"
             onClick={this.props.cancel}
-            value='false'>
+            value="false"
+          >
             Cancel
           </button>
         </div>

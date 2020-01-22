@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { GET_COMMENTS, ADD_COMMENT, DELETE_COMMENT } from './types';
 
-export const getAllComments = taskId => {
+export const getAllComments = projectId => {
   // console.log(projectId)
   return function(dispatch) {
     axios({
       method: 'get',
-      url: `https://todoistrest.herokuapp.com/rest/v1/comments/${taskId}`
+      url: `https://todoistrest.herokuapp.com/rest/v1/comments/${projectId}`
     }).then(data => {
+      console.log(data);
       dispatch({
         type: GET_COMMENTS,
         payload: data.data.comment
@@ -21,9 +22,13 @@ export const addComment = (comment, taskId) => {
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/comment`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
       data: {
-        comment: comment,
-        taskId: taskId
+        content: comment,
+        project_id: taskId
       }
     }).then(data => {
       dispatch({

@@ -32,13 +32,13 @@ class ContentContainer extends Component {
     this.props.getAllTask(this.props.projectId);
     this.props.getAllSection(this.props.projectId);
   }
-  handleAddTask = (taskName, sectionId, date, priority) => {
+  handleAddTask = (taskName, date, priority, sectionId) => {
     this.props.addTask(
       taskName,
-      this.props.projectId,
-      sectionId,
       date,
-      priority
+      priority,
+      this.props.projectId,
+      sectionId
     );
   };
   handleDeleteTask = id => {
@@ -92,20 +92,20 @@ class ContentContainer extends Component {
     });
 
     return (
-      <div className='content'>
-        <div className='projectHeadingDiv'>
+      <div className="content">
+        <div className="projectHeadingDiv">
           <h2>
             <b>{this.props.name}</b>
           </h2>
-          <div className='iconsDiv'>
+          <div className="iconsDiv">
             <Icon
-              className='commentIcon'
+              className="commentIcon"
               onClick={() => this.handleProjectCommentModalVisible('1')}
-              type='message'
+              type="message"
             />
-            <Icon className='addIcon' type='user-add' />
+            <Icon className="addIcon" type="user-add" />
             <Dropdown overlay={<SectionMenu />} trigger={['click']}>
-              <Icon type='ellipsis' />
+              <Icon type="ellipsis" />
             </Dropdown>
           </div>
         </div>
@@ -117,17 +117,19 @@ class ContentContainer extends Component {
           visible={this.state.projectCommentModalVisible}
           onCancel={this.handleCancel}
           tabKey={this.state.tabKey}
+          projectId={this.props.projectId}
         />
         {allTasks.length !== 0 ? (
-          <div className='taskDiv'>{allTasks}</div>
+          <div className="taskDiv">{allTasks}</div>
         ) : null}
         {this.state.toggle === 'false' ? (
           <button
             onClick={this.handletoggle}
-            value='true'
-            className='addProjectDiv addTaskDiv'>
-            <Icon type='plus' className='addSymbol' />
-            <p className='addProjectDivPara addTaskDivPara'>Add task</p>
+            value="true"
+            className="addProjectDiv addTaskDiv"
+          >
+            <Icon type="plus" className="addSymbol" />
+            <p className="addProjectDivPara addTaskDivPara">Add task</p>
           </button>
         ) : (
           <NewTask
@@ -138,15 +140,16 @@ class ContentContainer extends Component {
           />
         )}
         {allSections.length !== 0 ? (
-          <div className='taskDiv'>{allSections}</div>
+          <div className="taskDiv">{allSections}</div>
         ) : null}
         {/* <div className='taskDiv'>{allSections}</div> */}
         {this.state.sectiontoggle === 'false' ? (
           <button
             onClick={this.handleSectiontoggle}
-            value='true'
-            className='add-section-button'>
-            <hr className='hr-text' data-content='Add Section' />
+            value="true"
+            className="add-section-button"
+          >
+            <hr className="hr-text" data-content="Add Section" />
           </button>
         ) : (
           <AddSection
@@ -158,8 +161,8 @@ class ContentContainer extends Component {
         {allTasks.length === 0 &&
         this.state.toggle === 'false' &&
         this.state.sectiontoggle === 'false' ? (
-          <div className='imgDiv'>
-            <img className='img' src={require('../../section.svg')} alt='' />
+          <div className="imgDiv">
+            <img className="img" src={require('../../section.svg')} alt="" />
             <b>Keep Your tasks organized</b>
           </div>
         ) : null}
@@ -182,8 +185,8 @@ const mapDispatchToProps = dispatch => {
     getAllTask: id => {
       dispatch(getAllTask(id));
     },
-    addTask: (taskName, id, sectionId) => {
-      dispatch(addTask(taskName, id, sectionId));
+    addTask: (taskName, date, priority, id, sectionId) => {
+      dispatch(addTask(taskName, date, priority, id, sectionId));
     },
     deleteTask: id => {
       dispatch(deleteTask(id));

@@ -22,6 +22,7 @@ class Task extends Component {
   };
   render() {
     // console.log(this.state.role)
+    console.log(this.props.task, 'aaaaaa');
     return (
       <div>
         <div className="taskContainer">
@@ -31,6 +32,8 @@ class Task extends Component {
               <span className="label" />
             </label>
             <p>{this.props.task.content}</p>
+
+            {/* <p className="datePara">{this.props.task.due.date}</p> */}
           </div>
           <div className="taskIconDiv">
             <Icon

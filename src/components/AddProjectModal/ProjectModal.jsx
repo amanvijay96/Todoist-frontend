@@ -34,6 +34,9 @@ class ProjectModal extends React.Component {
   handleAddProject = () => {
     this.props.addProject(this.state.addProjectInput);
     this.props.handleCancel(false);
+    this.setState({
+      addProjectInput: ''
+    });
   };
 
   render() {
@@ -41,29 +44,33 @@ class ProjectModal extends React.Component {
     return (
       <div>
         <Modal
-          title='Add project'
+          title="Add project"
           visible={this.props.visible}
           // onOk={this.handleOk}
           onCancel={this.props.handleCancel}
           bodyStyle={{ height: '250px' }}
-          width='500px'
+          width="500px"
           // height='600px'
-          footer={null}>
-          <section className='addProjectSection'>
-            <h3 className='projectName'>Project name</h3>
+          footer={null}
+        >
+          <section className="addProjectSection">
+            <h3 className="projectName">Project name</h3>
             <input
+              value={this.state.addProjectInput}
               onChange={this.handleOnChange}
-              className='projectNameInput'></input>
-            <div className='favoriteDiv'>
+              className="projectNameInput"
+            ></input>
+            <div className="favoriteDiv">
               <Switch defaultChecked={false} onChange={this.onChange} />
               <p>Add to favorites</p>
             </div>
-            <div className='addProjectButton1Div'>
+            <div className="addProjectButton1Div">
               <button
                 onClick={this.handleAddProject}
                 // onClick={this.props.handleCancel}
                 // onCancel={this.props.handleCancel}
-                className='addProjectButton1'>
+                className="addProjectButton1"
+              >
                 Add
               </button>
             </div>

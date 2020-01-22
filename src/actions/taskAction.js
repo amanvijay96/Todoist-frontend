@@ -15,6 +15,7 @@ export const getAllTask = projectId => {
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects/${projectId}`
     }).then(data => {
+      // console.log(data, 'll');
       dispatch({
         type: GET_TASK,
         payload: data.data.task
@@ -27,8 +28,8 @@ export const getAllTask = projectId => {
   };
 };
 
-export const addTask = (taskName, projectId, sectionId, date, priority) => {
-  console.log(taskName, projectId, sectionId);
+export const addTask = (taskName, date, priority, projectId, sectionId) => {
+  console.log(taskName, date, priority, projectId, sectionId, 'pp');
   return async function(dispatch) {
     axios({
       method: 'post',
@@ -40,14 +41,14 @@ export const addTask = (taskName, projectId, sectionId, date, priority) => {
         // projectId: 1
         due: {
           date: date,
-          datetime: null,
-          string: null,
+          datetime: 'null',
+          string: 'null',
           timezone: 'India'
         },
         priority: priority
       }
     }).then(data => {
-      //   console.log(data, 'opiu');
+      console.log(data, 'opiu');
       dispatch({
         type: ADD_TASK,
         payload: data.data

@@ -57,7 +57,7 @@ class Home extends Component {
               with Todoist
             </h1>
           </div>
-          <Link to='/getStarted'>
+          <Link to="/getStarted">
             <button className="get-started">Get Started</button>
           </Link>
         </section>

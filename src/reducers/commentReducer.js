@@ -9,6 +9,7 @@ export default function(state = initialState, action) {
   // console.log(state, action);
   switch (action.type) {
     case GET_COMMENTS:
+      console.log(action)
       return {
         ...state,
         comments: action.payload
