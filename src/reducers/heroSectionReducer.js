@@ -1,7 +1,7 @@
 import { INBOX } from '../actions/types';
 
 const initialState = {
-  name: 'Today'
+  name: ''
 };
 const heroSectionReducer = (state = initialState, action) => {
   //   console.log(action);

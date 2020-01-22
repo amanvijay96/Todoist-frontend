@@ -5,16 +5,34 @@ class Label extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <Tag color="magenta">@morning</Tag>
-        <Tag color="purple">@evening</Tag>
-        <Tag color="volcano">@night</Tag>
-        <Tag color="gold">@15min</Tag>
-        <Tag color="lime">@1hour</Tag>
-        <Tag color="green">@5hours</Tag>
-        <Tag color="cyan">@work</Tag>
-        <Tag color="blue">@home</Tag>
-        <Tag color="red">@meeting</Tag>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Tag style={{ marginRight: '0px' }} color="magenta">
+          @morning
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="purple">
+          @evening
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="volcano">
+          @night
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="gold">
+          @15min
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="lime">
+          @1hour
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="green">
+          @5hours
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="cyan">
+          @work
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="blue">
+          @home
+        </Tag>
+        <Tag style={{ marginRight: '0px' }} color="red">
+          @meeting
+        </Tag>
       </div>
       /*<div>
        <Menu>

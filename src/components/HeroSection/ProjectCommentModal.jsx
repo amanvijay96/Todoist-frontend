@@ -4,7 +4,7 @@ import '../SubTaskModal/SubTaskModal.css';
 import { Icon } from 'antd';
 import { connect } from 'react-redux';
 // import PriorityMenu from '../Modal/Priority';
-import { addComment } from '../../actions/commentsAction';
+import { getAllComments, addComment } from '../../actions/commentsAction';
 import Comment from './Comment';
 
 import { Tabs } from 'antd';
@@ -19,9 +19,14 @@ class ProjectCommentModal extends React.Component {
     toggle: 'false',
     tabKey: '1'
   };
-
+  // componentDidMount() {
+  //   this.props.getAllComments(this.props.projectId);
+  // }
   handleAddNewComment = () => {
-    this.props.addComment(this.state.addProjectCommentInput);
+    this.props.addComment(
+      this.state.addProjectCommentInput,
+      this.props.projectId
+    );
   };
   handleOnChange = event => {
     this.setState({
@@ -68,7 +73,7 @@ class ProjectCommentModal extends React.Component {
                     />
                   </div>
                 ) : (
-                  <div className='comment-section'>{allComments}</div>
+                  <div className="comment-section">{allComments}</div>
                 )}
                 <div className="project-comments-section">
                   <textarea
@@ -111,9 +116,10 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    addComment: () => {
-      dispatch(addComment());
-    }
+    addComment: (commentContent, projectId) => {
+      dispatch(addComment(commentContent, projectId));
+    },
+    // getAllComments: projectId => dispatch(getAllComments(projectId))
     // deleteComment: id => {
     //   dispatch(deleteComment(id));
     // }

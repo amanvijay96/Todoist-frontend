@@ -8,6 +8,8 @@ import '../Modal/Modal.css';
 import SelectProject from '../AddTask/ProjectsDropdown.jsx';
 // import { addTask } from '../../actions/taskAction';
 import { connect } from 'react-redux';
+import Label from '../HeroSection/Label';
+import Reminder from './Reminder';
 
 class NewTask extends React.Component {
   state = {
@@ -15,12 +17,18 @@ class NewTask extends React.Component {
     date: '',
     priority: 4
   };
-  // handleAddNewTask = () => {
-  //   this.props.addTask(this.state.addtaskInput, this.props.projectId,);
-  //   this.setState({
-  //     addtaskInput: ''
-  //   });
-  // };
+  handleAddNewTask = () => {
+    this.props.addTask(
+      this.state.addtaskInput,
+      this.state.date,
+      this.state.priority
+    );
+    console.log('fghj');
+    this.setState({
+      addtaskInput: ''
+    });
+    console.log(this.state);
+  };
   handleOnChange = event => {
     this.setState({
       addtaskInput: event.target.value
@@ -33,6 +41,7 @@ class NewTask extends React.Component {
     this.setState({
       date: dateString
     });
+    console.log(this.state.date, 'dateeee');
   };
   handlePriority = priority => {
     this.setState({
@@ -44,11 +53,13 @@ class NewTask extends React.Component {
   // };
 
   render() {
+    console.log(this.state, 'Rishav');
     return (
       <section>
         <div className="input-fields">
           <input
             type="text"
+            value={this.state.addtaskInput}
             placeholder="e.g. Conference Wednesday at 15 #Meeting"
             className="quick-add-title"
             onChange={this.handleOnChange}
@@ -64,16 +75,7 @@ class NewTask extends React.Component {
           </div>
         </div>
         <div className="task-buttons">
-          <button
-            onClick={() =>
-              this.props.addTask(
-                this.state.addtaskInput,
-                this.state.date,
-                this.state.priority
-              )
-            }
-            className="add-task-button"
-          >
+          <button onClick={this.handleAddNewTask} className="add-task-button">
             Add Task
           </button>
           {this.props.cancelVisible && (
@@ -86,17 +88,24 @@ class NewTask extends React.Component {
             </button>
           )}
           <div className="task-icons">
-            <Dropdown overlay={<SelectProject projects={this.props.projects} />} trigger={['click']}>
+            <Dropdown
+              overlay={<SelectProject projects={this.props.projects} />}
+              trigger={['click']}
+            >
               <Icon type="bars" className="bars" />
             </Dropdown>
-            <Icon type="tag" className="tag" />
+            <Dropdown overlay={<Label />} trigger={['click']}>
+              <Icon type="tag" className="tag" />
+            </Dropdown>
             <Dropdown
               overlay={<PriorityMenu handlePriority={this.handlePriority} />}
               trigger={['click']}
             >
               <Icon type="flag" className="flag" />
             </Dropdown>
-            <Icon type="clock-circle" className="clock" />
+            <Dropdown overlay={<Reminder />} trigger={['click']}>
+              <Icon type="clock-circle" className="clock" />
+            </Dropdown>
           </div>
         </div>
       </section>

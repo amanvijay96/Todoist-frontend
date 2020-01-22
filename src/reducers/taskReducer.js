@@ -6,7 +6,7 @@ import {
   ADD_SECTION,
   DELETE_SECTION
 } from '../actions/types';
-import { act } from 'react-dom/test-utils';
+// import { act } from 'react-dom/test-utils';
 
 const initialState = {
   tasks: [],
