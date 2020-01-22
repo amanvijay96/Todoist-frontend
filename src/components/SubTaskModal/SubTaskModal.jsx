@@ -52,7 +52,7 @@ class SubTaskModal extends React.Component {
     return (
       <div>
         <Modal
-          title="file name"
+          title={this.props.name}
           visible={this.props.visible}
           onCancel={this.props.onCancel}
           footer={null}
@@ -102,7 +102,7 @@ class SubTaskModal extends React.Component {
                     <p className="add-sub-task">Add sub-task</p>
                   </button>
                 ) : (
-                  <NewTask onClick={this.handleAddNewSubTask} cancel={this.handletoggle} />
+                  <NewTask onClick={this.handleAddNewSubTask} cancel={this.handletoggle} cancelVisible={true} />
                 )}
               </TabPane>
               <TabPane tab="Comments" key="2">
@@ -112,7 +112,7 @@ class SubTaskModal extends React.Component {
                     alt="Write a Comment"
                   />
                 </div>
-                <div className="comments-section">
+                <div className="comments-section project-comments-section">
                   <textarea
                     placeholder="Write a comment"
                     className="comment-text-area"

@@ -98,10 +98,15 @@
   outline: none;
 }
 .project-comments-section {
-  margin-top: 12vh;
+  margin-top: 2vh;
   border: solid 1px rgb(190, 188, 188);
   padding: 0 1.2vw;
 }
 .project-comments-tab{
   width: 500px;
+}
+.comment-section{
+  width: 100%;
+  height: 48vh;
+  border: none;
 }

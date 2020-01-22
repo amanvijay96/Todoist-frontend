@@ -24,21 +24,21 @@ class Task extends Component {
     // console.log(this.state.role)
     return (
       <div>
-        <div className='taskContainer'>
-          <div className='taskNameDiv'>
-            <label className='round'>
-              <input className='taskCheckBox' type='checkBox'></input>
-              <span className='label' />
+        <div className="taskContainer">
+          <div className="taskNameDiv">
+            <label className="round">
+              <input className="taskCheckBox" type="checkBox"></input>
+              <span className="label" />
             </label>
             <p>{this.props.task.content}</p>
           </div>
-          <div className='taskIconDiv'>
+          <div className="taskIconDiv">
             <Icon
-              type='info-circle'
+              type="info-circle"
               onClick={() => this.handleSubTaskModalVisible('1')}
             />
             <Icon
-              type='message'
+              type="message"
               onClick={() => this.handleSubTaskModalVisible('2')}
             />
 
@@ -49,12 +49,14 @@ class Task extends Component {
               overlay={() => (
                 <TaskMenu
                   // event={event}
-                  entity='task'
+                  entity="task"
                   onDeleteTask={() => this.props.deleteTask(this.props.task.id)}
-                  onShowModal={() => this.props.showModal(true)}></TaskMenu>
+                  onShowModal={() => this.props.showModal(true)}
+                ></TaskMenu>
               )}
-              trigger={['click']}>
-              <Icon type='ellipsis' />
+              trigger={['click']}
+            >
+              <Icon type="ellipsis" />
             </Dropdown>
           </div>
         </div>
@@ -64,6 +66,7 @@ class Task extends Component {
           visible={this.state.subTaskModalVisible}
           onCancel={this.handleCancel}
           tabKey={this.state.tabKey}
+          name={this.props.task.content}
         />
       </div>
     );

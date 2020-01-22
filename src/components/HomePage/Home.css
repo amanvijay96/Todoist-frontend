@@ -37,15 +37,18 @@ ul {
 }
 .section-content {
   height: 100vh;
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url('https://todoist.com/_next/static/images/header@2x_6827f064aa8e7573d00512ca289fa09b.jpg');
   background-size: cover;
 }
 h1 {
   font-size: 4.5vw;
   font-weight: bold;
-  margin: 2vw 0;
+  margin: -45vh 0 0 0;
+  text-align: center;
 }
 .get-started {
   height: 8vh;
@@ -53,6 +56,8 @@ h1 {
   padding: 0 2vw;
   border-radius: 8px;
   font-weight: bold;
+  position: relative;
+  top: -15vh;
   color: white;
   outline: none;
   border: none;

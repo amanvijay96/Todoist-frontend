@@ -35,7 +35,7 @@ export const addTask = (taskName, projectId, date, priority) => {
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName,
-        projectId: projectId,
+        project_id: projectId,
         // section_id: sectionId
         // projectId: 1
         due: {
@@ -77,7 +77,7 @@ export const addSection = (sectionName, projectId) => {
       url: `https://todoistrest.herokuapp.com/rest/v1/sections`,
       data: {
         name: sectionName,
-        projectId: projectId
+        project_id: projectId
         // projectId: 1
       }
     }).then(data => {

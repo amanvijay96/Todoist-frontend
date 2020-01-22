@@ -8,6 +8,8 @@ import { changeName } from '../../actions/heroSectionAction';
 import { getAllProject, deleteProject } from '../../actions/projectModalAction';
 import ContentContainer from './ContentContainer';
 import Project from './project';
+import Priority from '../Modal/Priority';
+import Label from './Label';
 
 import './HeroSection.css';
 const { Panel } = Collapse;
@@ -50,93 +52,101 @@ class HeroSection extends Component {
       );
     });
     return (
-      <div className='heroSection'>
-        <div className='filterContainer'>
-          <Link to='/inbox'>
+      <div className="heroSection">
+        <div className="filterContainer">
+          <Link to="/inbox">
             <div
               onClick={() => this.props.changeName('Inbox')}
-              className='filter inbox'>
+              className="filter inbox"
+            >
               <div>
-                <Icon type='inbox' className='icon iIncon' />
+                <Icon type="inbox" className="icon iIncon" />
               </div>
-              <span className='span' name='inbox'>
+              <span className="span" name="inbox">
                 inbox
               </span>
             </div>
           </Link>
-          <Link to='/'>
+          <Link to="/getStarted">
             <div
               onClick={() => {
                 this.props.changeName('Today');
               }}
-              className='filter today'>
-              <Icon type='calendar' className='icon cIcon' />
-              <span className='span' name='Today'>
+              className="filter today"
+            >
+              <Icon type="calendar" className="icon cIcon" />
+              <span className="span" name="Today">
                 Today
               </span>
             </div>
           </Link>
-          <Link to='/all7days'>
+          <Link to="/all7days">
             <div
               onClick={() => {
                 this.props.changeName('Next 7 Days');
               }}
-              className='filter next'>
-              <Icon type='calendar' className='icon nIcon' />
-              <span className='span' name='Next 7 days'>
+              className="filter next"
+            >
+              <Icon type="calendar" className="icon nIcon" />
+              <span className="span" name="Next 7 days">
                 Next 7 days
               </span>
             </div>
           </Link>
-          <Collapse className='filterCollapse' accordion>
+          <Collapse className="filterCollapse" accordion>
             <Panel
-              className='filterItem'
+              className="filterItem"
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>Projects</b>
                   <button
                     onClick={event => {
                       this.showModal(event);
                     }}
-                    className='addButton'>
+                    className="addButton"
+                  >
                     +
                   </button>
                 </div>
               }
-              key='1'>
+              key="1"
+            >
               {allProjects}
-              <div className='projectStore'></div>
+              <div className="projectStore"></div>
               <div
                 onClick={event => {
                   this.showModal(event);
                 }}
-                className='addProjectDiv'>
-                <Icon type='plus' className='addSymbol' />
-                <button className='addProjectDivPara'>Add project</button>
+                className="addProjectDiv"
+              >
+                <Icon type="plus" className="addSymbol" />
+                <button className="addProjectDivPara">Add project</button>
               </div>
             </Panel>
             <Panel
-              className='filterItem'
+              className="filterItem"
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>label</b>
-                  <button className='addButton'>+</button>
+                  <button className="addButton">+</button>
                 </div>
               }
-              button='+'
-              key='2'>
-              <p>{'b'}</p>
+              button="+"
+              key="2"
+            >
+              <Label />
             </Panel>
             <Panel
-              className='filterItem'
+              className="filterItem"
               header={
-                <div className='panelDiv'>
+                <div className="panelDiv">
                   <b>Filters</b>
-                  <button className='addButton'>+</button>
+                  <button className="addButton">+</button>
                 </div>
               }
-              key='3'>
-              <p>{'c'}</p>
+              key="3"
+            >
+              <Priority />
             </Panel>
           </Collapse>
         </div>

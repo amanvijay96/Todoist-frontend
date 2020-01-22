@@ -100,6 +100,7 @@ class ContentContainer extends Component {
           handleProjectCommentModalVisible={
             this.handleProjectCommentModalVisible
           }
+          name={this.props.name}
           visible={this.state.projectCommentModalVisible}
           onCancel={this.handleCancel}
           tabKey={this.state.tabKey}
