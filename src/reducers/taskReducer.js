@@ -57,7 +57,7 @@ export default function(state = initialState, action) {
         }
         return isTask;
       }, false);
-      console.log(state.tasks, 'mm');
+      //   console.log(state.tasks, 'mm');
       if (isTask) {
         return {
           ...state,
@@ -80,6 +80,7 @@ export default function(state = initialState, action) {
         // update.map(section => console.log(section, 'kk'));
       }
     case ADD_SECTION:
+      console.log(state.sections, action.payload, 'mmml');
       return {
         ...state,
         sections: state.sections.concat(action.payload)
