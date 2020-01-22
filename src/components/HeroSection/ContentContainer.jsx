@@ -9,6 +9,7 @@ import {
   getAllTask,
   addTask,
   deleteTask,
+  addSection,
   deleteSection
 } from '../../actions/taskAction';
 import SectionMenu from './SectionMenu';
@@ -31,11 +32,20 @@ class ContentContainer extends Component {
     this.props.getAllTask(this.props.projectId);
     this.props.getAllSection(this.props.projectId);
   }
-  handleAddTask = (taskName, date, priority) => {
-    this.props.addTask(taskName, this.props.projectId, date, priority);
+  handleAddTask = (taskName, sectionId, date, priority) => {
+    this.props.addTask(
+      taskName,
+      this.props.projectId,
+      sectionId,
+      date,
+      priority
+    );
   };
   handleDeleteTask = id => {
     this.props.deleteTask(id);
+  };
+  handleAddSection = sectionName => {
+    this.props.addSection(sectionName, this.props.projectId);
   };
   handleDeleteSection = id => {
     this.props.deleteSection(id);
@@ -68,31 +78,33 @@ class ContentContainer extends Component {
         <Task key={task.id} task={task} deleteTask={this.handleDeleteTask} />
       );
     });
+    //console.log(this.props.sections, 'jhgfdsdfgh');
     var allSections = this.props.sections.map(section => {
       return (
         <Section
           key={section.id}
           section={section}
           deleteSection={this.handleDeleteSection}
+          addSectionTask={this.handleAddTask}
         />
       );
     });
 
     return (
-      <div className="content">
-        <div className="projectHeadingDiv">
+      <div className='content'>
+        <div className='projectHeadingDiv'>
           <h2>
             <b>{this.props.name}</b>
           </h2>
-          <div className="iconsDiv">
+          <div className='iconsDiv'>
             <Icon
-              className="commentIcon"
+              className='commentIcon'
               onClick={() => this.handleProjectCommentModalVisible('1')}
-              type="message"
+              type='message'
             />
-            <Icon className="addIcon" type="user-add" />
+            <Icon className='addIcon' type='user-add' />
             <Dropdown overlay={<SectionMenu />} trigger={['click']}>
-              <Icon type="ellipsis" />
+              <Icon type='ellipsis' />
             </Dropdown>
           </div>
         </div>
@@ -105,16 +117,15 @@ class ContentContainer extends Component {
           tabKey={this.state.tabKey}
         />
         {allTasks.length !== 0 ? (
-          <div className="taskDiv">{allTasks}</div>
+          <div className='taskDiv'>{allTasks}</div>
         ) : null}
         {this.state.toggle === 'false' ? (
           <button
             onClick={this.handletoggle}
-            value="true"
-            className="addProjectDiv addTaskDiv"
-          >
-            <Icon type="plus" className="addSymbol" />
-            <p className="addProjectDivPara addTaskDivPara">Add task</p>
+            value='true'
+            className='addProjectDiv addTaskDiv'>
+            <Icon type='plus' className='addSymbol' />
+            <p className='addProjectDivPara addTaskDivPara'>Add task</p>
           </button>
         ) : (
           <NewTask
@@ -124,26 +135,29 @@ class ContentContainer extends Component {
             // projectId={this.props.projectId}
           />
         )}
-        <div className="taskDiv">{allSections}</div>
+        {allSections.length !== 0 ? (
+          <div className='taskDiv'>{allSections}</div>
+        ) : null}
+        {/* <div className='taskDiv'>{allSections}</div> */}
         {this.state.sectiontoggle === 'false' ? (
           <button
             onClick={this.handleSectiontoggle}
-            value="true"
-            className="add-section-button"
-          >
-            <hr className="hr-text" data-content="Add Section" />
+            value='true'
+            className='add-section-button'>
+            <hr className='hr-text' data-content='Add Section' />
           </button>
         ) : (
           <AddSection
             cancel={this.handleSectiontoggle}
-            projectId={this.props.projectId}
+            addSection={this.handleAddSection}
+            // projectId={this.props.projectId}
           />
         )}
         {allTasks.length === 0 &&
         this.state.toggle === 'false' &&
         this.state.sectiontoggle === 'false' ? (
-          <div className="imgDiv">
-            <img className="img" src={require('../../section.svg')} alt="" />
+          <div className='imgDiv'>
+            <img className='img' src={require('../../section.svg')} alt='' />
             <b>Keep Your tasks organized</b>
           </div>
         ) : null}
@@ -166,14 +180,17 @@ const mapDispatchToProps = dispatch => {
     getAllTask: id => {
       dispatch(getAllTask(id));
     },
-    addTask: (taskName, id) => {
-      dispatch(addTask(taskName, id));
+    addTask: (taskName, id, sectionId) => {
+      dispatch(addTask(taskName, id, sectionId));
     },
     deleteTask: id => {
       dispatch(deleteTask(id));
     },
     getAllSection: id => {
       dispatch(getAllTask(id));
+    },
+    addSection: (sectionName, id) => {
+      dispatch(addSection(sectionName, id));
     },
     deleteSection: id => {
       dispatch(deleteSection(id));

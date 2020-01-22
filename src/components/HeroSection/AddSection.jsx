@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AddSection.css';
-import { addSection } from '../../actions/taskAction';
+// import { addSection } from '../../actions/taskAction';
 import { connect } from 'react-redux';
 
 class AddSection extends Component {
@@ -12,13 +12,14 @@ class AddSection extends Component {
       date: event.target.showTime
     });
   };
-  handleAddNewSection = () => {
-    this.props.addSection(this.state.addSectionInput, this.props.projectId);
-    this.setState({
-      addSectionInput: ''
-    });
-  };
+  // handleAddNewSection = () => {
+  //   this.props.addSection(this.state.addSectionInput, this.props.projectId);
+  //   this.setState({
+  //     addSectionInput: ''
+  //   });
+  // };
   render() {
+    console.log(this.props, 'proooopppsppsps');
     return (
       <section>
         <input
@@ -28,7 +29,9 @@ class AddSection extends Component {
           onChange={this.handleOnChange}
         />
         <div className='section-add-button'>
-          <button onClick={this.handleAddNewSection} className='add-section'>
+          <button
+            onClick={() => this.props.addSection(this.state.addSectionInput)}
+            className='add-section'>
             Add Section
           </button>
           <button
@@ -43,4 +46,4 @@ class AddSection extends Component {
   }
 }
 
-export default connect(null, { addSection })(AddSection);
+export default connect(null)(AddSection);

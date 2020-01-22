@@ -52,7 +52,7 @@ class HeroSection extends Component {
     return (
       <div className='heroSection'>
         <div className='filterContainer'>
-          <Link to='/inbox'>
+          <Link to='/project/0'>
             <div
               onClick={() => this.props.changeName('Inbox')}
               className='filter inbox'>

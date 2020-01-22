@@ -27,16 +27,16 @@ export const getAllTask = projectId => {
   };
 };
 
-export const addTask = (taskName, projectId, date, priority) => {
-  console.log(taskName, projectId);
+export const addTask = (taskName, projectId, sectionId, date, priority) => {
+  console.log(taskName, projectId, sectionId);
   return async function(dispatch) {
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`,
       data: {
         content: taskName,
-        projectId: projectId,
-        // section_id: sectionId
+        project_id: projectId,
+        section_id: sectionId,
         // projectId: 1
         due: {
           date: date,
@@ -47,6 +47,7 @@ export const addTask = (taskName, projectId, date, priority) => {
         priority: priority
       }
     }).then(data => {
+      //   console.log(data, 'opiu');
       dispatch({
         type: ADD_TASK,
         payload: data.data
@@ -70,18 +71,19 @@ export const deleteTask = id => {
 
 export const addSection = (sectionName, projectId) => {
   return async function(dispatch) {
-    // console.log(taskName, 'mmmmmmaaaaaa');
+    console.log(sectionName, projectId, 'mmmmmmaaaaaa');
     // console.log(typeof projectName);
     axios({
       method: 'post',
       url: `https://todoistrest.herokuapp.com/rest/v1/sections`,
       data: {
         name: sectionName,
-        projectId: projectId
+        project_id: projectId
         // projectId: 1
       }
     }).then(data => {
-      // console.log(data, 'ppppppppppppp');
+      console.log(data.data, 'ppppppppppppp');
+      data.data.task = [];
       dispatch({
         type: ADD_SECTION,
         payload: data.data

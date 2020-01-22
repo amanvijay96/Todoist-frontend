@@ -27,10 +27,38 @@ export default function(state = initialState, action) {
         sections: action.payload
       };
     case ADD_TASK:
-      return {
-        ...state,
-        tasks: state.tasks.concat(action.payload)
-      };
+      //   console.log(action.payload.section_id, 'oooooooooooooiiiiiii');
+      if (action.payload.section_id === 0) {
+        return {
+          ...state,
+          tasks: state.tasks.concat(action.payload)
+        };
+      } else {
+        var targetSectionIndex = state.sections.reduce((index, section) => {
+          if (section.id === action.payload.section_id) {
+            index = state.sections.indexOf(section);
+          }
+          return index;
+        }, 0);
+        // console.log(targetSectionIndex, 'llllllllllmm');
+        var targetSection = state.sections.filter(
+          section => section.id === action.payload.section_id
+        )[0];
+        // console.log(state.sections, 'awe');
+        targetSection.task = [...targetSection.task, action.payload];
+        // console.log(targetSection, '//////');
+        var updateSections = state.sections.splice(
+          targetSectionIndex,
+          1,
+          targetSection
+        );
+        // console.log(state.sections, ',,,,,,');
+        return {
+          ...state,
+          sections: updateSections
+          // ...state,
+        };
+      }
     case DELETE_TASK:
       return {
         ...state,
