@@ -51,6 +51,7 @@ class HeroSection extends Component {
         />
       );
     });
+
     return (
       <div className="heroSection">
         <div className="filterContainer">
@@ -146,7 +147,74 @@ class HeroSection extends Component {
               }
               key="3"
             >
-              <Priority />
+              <Link to="/Priority1">
+                <div
+                  onClick={() => {
+                    this.props.changeName('Priority1');
+                  }}
+                  className="filters2"
+                >
+                  <Icon
+                    type="flag"
+                    theme="filled"
+                    style={{ color: 'red', fontWeight: 'bold' }}
+                  />
+                  <span className="span" name="Priority1">
+                    Priority1
+                  </span>
+                </div>
+              </Link>
+              <Link to="/Priority2">
+                <div
+                  onClick={() => {
+                    this.props.changeName('Priority2');
+                  }}
+                  className="filters2"
+                >
+                  <Icon
+                    type="flag"
+                    theme="filled"
+                    style={{ color: 'yellow', fontWeight: 'bold' }}
+                  />
+                  <span className="span" name="Priority2">
+                    Priority2
+                  </span>
+                </div>
+              </Link>
+              <Link to="/Priority3">
+                <div
+                  onClick={() => {
+                    this.props.changeName('Priority3');
+                  }}
+                  className="filters2"
+                >
+                  <Icon
+                    type="flag"
+                    theme="filled"
+                    style={{ color: 'blue', fontWeight: 'bold' }}
+                  />
+                  <span className="span" name="Priority3">
+                    Priority3
+                  </span>
+                </div>
+              </Link>
+              <Link to="/Priority4">
+                <div
+                  onClick={() => {
+                    this.props.changeName('Priority4');
+                  }}
+                  className="filters2"
+                >
+                  <Icon
+                    type="flag"
+                    theme="filled"
+                    style={{ color: 'green', fontWeight: 'bold' }}
+                  />
+                  <span className="span" name="Priority4">
+                    Priority4
+                  </span>
+                </div>
+              </Link>
             </Panel>
           </Collapse>
         </div>

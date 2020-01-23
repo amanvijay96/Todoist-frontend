@@ -25,6 +25,7 @@ class Task extends Component {
     console.log(this.props.task, 'aaaaaa');
     return (
       <div>
+        {/* <div style={{ display: 'flex', flexDirection: 'column' }}> */}
         <div className="taskContainer">
           <div className="taskNameDiv">
             <label className="round">
@@ -32,8 +33,6 @@ class Task extends Component {
               <span className="label" />
             </label>
             <p>{this.props.task.content}</p>
-
-            {/* <p className="datePara">{this.props.task.due.date}</p> */}
           </div>
           <div className="taskIconDiv">
             <Icon
@@ -63,6 +62,12 @@ class Task extends Component {
             </Dropdown>
           </div>
         </div>
+        {this.props.task.due.date !== null ? (
+          <div style={{ fontSize: '1.2vw', marginLeft: '2vw' }}>
+            <p>{this.props.task.due.date.slice(0, 10)}</p>
+          </div>
+        ) : null}
+
         <hr />
         <SubTaskModal
           handleSubTaskModalVisible={this.handleSubTaskModalVisible}

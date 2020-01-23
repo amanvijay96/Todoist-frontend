@@ -5,8 +5,25 @@ import {
   DELETE_TASK,
   GET_SECTION,
   ADD_SECTION,
-  DELETE_SECTION
+  DELETE_SECTION,
+  GET_TASK_DATA
 } from './types';
+// import { func } from 'prop-types';
+
+// export const getWholeTask = () => {
+//   return function(dispatch) {
+//     axios({
+//       method: 'GET',
+//       url: `https://todoistrest.herokuapp.com/rest/v1/tasks`
+//     }).then(data => {
+//       console.log(data, 'xxxc');
+//       dispatch({
+//         type: GET_TASK_DATA,
+//         payload: data.data
+//       })
+//     });
+//   };
+// };
 
 export const getAllTask = projectId => {
   // console.log(projectId)
@@ -15,7 +32,7 @@ export const getAllTask = projectId => {
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/projects/${projectId}`
     }).then(data => {
-      // console.log(data, 'll');
+      console.log(data, 'll');
       dispatch({
         type: GET_TASK,
         payload: data.data.task
@@ -30,6 +47,13 @@ export const getAllTask = projectId => {
 
 export const addTask = (taskName, date, priority, projectId, sectionId) => {
   console.log(taskName, date, priority, projectId, sectionId, 'pp');
+  console.log(date, typeof date, 'gggg');
+  // console.log(JSON.stringify(date).slice(0, 11), date, 'lllllqq');
+  let taskDate = date.slice(0, 10);
+  let dateTime = taskDate + 'T' + date.slice(10) + 'Z';
+  let string = taskDate + date.slice(10, 15);
+  console.log(taskDate, 'xx');
+
   return async function(dispatch) {
     axios({
       method: 'post',
@@ -40,15 +64,16 @@ export const addTask = (taskName, date, priority, projectId, sectionId) => {
         section_id: sectionId,
         // projectId: 1
         due: {
-          date: date,
-          datetime: 'null',
-          string: 'null',
+          date: taskDate,
+          // JSON.stringify(date).slice(0, 11),
+          // datetime: dateTime,
+          // string: string,
           timezone: 'India'
         },
         priority: priority
       }
     }).then(data => {
-      console.log(data, 'opiu');
+      console.log(data, 'opissssu');
       dispatch({
         type: ADD_TASK,
         payload: data.data

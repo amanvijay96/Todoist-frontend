@@ -4,7 +4,10 @@ import '../SubTaskModal/SubTaskModal.css';
 import { Icon } from 'antd';
 import { connect } from 'react-redux';
 // import PriorityMenu from '../Modal/Priority';
-import { getAllComments, addComment } from '../../actions/commentsAction';
+import {
+  getAllComments,
+  addProjectComment
+} from '../../actions/commentsAction';
 import Comment from './Comment';
 
 import { Tabs } from 'antd';
@@ -22,16 +25,18 @@ class ProjectCommentModal extends React.Component {
   // componentDidMount() {
   //   this.props.getAllComments(this.props.projectId);
   // }
+
+  handleOnChange = event => {
+    this.setState({
+      addProjectCommentInput: event.target.value
+    });
+  };
   handleAddNewComment = () => {
-    this.props.addComment(
+    console.log(this.state.addProjectCommentInput, 'ccccc');
+    this.props.addProjectComment(
       this.state.addProjectCommentInput,
       this.props.projectId
     );
-  };
-  handleOnChange = event => {
-    this.setState({
-      addSubtaskInput: event.target.value
-    });
   };
 
   handleTab = keyVal => {
@@ -79,6 +84,8 @@ class ProjectCommentModal extends React.Component {
                   <textarea
                     placeholder="Write a comment"
                     className="comment-text-area"
+                    onChange={this.handleOnChange}
+                    value={this.state.addProjectCommentInput}
                   />
                   <hr />
                   <div className="comments-icon-and-button">
@@ -110,16 +117,22 @@ class ProjectCommentModal extends React.Component {
 }
 
 const mapStateToProps = state => {
+  // console.log(state.commentReducer.comments, 'lllbb');
   return {
     comments: state.commentReducer.comments
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    addComment: (commentContent, projectId) => {
-      dispatch(addComment(commentContent, projectId));
+    // getAllComments: ()=>{
+    //   dispatch(getAllComments())
+    // },
+    addProjectComment: (commentContent, projectId) => {
+      dispatch(addProjectComment(commentContent, projectId));
     },
-    // getAllComments: projectId => dispatch(getAllComments(projectId))
+    getAllComments: projectId => {
+      dispatch(getAllComments(projectId));
+    }
     // deleteComment: id => {
     //   dispatch(deleteComment(id));
     // }

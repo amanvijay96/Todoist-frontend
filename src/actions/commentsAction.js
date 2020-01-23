@@ -17,18 +17,18 @@ export const getAllComments = projectId => {
   };
 };
 
-export const addComment = (comment, taskId) => {
+export const addTaskComment = (comment, taskId) => {
   return async function(dispatch) {
     axios({
       method: 'post',
-      url: `https://todoistrest.herokuapp.com/rest/v1/comment`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
+      url: `https://todoistrest.herokuapp.com/rest/v1/comments`,
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin': '*'
+      // },
       data: {
         content: comment,
-        project_id: taskId
+        task_id: taskId
       }
     }).then(data => {
       dispatch({
@@ -39,15 +39,17 @@ export const addComment = (comment, taskId) => {
   };
 };
 export const addProjectComment = (comment, projectId) => {
+  console.log(comment, projectId, 'kkkk');
   return async function(dispatch) {
     axios({
       method: 'post',
-      url: `https://todoistrest.herokuapp.com/rest/v1/comment`,
+      url: `https://todoistrest.herokuapp.com/rest/v1/comments`,
       data: {
-        comment: comment,
+        content: comment,
         project_id: projectId
       }
     }).then(data => {
+      console.log(data, 'lzzzzzaa');
       dispatch({
         type: ADD_COMMENT,
         payload: data.data.comment

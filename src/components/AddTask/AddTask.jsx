@@ -36,7 +36,7 @@ class NewTask extends React.Component {
   };
   onChange = (value, dateString) => {
     // console.log('Selected Time: ', value);
-    dateString = new Date(dateString);
+    // dateString = new Date(dateString);
     console.log('Formatted Selected Time: ', dateString);
     this.setState({
       date: dateString
@@ -53,7 +53,7 @@ class NewTask extends React.Component {
   // };
 
   render() {
-    console.log(this.state, 'Rishav');
+    // console.log(this.state, 'Rishav');
     return (
       <section>
         <div className="input-fields">

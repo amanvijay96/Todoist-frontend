@@ -29,6 +29,15 @@
 .filter:hover {
   background-color: white;
 }
+.filters2 {
+  display: flex;
+  padding: 0.5vw;
+  justify-content: space-around;
+  align-items: center;
+}
+.filters2:hover {
+  background-color: white;
+}
 .App {
   display: flex;
 }
