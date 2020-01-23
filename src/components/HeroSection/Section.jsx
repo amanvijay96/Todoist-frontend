@@ -22,8 +22,8 @@ class Section extends Component {
   handleSectiontoggle = e => {
     this.setState({ sectiontoggle: e.target.value });
   };
-  handleAddSectionTask = taskName => {
-    this.props.addSectionTask(taskName, this.props.section.id);
+  handleAddSectionTask = (taskName, date, priority) => {
+    this.props.addSectionTask(taskName, date, priority, this.props.section.id);
   };
   render() {
     // var sectionTask = this.props.sections.filter(

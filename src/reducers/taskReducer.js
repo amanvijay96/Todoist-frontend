@@ -28,7 +28,7 @@ export default function(state = initialState, action) {
         sections: action.payload
       };
     case ADD_TASK:
-      //   console.log(action.payload.section_id, 'oooooooooooooiiiiiii');
+      console.log(action.payload.section_id, 'oooooooooooooiiiiiii');
       if (action.payload.section_id === 0) {
         return {
           ...state,
