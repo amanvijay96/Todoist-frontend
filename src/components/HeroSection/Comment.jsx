@@ -3,12 +3,15 @@ import { Icon } from 'antd';
 
 class Comment extends Component {
   state = {};
+  handleDelete=() => {
+    this.props.deleteComment()
+  }
   render() {
     return (
       <div style={{display:'flex', justifyContent: 'space-between'}}>
         
         <div>{this.props.comment.content}</div>
-        <Icon type="delete" />
+        <Icon type="delete" onClick={() => this.handleDelete} />
       </div>
     );
   }

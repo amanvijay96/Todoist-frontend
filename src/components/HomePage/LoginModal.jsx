@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from 'antd';
 // import './Modal.css';
+import { Link } from 'react-router-dom';
 
 class LoginModal extends React.Component {
   state = {
@@ -46,7 +47,9 @@ class LoginModal extends React.Component {
             <input type="email" />
             <label>Password</label>
             <input type="password" />
-            <button className="section-button">Log in</button>
+            <Link to="/getStarted">
+              <button className="section-button">Log in</button>
+            </Link>
           </section>
         </Modal>
       </div>

@@ -22,8 +22,8 @@ class Section extends Component {
   handleSectiontoggle = e => {
     this.setState({ sectiontoggle: e.target.value });
   };
-  handleAddSectionTask = taskName => {
-    this.props.addSectionTask(taskName, this.props.section.id);
+  handleAddSectionTask = (taskName, date, priority) => {
+    this.props.addSectionTask(taskName, date, priority, this.props.section.id);
   };
   render() {
     // var sectionTask = this.props.sections.filter(
@@ -45,9 +45,10 @@ class Section extends Component {
         {this.state.sectiontoggle === 'false' ? (
           <button
             onClick={this.handleSectiontoggle}
-            value='true'
-            className='add-section-button'>
-            <hr className='hr-text' data-content='Add Section' />
+            value="true"
+            className="add-section-button"
+          >
+            <hr className="hr-text" data-content="Add Section" />
           </button>
         ) : (
           <AddSection
@@ -55,14 +56,14 @@ class Section extends Component {
             // projectId={this.props.projectId}
           />
         )}
-        <Collapse className='sectionCollapse'>
+        <Collapse className="sectionCollapse">
           {/* defaultActiveKey={['1']} onChange={callback}> */}
           <Panel
-            className='sectionItem'
+            className="sectionItem"
             header={
-              <div className='sectionDiv'>
+              <div className="sectionDiv">
                 <b>{this.props.section.name}</b>
-                <div className='section-menu2'>
+                <div className="section-menu2">
                   <Dropdown
                     onClick={event => event.stopPropagation()}
                     overlay={
@@ -72,22 +73,25 @@ class Section extends Component {
                         }
                       />
                     }
-                    trigger={['click']}>
-                    <Icon type='ellipsis' />
+                    trigger={['click']}
+                  >
+                    <Icon type="ellipsis" />
                   </Dropdown>
                 </div>
               </div>
             }
-            key={this.props.section.id}>
+            key={this.props.section.id}
+          >
             {allSectionTasks.length !== 0 ? allSectionTasks : null}
 
             {this.state.toggle === 'false' ? (
               <button
                 onClick={this.handletoggle}
-                value='true'
-                className='addProjectDiv addTaskDiv'>
-                <Icon type='plus' className='addSymbol' />
-                <p className='addProjectDivPara addTaskDivPara'>Add task</p>
+                value="true"
+                className="addProjectDiv addTaskDiv"
+              >
+                <Icon type="plus" className="addSymbol" />
+                <p className="addProjectDivPara addTaskDivPara">Add task</p>
               </button>
             ) : (
               <NewTask

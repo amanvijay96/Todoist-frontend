@@ -4,6 +4,9 @@
   height: 100vh;
   overflow: scroll;
 }
+.content::-webkit-scrollbar {
+  display: none;
+}
 .imgDiv {
   display: flex;
   flex-direction: column;

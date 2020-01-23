@@ -1,5 +1,6 @@
 import {
   GET_TASK,
+  GET_TASK_DATA,
   ADD_TASK,
   DELETE_TASK,
   GET_SECTION,
@@ -10,7 +11,8 @@ import {
 
 const initialState = {
   tasks: [],
-  sections: []
+  sections: [],
+  taskData: []
   //   sections:[]
 };
 
@@ -22,6 +24,11 @@ export default function(state = initialState, action) {
         ...state,
         tasks: action.payload
       };
+    // case GET_TASK_DATA:
+    //   return {
+    //     ...state,
+    //     taskData: action.payload
+    //   };
     case GET_SECTION:
       return {
         ...state,
@@ -57,7 +64,7 @@ export default function(state = initialState, action) {
         }
         return isTask;
       }, false);
-      console.log(state.tasks, 'mm');
+      // console.log(state.tasks, 'mm');
       if (isTask) {
         return {
           ...state,
@@ -68,16 +75,13 @@ export default function(state = initialState, action) {
           ...state,
           sections: state.sections.map(section => {
             let updatedSection = { ...section };
-            console.log(updatedSection.task, 'lll');
+            // console.log(updatedSection.task, 'lll');
             updatedSection.task = updatedSection.task.filter(
               eachTask => eachTask.id !== action.payload
             );
             return updatedSection;
           })
         };
-
-        // var update = state.sections.slice(0);
-        // update.map(section => console.log(section, 'kk'));
       }
     case ADD_SECTION:
       return {
@@ -91,18 +95,6 @@ export default function(state = initialState, action) {
           section => section.id !== action.payload
         )
       };
-    //   case ADD_PROJECT:
-    //     return {
-    //       ...state,
-    //       projects: state.projects.concat(action.payload)
-    //     };
-    //   case DELETE_PROJECT:
-    //     return {
-    //       ...state,
-    //       projects: state.projects.filter(
-    //         project => project.id !== action.payload
-    //       )
-    //     };
     default:
       return state;
   }

@@ -18,6 +18,10 @@ function App() {
         <Route path="/inbox" exact component={HeroSection} />
         <Route path="/all7days" exact component={HeroSection} />
         <Route path="/project/:id" exact component={HeroSection} />
+        <Route path="/Priority1" exact component={HeroSection} />
+        <Route path="/Priority2" exact component={HeroSection} />
+        <Route path="/Priority3" exact component={HeroSection} />
+        <Route path="/Priority4" exact component={HeroSection} />
       </Provider>
     </Router>
   );
