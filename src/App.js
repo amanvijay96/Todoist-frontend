@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import HeroSection from './components/HeroSection/HeroSection';
 import Home from './components/HomePage/Home';
+// import { ThemeProvider } from 'styled-components';
+// import { lightTheme, darkTheme } from './theme';
+// import { GlobalStyles } from './global';
+
 // import ContentContainer from './components/HeroSection/ContentContainer';
 
 function App() {
@@ -13,6 +17,8 @@ function App() {
     <Router>
       <Provider store={store}>
         <Route path="/" exact component={Home} />
+        {/* <ThemeProvider theme={lightTheme}></ThemeProvider> */}
+        {/* <GlobalStyles /> */}
         <Header />
         <Route path="/getStarted" exact component={HeroSection} />
         <Route path="/inbox" exact component={HeroSection} />

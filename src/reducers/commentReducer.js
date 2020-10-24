@@ -9,10 +9,10 @@ export default function(state = initialState, action) {
   // console.log(state, action);
   switch (action.type) {
     case GET_COMMENTS:
-      console.log(action);
+      console.log(action, 'nav');
       return {
         ...state,
-        comments: action.payload
+        comments: [action.payload]
       };
 
     case ADD_COMMENT:

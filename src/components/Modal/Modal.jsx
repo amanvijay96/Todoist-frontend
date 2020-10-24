@@ -17,20 +17,21 @@ class Modals extends React.Component {
     console.log(this.props.projectId, 'cdscsd');
     console.log(new URL(window.location), 'cdscsd');
     this.props.addTask(
-      this.state.addtaskInput
-      // this.match.params.id,
-      // this.state.date,
-      // this.state.priority
+      this.state.addtaskInput,
+      this.state.date,
+      this.state.priority,
+      new URL(window.location.id)
     );
+    // taskName, date, priority, projectId,
     // this.setState({
     //   addtaskInput: ''
     // });
   };
-  // handleOnChange = event => {
-  //   this.setState({
-  //     addtaskInput: event.target.value
-  //   });
-  // };
+  handleOnChange = event => {
+    this.setState({
+      addtaskInput: event.target.value
+    });
+  };
   onChange = (value, dateString) => {
     // console.log('Selected Time: ', value);
     // console.log('Formatted Selected Time: ', dateString);
@@ -57,7 +58,7 @@ class Modals extends React.Component {
           <section>
             <NewTask
               cancelVisible={false}
-              // handleAddNewTask={this.handleAddNewTask}
+              handleAddNewTask={this.handleAddNewTask}
             />
           </section>
         </Modal>
@@ -69,4 +70,13 @@ class Modals extends React.Component {
 const mapStateToProps = state => {
   return { visible: state.modalReducer };
 };
+// const mapDispatchToProps = dispatch => {
+//   return addTask: ()=>{
+//     dispatch({
+  // addTask: (taskName, date, priority, id, sectionId) => {
+  //   dispatch(addTask(taskName, date, priority, id, sectionId));
+  // },
+//     })
+//   }
+// }
 export default connect(mapStateToProps, { addTask })(Modals);

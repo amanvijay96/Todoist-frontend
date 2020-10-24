@@ -63,7 +63,7 @@ class Task extends Component {
           </div>
         </div>
         {this.props.task.due.date !== null ? (
-          <div style={{ fontSize: '1.2vw', marginLeft: '2vw' }}>
+          <div style={{ fontSize: '1vw', marginLeft: '2vw' }}>
             <p>{this.props.task.due.date.slice(0, 10)}</p>
           </div>
         ) : null}

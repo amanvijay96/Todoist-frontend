@@ -22,9 +22,9 @@ class ProjectCommentModal extends React.Component {
     toggle: 'false',
     tabKey: '1'
   };
-  // componentDidMount() {
-  //   this.props.getAllComments(this.props.projectId);
-  // }
+  componentDidMount() {
+    this.props.getAllComments(this.props.projectId);
+  }
 
   handleOnChange = event => {
     this.setState({
@@ -38,13 +38,14 @@ class ProjectCommentModal extends React.Component {
       this.props.projectId
     );
   };
+  
 
   handleTab = keyVal => {
     this.setState({ tabKey: keyVal });
   };
 
   render() {
-    // console.log(this.props.role);
+    console.log(this.props,'kkjhjhjhbjhhj');
     let allComments = this.props.comments.map(comment => {
       return <Comment key={comment.id} comment={comment} />;
     });
@@ -60,6 +61,7 @@ class ProjectCommentModal extends React.Component {
           centered={true}
           className="project-comment-modal"
           style={{ left: '330px', top: '30px' }}
+          projectId={this.props.projectId}
         >
           <section>
             <Tabs

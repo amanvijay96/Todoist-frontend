@@ -144,32 +144,10 @@ class ContentContainer extends Component {
             </h2>
             {this.props.name === 'Today' ? (
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {/* <div>
-                  {' '}
-                  {this.state.toggle === 'false' ? (
-                    <button
-                      onClick={this.handletoggle}
-                      value="true"
-                      className="addProjectDiv addTaskDiv"
-                    >
-                      <Icon type="plus" className="addSymbol" />
-                      <p className="addProjectDivPara addTaskDivPara">
-                        Add task
-                      </p>
-                    </button>
-                  ) : (
-                    <NewTask
-                      cancelVisible={true}
-                      cancel={this.handletoggle}
-                      addTask={this.handleAddTask}
-                      // projectId={this.props.projectId}
-                    />
-                  )}
-                </div> */}
+          
                 <div>{todayTask}</div>
               </div>
             ) : null}
-
             {this.props.name !== 'Priority1' ||
             this.props.name !== 'Priority2' ||
             this.props.name !== 'Priority3' ||
@@ -187,7 +165,6 @@ class ContentContainer extends Component {
               </div>
             ) : null}
           </div>
-
           {this.props.name === 'Priority1' ? (
             allPriority1Task.length !== 0 ? (
               <div>{allPriority1Task}</div>

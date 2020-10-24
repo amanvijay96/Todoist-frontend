@@ -8,10 +8,11 @@ export const getAllComments = projectId => {
       method: 'get',
       url: `https://todoistrest.herokuapp.com/rest/v1/comments/${projectId}`
     }).then(data => {
-      console.log(data);
+      console.log(data.data, 'aman');
+      // data.data.comments = [];
       dispatch({
         type: GET_COMMENTS,
-        payload: data.data.comment
+        payload: data.data
       });
     });
   };
@@ -21,7 +22,7 @@ export const addTaskComment = (comment, taskId) => {
   return async function(dispatch) {
     axios({
       method: 'post',
-      url: `https://todoistrest.herokuapp.com/rest/v1/comments`,
+      url: `https://todoistrest.herokuapp.com/rest/v1/comments/${taskId}`,
       // headers: {
       //   'Content-Type': 'application/json',
       //   'Access-Control-Allow-Origin': '*'
@@ -33,7 +34,7 @@ export const addTaskComment = (comment, taskId) => {
     }).then(data => {
       dispatch({
         type: ADD_COMMENT,
-        payload: data.data.comment
+        payload: data.data
       });
     });
   };
@@ -52,7 +53,7 @@ export const addProjectComment = (comment, projectId) => {
       console.log(data, 'lzzzzzaa');
       dispatch({
         type: ADD_COMMENT,
-        payload: data.data.comment
+        payload: data.data
       });
     });
   };

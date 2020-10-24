@@ -41,11 +41,13 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('https://todoist.com/_next/static/images/header@2x_6827f064aa8e7573d00512ca289fa09b.jpg');
+  background-image: url('https://images.pexels.com/photos/583846/pexels-photo-583846.jpeg?cs=srgb&dl=background-balance-business-commerce-583846.jpg&fm=jpg');
   background-size: cover;
 }
+
 h1 {
   font-size: 4.5vw;
+  color: white;
   font-weight: bold;
   margin: -45vh 0 0 0;
   text-align: center;

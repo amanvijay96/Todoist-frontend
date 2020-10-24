@@ -7,9 +7,20 @@ import { modalOpen, modalClose } from '../../actions/modalAction';
 import { connect } from 'react-redux';
 import { settingsMenu } from './SettingsMenu';
 import { changeName } from '../../actions/heroSectionAction';
+import { Switch } from 'antd';
+
+const themeDark = {
+  background: '#121212'
+}
 
 class Header extends Component {
-  state = {};
+  state = { checked: false };
+
+  onChange = () => {
+    this.setState({
+      checked: !false
+    });
+  };
 
   render() {
     console.log(window.location.pathname);
@@ -48,6 +59,14 @@ class Header extends Component {
                   <Dropdown overlay={settingsMenu} trigger={['click']}>
                     <Icon type="setting" theme="filled" />
                   </Dropdown>
+                </li>
+                <li>
+                  <Switch
+                    checked={this.state.checked}
+                    onChange={this.onChange}
+                    size="small"
+                    style={{backgroundColor: "#fff"}}
+                  />
                 </li>
               </ul>
             </div>
